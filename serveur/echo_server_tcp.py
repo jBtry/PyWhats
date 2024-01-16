@@ -1,6 +1,11 @@
 #!/usr/bin/env python3
-
 import socket
+from Crypto.Cipher import AES
+
+def do_decrypt(ciphertext):
+    obj2 = AES.new('This is a key123', AES.MODE_CBC, 'This is an IV456')
+    message = obj2.decrypt(ciphertext)
+    return message
 
 if __name__ == '__main__':
     # Etape 1 : création de la socket d'écoute
@@ -17,6 +22,7 @@ if __name__ == '__main__':
                 while True:
                     # Etape 4 : réception d'au max 1024 octets
                     data = service.recv(1024)
+                    do_decrypt(data)
                     # si le client a fermé la connexion on arrête la boucle
                     if not data:
                         break

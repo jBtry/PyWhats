@@ -1,6 +1,11 @@
 #!/usr/bin/env python3
-
 import socket
+from Crypto.Cipher import AES
+
+def do_encrypt(message):
+    obj = AES.new('This is a key123', AES.MODE_CBC, 'This is an IV456')
+    ciphertext = obj.encrypt(message)
+    return ciphertext
 
 if __name__ == '__main__':
     # Etape 1 : création de la socket cliente
@@ -14,6 +19,7 @@ if __name__ == '__main__':
             if st == "FIN":
                 break
             # Etape 2 : émission de la chaine après encodage
+            do_encrypt(st)
             s.sendall(st.encode('utf-8'))
             # Etape 2 suite : réception de la chaine
             data = s.recv(1024)
