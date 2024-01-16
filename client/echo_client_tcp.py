@@ -1,30 +1,35 @@
 #!/usr/bin/env python3
 import socket
-from Crypto.Cipher import AES
+import ssl
 
 def do_encrypt(message):
-    obj = AES.new('This is a key123', AES.MODE_CBC, 'This is an IV456')
-    ciphertext = obj.encrypt(message)
-    return ciphertext
+    return message
 
 if __name__ == '__main__':
-    # Etape 1 : création de la socket cliente
-    with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
-        # Etape 1 suite : connexion
-        s.connect(('localhost', 10101))
+    # Specify the path to the server's certificate file
+    certfile = "server.crt"
+
+    # Create the SSL/TLS context
+    context = ssl.create_default_context(verify_mode=ssl.CERT_REQUIRED, cafile=certfile)
+
+    # Create the socket and wrap it with SSL/TLS
+    with socket.create_connection(('localhost', 10101)) as s:
+        s = context.wrap_socket(s)
+
         while True:
-            # lecture clavier d'une chaine
+            # Read a message from the user
             st = input("Tapez une chaine (FIN pour arreter): ")
-            # condition d'arrêt
+
+            # If the message is "FIN", stop the loop
             if st == "FIN":
                 break
-            # Etape 2 : émission de la chaine après encodage
-            do_encrypt(st)
-            s.sendall(st.encode('utf-8'))
-            # Etape 2 suite : réception de la chaine
-            data = s.recv(1024)
-            # décodage de la chaine
-            st = data.decode('utf-8')
-            # affichage de la chaine
-            print('Received', st)
 
+            # Encode the message and send it to the server
+            s.sendall(do_encrypt(st).encode('utf-8'))
+
+            # Receive a response from the server and decode it
+            data = s.recv(1024)
+            st = data.decode('utf-8')
+
+            # Print the response
+            print('Received', st)

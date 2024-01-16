@@ -1,34 +1,33 @@
 #!/usr/bin/env python3
 import socket
-from Crypto.Cipher import AES
-
-def do_decrypt(ciphertext):
-    obj2 = AES.new('This is a key123', AES.MODE_CBC, 'This is an IV456')
-    message = obj2.decrypt(ciphertext)
-    return message
+import ssl
 
 if __name__ == '__main__':
-    # Etape 1 : création de la socket d'écoute
-    with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as ecoute:
-        # Etape 1 suite : liaison de la socket d'écoute (choix du port)
-        ecoute.bind(('', 10101))
-        # Etape 2 : ouverture du service
-        ecoute.listen()
+    # Specify the path to the certificate and key files
+    certfile = "C:\Users\cleme\Documents\GitHub\PyWhats\serveur\server.crt"
+
+    keyfile = "C:\Users\cleme\Documents\GitHub\PyWhats\serveur\server.key"
+
+    # Create the SSL/TLS context
+    context = ssl.create_default_context(certfile=certfile, keyfile=keyfile)
+
+    # Create the socket and wrap it with SSL/TLS
+    with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as sock:
+        sock = context.wrap_socket(sock, server_side=True)
+        sock.bind(('localhost', 10101))
+        sock.listen()
+
         while True:
-            # A METTRE DANS LE WITH PRECEDANT A LA SUITE DU listen
-            # Etape 3 : attente et acceptation d'une nouvelle connexion
-            service, addr = ecoute.accept()
-            with service:
+            # Accept a connection from a client
+            service, addr = sock.accept()
+
+            # Create an SSL/TLS connection
+            with context.wrap_socket(service, server_side=True) as ssl_sock:
+                # Handle the client connection
                 while True:
-                    # Etape 4 : réception d'au max 1024 octets
-                    data = service.recv(1024)
-                    do_decrypt(data)
-                    # si le client a fermé la connexion on arrête la boucle
+                    data = ssl_sock.recv(1024)
                     if not data:
                         break
-                    # affichage des données reçues
-                    print(data)
-                    # Etape 4 suite : on renvoi les données au client (echo)
-                    service.sendall(data)
-                # Etape 5 : fermeture socket de service (automatiquement par le with service)
-        # Etape 6 : fermeture de la socket d'écoute (automatiquement par le with ecoute)
+
+                    print(data.decode('utf-8'))
+                    ssl_sock.sendall(data)
