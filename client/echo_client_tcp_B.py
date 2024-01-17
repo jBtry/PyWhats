@@ -1,4 +1,24 @@
 import socket
+import threading
+
+
+def receive_messages(ClientSocket):
+    while True:
+        try:
+            Response = ClientSocket.recv(1024)
+            print('\n')
+            print(Response.decode('utf-8'))
+        except socket.error as e:
+            print(str(e))
+            break
+
+def send_messages(ClientSocket):
+    while True:
+        recipient = input('Enter recipient: ')
+        message = input('Say Something: ')
+        data = f'{recipient}:{message}'
+        ClientSocket.send(str.encode(data))
+
 
 ClientSocket = socket.socket()
 host = '127.0.0.1'
@@ -10,21 +30,17 @@ try:
 except socket.error as e:
     print(str(e))
 
-# Response = ClientSocket.recv(1024)
-
-# Demander le nom du client
 ClientName = input('Type your username: ')
 ClientSocket.send(str.encode(ClientName))
 
 while True:
-    # recipient = input('Enter recipient: ')
-    # message = input('Say Something: ')
-    
-    # # Envoyer le message au format "recipient: message"
-    # data = f'{recipient}:{message}'
-    # ClientSocket.send(str.encode(data))
-    
-    Response = ClientSocket.recv(1024)
-    print(Response.decode('utf-8'))
+    receive_thread = threading.Thread(target=receive_messages, args=(ClientSocket,))
+    send_thread = threading.Thread(target=send_messages, args=(ClientSocket,))
+
+    receive_thread.start()
+    send_thread.start()
+
+    receive_thread.join()
+    send_thread.join()
 
 ClientSocket.close()
