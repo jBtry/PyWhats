@@ -1,28 +1,51 @@
-#!/usr/bin/env python3
-
 import socket
+import os
+from _thread import *
 
-if __name__ == '__main__':
-    # Etape 1 : création de la socket d'écoute
-    with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as ecoute:
-        # Etape 1 suite : liaison de la socket d'écoute (choix du port)
-        ecoute.bind(('', 10101))
-        # Etape 2 : ouverture du service
-        ecoute.listen()
-        while True:
-            # A METTRE DANS LE WITH PRECEDANT A LA SUITE DU listen
-            # Etape 3 : attente et acceptation d'une nouvelle connexion
-            service, addr = ecoute.accept()
-            with service:
-                while True:
-                    # Etape 4 : réception d'au max 1024 octets
-                    data = service.recv(1024)
-                    # si le client a fermé la connexion on arrête la boucle
-                    if not data:
-                        break
-                    # affichage des données reçues
-                    print(data)
-                    # Etape 4 suite : on renvoi les données au client (echo)
-                    service.sendall(data)
-                # Etape 5 : fermeture socket de service (automatiquement par le with service)
-        # Etape 6 : fermeture de la socket d'écoute (automatiquement par le with ecoute)
+ServerSocket = socket.socket()
+host = '127.0.0.1'
+port = 1233
+ThreadCount = 0
+clients = {}  # Dictionnaire pour stocker les connexions des clients
+
+try:
+    ServerSocket.bind((host, port))
+except socket.error as e:
+    print(str(e))
+
+print('Waiting for a Connection..')
+ServerSocket.listen(5)
+
+
+def threaded_client(connection, client_address):
+    connection.send(str.encode('Welcome to the Server'))
+    
+    while True:
+        data = connection.recv(2048)
+        if not data:
+            break
+        
+        # Assume the data received is in the format "recipient: message"
+        recipient, message = data.decode('utf-8').split(':', 1)
+        
+        # Check if the recipient is a valid connected client
+        if recipient in clients:
+            recipient_conn = clients[recipient]
+            recipient_conn.sendall(str.encode(f'Message from {client_address}: {message}'))
+        else:
+            connection.sendall(str.encode('Recipient not found or not connected'))
+    
+    connection.close()
+
+while True:
+    Client, address = ServerSocket.accept()
+    print('Connected to: ' + address[0] + ':' + str(address[1]))
+
+    client_name = Client.recv(1024).decode('utf-8')
+    clients[client_name] = Client
+
+    start_new_thread(threaded_client, (Client, address))
+    ThreadCount += 1
+    print('Thread Number: ' + str(ThreadCount))
+
+ServerSocket.close()
