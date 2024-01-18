@@ -22,16 +22,34 @@ def get_database():
 
 # Enregistre dans une collection un message (item)
 def save_messages_database(collection, item):
+    dbname = get_database
+    
     collection.insert_one(item)
 
 # Retourne les messages qui correspondent à l'émetteur et au destinataire dans une collection 
 def read_messages_database(collection, sender, receiver):
+    dbname = get_database
     # création de la requête pour trouver les messages
     query = {
         'client_address': sender,
         'recipient': receiver
     }
-    return collection.find(query)
+    result = collection.find(query)
+    # création d'une liste pour stocker les valeurs des documents
+    messages = []
+
+    # itération sur les documents et ajout dans la liste
+    for message in result:
+        messages.append({
+            'sender': message['sender'],
+            'recipient': message['recipient'],
+            'message': message['message']
+        })
+
+    # retourne la liste des messages
+    return messages
+
+
 
 # Supprime un message (item) d'une collection'
 def delete_messages_database(collection, item):
@@ -118,8 +136,29 @@ def threaded_client(connection, client_address):
         if recipient in clients:
             recipient_conn = clients[recipient]
             recipient_conn.sendall(str.encode(f'Message from {client_address}: {message}'))
+
+            item_1 = [timestamp, client_address, recipient, message]
+
+            document = {
+                'timestamp': item_1[0],
+                'sender': item_1[1],
+                'recipient': item_1[2],
+                'message': item_1[3]
+            }
+
+            dbname = get_database()
+            collection = dbname["messages"]
+
+            save_messages_database(collection, document)
+
+            print(read_messages_database(collection, client_address, recipient))
+
         else:
             connection.sendall(str.encode('Recipient not found or not connected'))
+
+
+
+        
     
     connection.close()
 
