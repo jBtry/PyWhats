@@ -1,3 +1,4 @@
+
 import socket
 import threading
 
@@ -19,6 +20,8 @@ def send_messages(ClientSocket):
         data = f'{recipient}:{message}'
         ClientSocket.send(str.encode(data))
 
+
+# Faire le reste en méthode
 
 ClientSocket = socket.socket()
 host = '127.0.0.1'
