@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <diagram program="umlet" version="15.1">
-  <zoom_level>10</zoom_level>
+  <zoom_level>9</zoom_level>
   <element>
     <id>UMLActor</id>
     <coordinates>
-      <x>70</x>
-      <y>370</y>
-      <w>100</w>
-      <h>110</h>
+      <x>243</x>
+      <y>459</y>
+      <w>90</w>
+      <h>99</h>
     </coordinates>
     <panel_attributes>Utilisateur</panel_attributes>
     <additional_attributes/>
@@ -15,10 +15,10 @@
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>990</x>
-      <y>400</y>
-      <w>220</w>
-      <h>40</h>
+      <x>1071</x>
+      <y>486</y>
+      <w>198</w>
+      <h>36</h>
     </coordinates>
     <panel_attributes>lt=.&gt;
 &lt;&lt;includes&gt;&gt;</panel_attributes>
@@ -27,10 +27,10 @@
   <element>
     <id>UMLUseCase</id>
     <coordinates>
-      <x>1190</x>
-      <y>400</y>
-      <w>120</w>
-      <h>40</h>
+      <x>1251</x>
+      <y>486</y>
+      <w>108</w>
+      <h>36</h>
     </coordinates>
     <panel_attributes>S'authentifier</panel_attributes>
     <additional_attributes/>
@@ -38,102 +38,79 @@
   <element>
     <id>UMLUseCase</id>
     <coordinates>
-      <x>360</x>
-      <y>590</y>
-      <w>170</w>
-      <h>50</h>
+      <x>495</x>
+      <y>594</y>
+      <w>198</w>
+      <h>45</h>
     </coordinates>
-    <panel_attributes>Envoyer un fichier</panel_attributes>
+    <panel_attributes>Envoyer/Recevoir un fichier</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <id>UMLUseCase</id>
     <coordinates>
-      <x>310</x>
-      <y>290</y>
-      <w>330</w>
-      <h>80</h>
+      <x>459</x>
+      <y>387</y>
+      <w>297</w>
+      <h>72</h>
     </coordinates>
-    <panel_attributes>Gérer (Ajouter, Modifier, Supprimer) 
-les contacts existants</panel_attributes>
+    <panel_attributes>Gérer ses contacts existants
+(Ajouter, Modifier, Supprimer) </panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <id>UMLUseCase</id>
     <coordinates>
-      <x>360</x>
-      <y>520</y>
-      <w>170</w>
-      <h>50</h>
+      <x>378</x>
+      <y>648</y>
+      <w>432</w>
+      <h>45</h>
     </coordinates>
-    <panel_attributes>Recevoir un message</panel_attributes>
+    <panel_attributes>Enregistrer un fichier reçu en local</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <id>UMLUseCase</id>
     <coordinates>
-      <x>340</x>
-      <y>730</y>
-      <w>200</w>
-      <h>50</h>
+      <x>495</x>
+      <y>531</y>
+      <w>207</w>
+      <h>45</h>
     </coordinates>
-    <panel_attributes>Enregistrer un fichier reçu</panel_attributes>
-    <additional_attributes/>
-  </element>
-  <element>
-    <id>UMLUseCase</id>
-    <coordinates>
-      <x>360</x>
-      <y>460</y>
-      <w>170</w>
-      <h>50</h>
-    </coordinates>
-    <panel_attributes>Envoyer un message</panel_attributes>
+    <panel_attributes>Envoyer/Recevoir un message</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>530</x>
-      <y>410</y>
-      <w>480</w>
-      <h>360</h>
+      <x>801</x>
+      <y>495</y>
+      <w>288</w>
+      <h>189</h>
     </coordinates>
     <panel_attributes>lt=.
 </panel_attributes>
-    <additional_attributes>10.0;340.0;460.0;10.0</additional_attributes>
+    <additional_attributes>10.0;190.0;300.0;10.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>520</x>
-      <y>410</y>
-      <w>490</w>
-      <h>150</h>
+      <x>693</x>
+      <y>495</y>
+      <w>396</w>
+      <h>81</h>
     </coordinates>
     <panel_attributes>lt=.
 </panel_attributes>
-    <additional_attributes>10.0;130.0;470.0;10.0</additional_attributes>
+    <additional_attributes>10.0;70.0;420.0;10.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>520</x>
-      <y>410</y>
-      <w>490</w>
-      <h>100</h>
-    </coordinates>
-    <panel_attributes>lt=.
-</panel_attributes>
-    <additional_attributes>10.0;80.0;470.0;10.0</additional_attributes>
-  </element>
-  <element>
-    <id>Relation</id>
-    <coordinates>
-      <x>620</x>
-      <y>320</y>
-      <w>400</w>
-      <h>120</h>
+      <x>738</x>
+      <y>414</y>
+      <w>360</w>
+      <h>108</h>
     </coordinates>
     <panel_attributes>lt=.
 </panel_attributes>
@@ -142,32 +119,21 @@ les contacts existants</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>140</x>
-      <y>410</y>
-      <w>240</w>
-      <h>100</h>
+      <x>306</x>
+      <y>495</y>
+      <w>207</w>
+      <h>81</h>
     </coordinates>
     <panel_attributes/>
-    <additional_attributes>10.0;10.0;220.0;80.0</additional_attributes>
+    <additional_attributes>10.0;10.0;210.0;70.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>140</x>
-      <y>410</y>
-      <w>240</w>
-      <h>150</h>
-    </coordinates>
-    <panel_attributes/>
-    <additional_attributes>10.0;10.0;220.0;130.0</additional_attributes>
-  </element>
-  <element>
-    <id>Relation</id>
-    <coordinates>
-      <x>140</x>
-      <y>320</y>
-      <w>190</w>
-      <h>120</h>
+      <x>306</x>
+      <y>414</y>
+      <w>171</w>
+      <h>108</h>
     </coordinates>
     <panel_attributes/>
     <additional_attributes>10.0;100.0;170.0;10.0</additional_attributes>
@@ -175,77 +141,77 @@ les contacts existants</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>140</x>
-      <y>410</y>
-      <w>240</w>
-      <h>220</h>
+      <x>306</x>
+      <y>495</y>
+      <w>207</w>
+      <h>135</h>
     </coordinates>
     <panel_attributes/>
-    <additional_attributes>10.0;10.0;220.0;200.0</additional_attributes>
+    <additional_attributes>10.0;10.0;210.0;130.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>140</x>
-      <y>410</y>
-      <w>220</w>
-      <h>360</h>
+      <x>306</x>
+      <y>495</y>
+      <w>90</w>
+      <h>189</h>
     </coordinates>
     <panel_attributes/>
-    <additional_attributes>10.0;10.0;200.0;340.0</additional_attributes>
+    <additional_attributes>10.0;10.0;80.0;190.0</additional_attributes>
   </element>
   <element>
     <id>UMLUseCase</id>
     <coordinates>
-      <x>400</x>
-      <y>80</y>
-      <w>170</w>
-      <h>50</h>
+      <x>459</x>
+      <y>162</y>
+      <w>351</w>
+      <h>81</h>
     </coordinates>
-    <panel_attributes>Gérer son profil</panel_attributes>
+    <panel_attributes>Gérer son profil
+(modifier pseudo ou modifier mot de passe)</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>140</x>
-      <y>100</y>
-      <w>280</w>
-      <h>340</h>
+      <x>306</x>
+      <y>189</y>
+      <w>171</w>
+      <h>333</h>
     </coordinates>
     <panel_attributes/>
-    <additional_attributes>10.0;320.0;260.0;10.0</additional_attributes>
+    <additional_attributes>10.0;350.0;170.0;10.0</additional_attributes>
   </element>
   <element>
     <id>UMLUseCase</id>
     <coordinates>
-      <x>380</x>
-      <y>150</y>
-      <w>220</w>
-      <h>50</h>
+      <x>522</x>
+      <y>252</y>
+      <w>198</w>
+      <h>45</h>
     </coordinates>
-    <panel_attributes>Exporter/Importer 
-des messages</panel_attributes>
+    <panel_attributes>Exporter des messages</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>140</x>
-      <y>170</y>
-      <w>260</w>
-      <h>270</h>
+      <x>306</x>
+      <y>270</y>
+      <w>234</w>
+      <h>252</h>
     </coordinates>
     <panel_attributes/>
-    <additional_attributes>10.0;250.0;240.0;10.0</additional_attributes>
+    <additional_attributes>10.0;260.0;240.0;10.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>580</x>
-      <y>230</y>
-      <w>430</w>
-      <h>210</h>
+      <x>702</x>
+      <y>333</y>
+      <w>387</w>
+      <h>189</h>
     </coordinates>
     <panel_attributes>lt=.
 </panel_attributes>
@@ -254,56 +220,34 @@ des messages</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>550</x>
-      <y>100</y>
-      <w>460</w>
-      <h>340</h>
+      <x>792</x>
+      <y>198</y>
+      <w>297</w>
+      <h>324</h>
     </coordinates>
     <panel_attributes>lt=.
 </panel_attributes>
-    <additional_attributes>18.0;13.0;440.0;320.0</additional_attributes>
-  </element>
-  <element>
-    <id>UMLUseCase</id>
-    <coordinates>
-      <x>360</x>
-      <y>660</y>
-      <w>170</w>
-      <h>50</h>
-    </coordinates>
-    <panel_attributes>Recevoir un fichier</panel_attributes>
-    <additional_attributes/>
+    <additional_attributes>10.0;18.0;310.0;340.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>140</x>
-      <y>410</y>
-      <w>240</w>
-      <h>290</h>
-    </coordinates>
-    <panel_attributes/>
-    <additional_attributes>10.0;10.0;220.0;270.0</additional_attributes>
-  </element>
-  <element>
-    <id>Relation</id>
-    <coordinates>
-      <x>520</x>
-      <y>410</y>
-      <w>490</w>
-      <h>220</h>
+      <x>684</x>
+      <y>495</y>
+      <w>405</w>
+      <h>135</h>
     </coordinates>
     <panel_attributes>lt=.
 </panel_attributes>
-    <additional_attributes>10.0;200.0;470.0;10.0</additional_attributes>
+    <additional_attributes>10.0;130.0;430.0;10.0</additional_attributes>
   </element>
   <element>
     <id>UMLUseCase</id>
     <coordinates>
-      <x>370</x>
-      <y>220</y>
-      <w>220</w>
-      <h>50</h>
+      <x>513</x>
+      <y>324</y>
+      <w>198</w>
+      <h>45</h>
     </coordinates>
     <panel_attributes>Supprimer
 des messages</panel_attributes>
@@ -312,33 +256,21 @@ des messages</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>140</x>
-      <y>230</y>
-      <w>250</w>
-      <h>210</h>
+      <x>306</x>
+      <y>333</y>
+      <w>225</w>
+      <h>189</h>
     </coordinates>
     <panel_attributes/>
     <additional_attributes>10.0;190.0;230.0;10.0</additional_attributes>
   </element>
   <element>
-    <id>Relation</id>
-    <coordinates>
-      <x>520</x>
-      <y>410</y>
-      <w>480</w>
-      <h>290</h>
-    </coordinates>
-    <panel_attributes>lt=.
-</panel_attributes>
-    <additional_attributes>10.0;270.0;460.0;10.0</additional_attributes>
-  </element>
-  <element>
     <id>UMLUseCase</id>
     <coordinates>
-      <x>370</x>
-      <y>390</y>
-      <w>170</w>
-      <h>50</h>
+      <x>513</x>
+      <y>477</y>
+      <w>153</w>
+      <h>45</h>
     </coordinates>
     <panel_attributes>Créer un compte</panel_attributes>
     <additional_attributes/>
@@ -346,12 +278,24 @@ des messages</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>140</x>
-      <y>390</y>
-      <w>250</w>
-      <h>50</h>
+      <x>306</x>
+      <y>477</y>
+      <w>225</w>
+      <h>45</h>
     </coordinates>
     <panel_attributes/>
     <additional_attributes>10.0;30.0;230.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>711</x>
+      <y>270</y>
+      <w>378</w>
+      <h>252</h>
+    </coordinates>
+    <panel_attributes>lt=.
+</panel_attributes>
+    <additional_attributes>10.0;13.0;400.0;260.0</additional_attributes>
   </element>
 </diagram>
