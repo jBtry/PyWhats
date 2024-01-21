@@ -5,7 +5,7 @@
     <id>UMLGeneric</id>
     <coordinates>
       <x>630</x>
-      <y>40</y>
+      <y>50</y>
       <w>110</w>
       <h>30</h>
     </coordinates>
@@ -17,7 +17,7 @@ bg=orange</panel_attributes>
     <id>UMLGeneric</id>
     <coordinates>
       <x>950</x>
-      <y>30</y>
+      <y>40</y>
       <w>190</w>
       <h>40</h>
     </coordinates>
@@ -30,7 +30,7 @@ bg=green</panel_attributes>
     <id>UMLGeneric</id>
     <coordinates>
       <x>290</x>
-      <y>40</y>
+      <y>50</y>
       <w>100</w>
       <h>30</h>
     </coordinates>
@@ -42,7 +42,7 @@ bg=yellow</panel_attributes>
     <id>Relation</id>
     <coordinates>
       <x>330</x>
-      <y>60</y>
+      <y>70</y>
       <w>30</w>
       <h>720</h>
     </coordinates>
@@ -53,7 +53,7 @@ bg=yellow</panel_attributes>
     <id>Relation</id>
     <coordinates>
       <x>670</x>
-      <y>60</y>
+      <y>70</y>
       <w>30</w>
       <h>720</h>
     </coordinates>
@@ -64,30 +64,30 @@ bg=yellow</panel_attributes>
     <id>Relation</id>
     <coordinates>
       <x>1040</x>
-      <y>60</y>
+      <y>70</y>
       <w>30</w>
-      <h>720</h>
+      <h>710</h>
     </coordinates>
     <panel_attributes>lt=.</panel_attributes>
-    <additional_attributes>10.0;10.0;10.0;700.0</additional_attributes>
+    <additional_attributes>10.0;10.0;10.0;690.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
       <x>340</x>
-      <y>80</y>
+      <y>90</y>
       <w>350</w>
       <h>40</h>
     </coordinates>
     <panel_attributes>lt=&lt;-
-S'authentifier</panel_attributes>
+Créer un compte</panel_attributes>
     <additional_attributes>330.0;20.0;10.0;20.0</additional_attributes>
   </element>
   <element>
     <id>UMLGeneric</id>
     <coordinates>
       <x>330</x>
-      <y>90</y>
+      <y>100</y>
       <w>20</w>
       <h>100</h>
     </coordinates>
@@ -98,7 +98,7 @@ S'authentifier</panel_attributes>
     <id>UMLGeneric</id>
     <coordinates>
       <x>670</x>
-      <y>90</y>
+      <y>100</y>
       <w>20</w>
       <h>660</h>
     </coordinates>
@@ -109,7 +109,7 @@ S'authentifier</panel_attributes>
     <id>Relation</id>
     <coordinates>
       <x>340</x>
-      <y>120</y>
+      <y>130</y>
       <w>350</w>
       <h>40</h>
     </coordinates>
@@ -121,7 +121,7 @@ Pseudo ?</panel_attributes>
     <id>Relation</id>
     <coordinates>
       <x>340</x>
-      <y>150</y>
+      <y>160</y>
       <w>350</w>
       <h>40</h>
     </coordinates>
@@ -130,24 +130,12 @@ Envoi du pseudo (Ex: GuidoVR)</panel_attributes>
     <additional_attributes>330.0;20.0;10.0;20.0</additional_attributes>
   </element>
   <element>
-    <id>Relation</id>
-    <coordinates>
-      <x>680</x>
-      <y>170</y>
-      <w>380</w>
-      <h>40</h>
-    </coordinates>
-    <panel_attributes>lt=&lt;-
-Vérification du pseudo</panel_attributes>
-    <additional_attributes>360.0;20.0;10.0;20.0</additional_attributes>
-  </element>
-  <element>
     <id>UMLFrame</id>
     <coordinates>
       <x>240</x>
-      <y>210</y>
+      <y>220</y>
       <w>1080</w>
-      <h>590</h>
+      <h>560</h>
     </coordinates>
     <panel_attributes>alt
 --
@@ -184,33 +172,10 @@ bg=LIGHT_GRAY</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
-    <id>UMLGeneric</id>
-    <coordinates>
-      <x>1040</x>
-      <y>170</y>
-      <w>20</w>
-      <h>140</h>
-    </coordinates>
-    <panel_attributes/>
-    <additional_attributes/>
-  </element>
-  <element>
-    <id>Relation</id>
-    <coordinates>
-      <x>680</x>
-      <y>270</y>
-      <w>380</w>
-      <h>40</h>
-    </coordinates>
-    <panel_attributes>lt=&lt;-
-Ok (Pseudo existe en BD)</panel_attributes>
-    <additional_attributes>10.0;20.0;360.0;20.0</additional_attributes>
-  </element>
-  <element>
     <id>Relation</id>
     <coordinates>
       <x>340</x>
-      <y>300</y>
+      <y>290</y>
       <w>350</w>
       <h>40</h>
     </coordinates>
@@ -222,9 +187,9 @@ Mot de passe ?</panel_attributes>
     <id>UMLGeneric</id>
     <coordinates>
       <x>330</x>
-      <y>310</y>
+      <y>300</y>
       <w>20</w>
-      <h>50</h>
+      <h>60</h>
     </coordinates>
     <panel_attributes/>
     <additional_attributes/>
@@ -233,7 +198,7 @@ Mot de passe ?</panel_attributes>
     <id>Relation</id>
     <coordinates>
       <x>340</x>
-      <y>330</y>
+      <y>320</y>
       <w>350</w>
       <h>40</h>
     </coordinates>
@@ -242,34 +207,122 @@ Envoi du mot de passe (Ex: 5&gt;n8=REed6)</panel_attributes>
     <additional_attributes>330.0;20.0;10.0;20.0</additional_attributes>
   </element>
   <element>
-    <id>Relation</id>
-    <coordinates>
-      <x>680</x>
-      <y>340</y>
-      <w>380</w>
-      <h>50</h>
-    </coordinates>
-    <panel_attributes>lt=&lt;-
-Hashage du mot de passe (Ex : a695c6e7d08...)
-Et vérification du hash</panel_attributes>
-    <additional_attributes>360.0;20.0;10.0;20.0</additional_attributes>
-  </element>
-  <element>
     <id>UMLGeneric</id>
     <coordinates>
-      <x>1040</x>
-      <y>330</y>
+      <x>330</x>
+      <y>540</y>
       <w>20</w>
-      <h>290</h>
+      <h>20</h>
     </coordinates>
     <panel_attributes/>
     <additional_attributes/>
   </element>
   <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>340</x>
+      <y>590</y>
+      <w>350</w>
+      <h>50</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-
+Le mot de passe ne correspond 
+pas aux exigences</panel_attributes>
+    <additional_attributes>10.0;20.0;330.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLGeneric</id>
+    <coordinates>
+      <x>330</x>
+      <y>600</y>
+      <w>20</w>
+      <h>20</h>
+    </coordinates>
+    <panel_attributes/>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLGeneric</id>
+    <coordinates>
+      <x>330</x>
+      <y>710</y>
+      <w>20</w>
+      <h>40</h>
+    </coordinates>
+    <panel_attributes/>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>340</x>
+      <y>710</y>
+      <w>350</w>
+      <h>50</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-
+Le pseudo ne correspond 
+pas aux exigences</panel_attributes>
+    <additional_attributes>10.0;20.0;330.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLFrame</id>
+    <coordinates>
+      <x>10</x>
+      <y>120</y>
+      <w>1310</w>
+      <h>660</h>
+    </coordinates>
+    <panel_attributes>Loop
+---
+Tant que le pseudo 
+est invalide</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLFrame</id>
+    <coordinates>
+      <x>20</x>
+      <y>280</y>
+      <w>1190</w>
+      <h>370</h>
+    </coordinates>
+    <panel_attributes>Loop
+---
+Tant que le mot de passe 
+est invalide
+fg=BLUE</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>680</x>
+      <y>170</y>
+      <w>250</w>
+      <h>50</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-
+Vérification du pseudo </panel_attributes>
+    <additional_attributes>10.0;30.0;70.0;30.0;70.0;10.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>680</x>
+      <y>350</y>
+      <w>290</w>
+      <h>50</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-
+Vérification du mot de passe</panel_attributes>
+    <additional_attributes>10.0;30.0;70.0;30.0;70.0;10.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
     <id>UMLFrame</id>
     <coordinates>
       <x>290</x>
-      <y>380</y>
+      <y>390</y>
       <w>920</w>
       <h>260</h>
     </coordinates>
@@ -277,6 +330,9 @@ Et vérification du hash</panel_attributes>
 --
                Mot de passe VALIDE
 -
+
+
+
 
 
 
@@ -292,146 +348,50 @@ fg=BLUE</panel_attributes>
     <coordinates>
       <x>680</x>
       <y>440</y>
-      <w>380</w>
-      <h>40</h>
-    </coordinates>
-    <panel_attributes>lt=&lt;-
-Ok (Mot de passe correspond à l'ID)</panel_attributes>
-    <additional_attributes>10.0;20.0;360.0;20.0</additional_attributes>
-  </element>
-  <element>
-    <id>Relation</id>
-    <coordinates>
-      <x>340</x>
-      <y>460</y>
-      <w>350</w>
-      <h>40</h>
-    </coordinates>
-    <panel_attributes>lt=&lt;-
-Authentification réussi</panel_attributes>
-    <additional_attributes>10.0;20.0;330.0;20.0</additional_attributes>
-  </element>
-  <element>
-    <id>UMLGeneric</id>
-    <coordinates>
-      <x>330</x>
-      <y>460</y>
-      <w>20</w>
-      <h>40</h>
-    </coordinates>
-    <panel_attributes/>
-    <additional_attributes/>
-  </element>
-  <element>
-    <id>Relation</id>
-    <coordinates>
-      <x>680</x>
-      <y>540</y>
-      <w>380</w>
-      <h>40</h>
-    </coordinates>
-    <panel_attributes>lt=&lt;-
-Nok (Mot de passe ne correspond pas à l'ID)</panel_attributes>
-    <additional_attributes>10.0;20.0;360.0;20.0</additional_attributes>
-  </element>
-  <element>
-    <id>UMLGeneric</id>
-    <coordinates>
-      <x>330</x>
-      <y>540</y>
-      <w>20</w>
+      <w>240</w>
       <h>60</h>
     </coordinates>
-    <panel_attributes/>
-    <additional_attributes/>
-  </element>
-  <element>
-    <id>Relation</id>
-    <coordinates>
-      <x>340</x>
-      <y>560</y>
-      <w>340</w>
-      <h>50</h>
-    </coordinates>
     <panel_attributes>lt=&lt;-
-Echec de l'authentification
-Mot de passe Invalide</panel_attributes>
-    <additional_attributes>10.0;20.0;320.0;20.0</additional_attributes>
-  </element>
-  <element>
-    <id>UMLGeneric</id>
-    <coordinates>
-      <x>1040</x>
-      <y>690</y>
-      <w>20</w>
-      <h>40</h>
-    </coordinates>
-    <panel_attributes/>
-    <additional_attributes/>
-  </element>
-  <element>
-    <id>UMLGeneric</id>
-    <coordinates>
-      <x>330</x>
-      <y>710</y>
-      <w>20</w>
-      <h>40</h>
-    </coordinates>
-    <panel_attributes/>
-    <additional_attributes/>
+Hashage du mot de passe
+(Ex : a695c6e7d08...)
+</panel_attributes>
+    <additional_attributes>10.0;40.0;40.0;40.0;40.0;10.0;10.0;10.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
       <x>680</x>
-      <y>690</y>
+      <y>480</y>
       <w>380</w>
-      <h>40</h>
+      <h>50</h>
     </coordinates>
     <panel_attributes>lt=&lt;-
-Nok (Pseudo n'existe pas en BD)</panel_attributes>
-    <additional_attributes>10.0;20.0;360.0;20.0</additional_attributes>
+Insertion d'un tuple dans la BD avec
+le mot de passe et le pseudo</panel_attributes>
+    <additional_attributes>360.0;20.0;10.0;20.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
       <x>340</x>
-      <y>710</y>
+      <y>530</y>
       <w>350</w>
-      <h>50</h>
+      <h>40</h>
     </coordinates>
     <panel_attributes>lt=&lt;-
-Echec de l'authentification
-Pseudo Invalide</panel_attributes>
+Le compte a été crée</panel_attributes>
     <additional_attributes>10.0;20.0;330.0;20.0</additional_attributes>
   </element>
   <element>
-    <id>UMLFrame</id>
+    <id>Relation</id>
     <coordinates>
-      <x>10</x>
-      <y>110</y>
-      <w>1310</w>
-      <h>690</h>
+      <x>680</x>
+      <y>520</y>
+      <w>390</w>
+      <h>40</h>
     </coordinates>
-    <panel_attributes>Loop
----
-Tant que le pseudo 
-est invalide</panel_attributes>
-    <additional_attributes/>
-  </element>
-  <element>
-    <id>UMLFrame</id>
-    <coordinates>
-      <x>20</x>
-      <y>300</y>
-      <w>1190</w>
-      <h>340</h>
-    </coordinates>
-    <panel_attributes>Loop
----
-Tant que le mot de passe 
-est invalide
-fg=BLUE</panel_attributes>
-    <additional_attributes/>
+    <panel_attributes>lt=&lt;-
+Insertion OK</panel_attributes>
+    <additional_attributes>10.0;20.0;370.0;20.0</additional_attributes>
   </element>
 </diagram>
