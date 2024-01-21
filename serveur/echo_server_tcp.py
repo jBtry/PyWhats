@@ -24,6 +24,12 @@ def get_database():
 def save_messages_database(collection, item):
     dbname = get_database
     
+    print('collection in save method:')
+    print(collection)
+
+    print('item in read method:')
+    print(item)
+
     collection.insert_one(item)
 
 # Retourne les messages qui correspondent à l'émetteur et au destinataire dans une collection 
@@ -35,20 +41,17 @@ def read_messages_database(collection, sender, receiver):
         'recipient': receiver
     }
     result = collection.find(query)
-    # création d'une liste pour stocker les valeurs des documents
-    messages = []
+    print('collection in read method:')
+    print(collection)
 
-    # itération sur les documents et ajout dans la liste
-    for message in result:
-        messages.append({
-            'sender': message['sender'],
-            'recipient': message['recipient'],
-            'message': message['message']
-        })
+    print('sender in read method:')
+    print(sender)
 
+    print('receiver in read method:')
+    print(receiver)
     # retourne la liste des messages
-    return messages
-
+    for document in result:
+        print(document)
 
 
 # Supprime un message (item) d'une collection'
@@ -146,12 +149,14 @@ def threaded_client(connection, client_address):
                 'message': item_1[3]
             }
 
+
             dbname = get_database()
             collection = dbname["messages"]
 
             save_messages_database(collection, document)
+            read_messages_database(collection, client_address, recipient)
 
-            print(read_messages_database(collection, client_address, recipient))
+
 
         else:
             connection.sendall(str.encode('Recipient not found or not connected'))
