@@ -49,9 +49,16 @@ if __name__ == '__main__':
             messages_response = client.get_messages(username)
             if messages_response.status_code == 200:
                 messages = messages_response.json()
-                print("Messages reçus :")
-                for msg in messages:
-                    print(f"De {msg['sender']}: {msg['message']}")
+                if messages:
+                    print("Messages reçus :")
+                    for msg in messages:
+                        sender = msg[0]  # Premier élément du tuple
+                        message = msg[1]  # Deuxième élément du tuple
+                        print(f"De {sender}: {message}")
+                else:
+                    print("Aucun message.")
+            else:
+                print("Erreur lors de la récupération des messages.")
 
             while True:
                 action = input("Que voulez-vous faire? (1: Envoyer un message, 2: Quitter) : ")
@@ -75,7 +82,7 @@ if __name__ == '__main__':
         if create_account_response.status_code == 201:
             print('Compte créé avec succès')
 
-        
+
 
         else:
             print('Échec de la création du compte')

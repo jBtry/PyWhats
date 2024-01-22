@@ -10,7 +10,7 @@ db = mongo_client['authentication_db']
 users_collection = db['users']
 
 # Configuration SQLite pour le stockage des messages
-sqlite_conn = sqlite3.connect('messages.db')
+sqlite_conn = sqlite3.connect('messages.db', check_same_thread=False)
 sqlite_cursor = sqlite_conn.cursor()
 sqlite_cursor.execute('CREATE TABLE IF NOT EXISTS messages (id INTEGER PRIMARY KEY, sender TEXT, receiver TEXT, message TEXT)')
 
@@ -29,9 +29,12 @@ class Server:
         sqlite_conn.commit()
 
     def get_messages(self, user):
-        sqlite_cursor.execute('SELECT sender, message FROM messages WHERE receiver = ?', (user,))
-        messages = sqlite_cursor.fetchall()
+        with sqlite3.connect('messages.db') as conn:
+            cursor = conn.cursor()
+            cursor.execute('SELECT sender, message FROM messages WHERE receiver = ?', (user,))
+            messages = cursor.fetchall()
         return messages
+    
 
 server = Server()
 
@@ -84,7 +87,8 @@ def send_message():
 @app.route('/get_messages/<user>', methods=['GET'])
 def get_messages(user):
     messages = server.get_messages(user)
-    return jsonify(messages), 200
+    messages_dict_list = [{'sender': msg[0], 'message': msg[1]} for msg in messages]
+    return jsonify(messages_dict_list), 200
 
 if __name__ == '__main__':
     app.run(debug=True)
