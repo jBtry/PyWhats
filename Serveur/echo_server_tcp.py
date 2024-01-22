@@ -1,51 +1,90 @@
-import socket
-import os
-from _thread import *
+from flask import Flask, request, jsonify
+from pymongo import MongoClient
+import sqlite3
 
-ServerSocket = socket.socket()
-host = '127.0.0.1'
-port = 1233
-ThreadCount = 0
-clients = {}  # Dictionnaire pour stocker les connexions des clients
+app = Flask(__name__)
 
-try:
-    ServerSocket.bind((host, port))
-except socket.error as e:
-    print(str(e))
+# Configuration MongoDB pour l'authentification
+mongo_client = MongoClient('mongodb://localhost:27017/')
+db = mongo_client['authentication_db']
+users_collection = db['users']
 
-print('Waiting for a Connection..')
-ServerSocket.listen(5)
+# Configuration SQLite pour le stockage des messages
+sqlite_conn = sqlite3.connect('messages.db')
+sqlite_cursor = sqlite_conn.cursor()
+sqlite_cursor.execute('CREATE TABLE IF NOT EXISTS messages (id INTEGER PRIMARY KEY, sender TEXT, receiver TEXT, message TEXT)')
+
+class Server:
+    def __init__(self):
+        pass
+
+    def authenticate_user(self, username, password):
+        user = users_collection.find_one({'username': username})
+        if user and user['password'] == password:
+            return True
+        return False
+
+    def save_message(self, sender, receiver, message):
+        sqlite_cursor.execute('INSERT INTO messages (sender, receiver, message) VALUES (?, ?, ?)', (sender, receiver, message))
+        sqlite_conn.commit()
+
+    def get_messages(self, user):
+        sqlite_cursor.execute('SELECT sender, message FROM messages WHERE receiver = ?', (user,))
+        messages = sqlite_cursor.fetchall()
+        return messages
+
+server = Server()
 
 
-def threaded_client(connection, client_address):
-    connection.send(str.encode('Welcome to the Server'))
-    
-    while True:
-        data = connection.recv(2048)
-        if not data:
-            break
-        
-        # Assume the data received is in the format "recipient: message"
-        recipient, message = data.decode('utf-8').split(':', 1)
-        
-        # Check if the recipient is a valid connected client
-        if recipient in clients:
-            recipient_conn = clients[recipient]
-            recipient_conn.sendall(str.encode(f'Message from {client_address}: {message}'))
-        else:
-            connection.sendall(str.encode('Recipient not found or not connected'))
-    
-    connection.close()
+@app.route('/welcome', methods=['GET'])
+def welcome():
+    welcome_message = {
+        'message': 'Bienvenue sur le service de messagerie instantanée.',
+        'options': [
+            '1. S\'authentifier',
+            '2. Créer un compte'
+        ]
+    }
+    return jsonify(welcome_message), 200
 
-while True:
-    Client, address = ServerSocket.accept()
-    print('Connected to: ' + address[0] + ':' + str(address[1]))
+@app.route('/create_account', methods=['POST'])
+def create_account():
+    data = request.get_json()
+    username = data.get('username')
+    password = data.get('password')
 
-    client_name = Client.recv(1024).decode('utf-8')
-    clients[client_name] = Client
+    # Vérifier si l'utilisateur existe déjà
+    existing_user = users_collection.find_one({'username': username})
+    if existing_user:
+        return jsonify({'message': 'User already exists'}), 409
 
-    start_new_thread(threaded_client, (Client, address))
-    ThreadCount += 1
-    print('Thread Number: ' + str(ThreadCount))
+    # Ajouter le nouvel utilisateur
+    users_collection.insert_one({'username': username, 'password': password})
+    return jsonify({'message': 'Account created successfully'}), 201
 
-ServerSocket.close()
+@app.route('/login', methods=['POST'])
+def login():
+    data = request.get_json()
+    username = data.get('username')
+    password = data.get('password')
+    if server.authenticate_user(username, password):
+        return jsonify({'message': 'Authentication successful'}), 200
+    else:
+        return jsonify({'message': 'Authentication failed'}), 401
+
+@app.route('/send_message', methods=['POST'])
+def send_message():
+    data = request.get_json()
+    sender = data.get('sender')
+    receiver = data.get('receiver')
+    message = data.get('message')
+    server.save_message(sender, receiver, message)
+    return jsonify({'message': 'Message sent successfully'}), 200
+
+@app.route('/get_messages/<user>', methods=['GET'])
+def get_messages(user):
+    messages = server.get_messages(user)
+    return jsonify(messages), 200
+
+if __name__ == '__main__':
+    app.run(debug=True)
