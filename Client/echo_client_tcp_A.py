@@ -28,8 +28,6 @@ class Client:
         response = requests.get(f'{self.base_url}/get_messages/{user}')
         return response
 
-    # ... (les autres méthodes restent inchangées)
-
 if __name__ == '__main__':
     client = Client()
 
@@ -38,7 +36,7 @@ if __name__ == '__main__':
     print("\n".join(welcome_message['options']))
 
     choice = input("Choisissez une option (1 ou 2): ")
-    
+
     if choice == '1':
         username = input("Nom d'utilisateur : ")
         password = input("Mot de passe : ")

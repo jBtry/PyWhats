@@ -1,3 +1,5 @@
+import datetime
+
 from flask import Flask, request, jsonify
 from pymongo import MongoClient
 import sqlite3
@@ -12,7 +14,8 @@ users_collection = db['users']
 # Configuration SQLite pour le stockage des messages
 sqlite_conn = sqlite3.connect('messages.db', check_same_thread=False)
 sqlite_cursor = sqlite_conn.cursor()
-sqlite_cursor.execute('CREATE TABLE IF NOT EXISTS messages (id INTEGER PRIMARY KEY, sender TEXT, receiver TEXT, message TEXT)')
+sqlite_cursor.execute('CREATE TABLE IF NOT EXISTS conversations (id INTEGER PRIMARY KEY, created_at DATETIME DEFAULT CURRENT_TIMESTAMP)')
+sqlite_cursor.execute('CREATE TABLE IF NOT EXISTS messages (id INTEGER PRIMARY KEY, conversation_id INTEGER, sender TEXT, receiver TEXT, message TEXT, sent_at DATETIME DEFAULT CURRENT_TIMESTAMP, FOREIGN KEY (conversation_id) REFERENCES conversations(id))')
 
 class Server:
     def __init__(self):
@@ -24,16 +27,25 @@ class Server:
             return True
         return False
 
-    def save_message(self, sender, receiver, message):
-        sqlite_cursor.execute('INSERT INTO messages (sender, receiver, message) VALUES (?, ?, ?)', (sender, receiver, message))
-        sqlite_conn.commit()
+    def create_conversation(self, participants):
+        conversation = {'participants': participants, 'created_at': datetime.now()}
+        return db['conversations'].insert_one(conversation).inserted_id
+
+    def save_message(self, conversation_id, sender, receiver, message):
+            message_data = {
+                'conversation_id': ObjectId(conversation_id),
+                'sender': sender,
+                'receiver': receiver,
+                'message': message,
+                'sent_at': datetime.now()
+            }
+            db['messages'].insert_one(message_data)
 
     def get_messages(self, user):
-        with sqlite3.connect('messages.db') as conn:
-            cursor = conn.cursor()
-            cursor.execute('SELECT sender, message FROM messages WHERE receiver = ?', (user,))
-            messages = cursor.fetchall()
-        return messages
+        conversations = db['conversations'].find({'participants': user})
+        conversation_ids = [conv['_id'] for conv in conversations]
+        messages = db['messages'].find({'conversation_id': {'$in': conversation_ids}})
+        return [{'sender': msg['sender'], 'message': msg['message']} for msg in messages]
     
 
 server = Server()
@@ -75,13 +87,21 @@ def login():
     else:
         return jsonify({'message': 'Authentication failed'}), 401
 
+@app.route('/create_conversation', methods=['POST'])
+def create_conversation():
+    participants = request.json.get('participants')
+    conversation_id = server.create_conversation(participants)
+    return jsonify({'conversation_id': str(conversation_id)}), 201
+
+
 @app.route('/send_message', methods=['POST'])
 def send_message():
     data = request.get_json()
+    conversation_id = data.get('conversation_id')
     sender = data.get('sender')
     receiver = data.get('receiver')
     message = data.get('message')
-    server.save_message(sender, receiver, message)
+    server.save_message(conversation_id, sender, receiver, message)
     return jsonify({'message': 'Message sent successfully'}), 200
 
 @app.route('/get_messages/<user>', methods=['GET'])
