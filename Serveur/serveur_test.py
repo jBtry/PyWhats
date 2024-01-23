@@ -10,7 +10,7 @@ app = Flask(__name__)
 # Setting up MongoDB client (assuming MongoDB is running on the default port)
 mongo_client = MongoClient('mongodb://localhost:27017/')
 mongo_db = mongo_client['messaging_app']  # Database name: messaging_app
-conversations_collection = mongo_db['conversations']  # Collection for conversations
+messages_collection = mongo_db['conversations']  # Collection for conversations
 
 # Function to connect to SQLite database for user authentication
 def get_sqlite_connection():
@@ -20,7 +20,7 @@ def get_sqlite_connection():
 # Function to create users table in SQLite (to be run once)
 def create_users_table():
     conn = get_sqlite_connection()
-    conn.execute('''CREATE TABLE users 
+    conn.execute('''CREATE TABLE IF NOT EXISTS users 
                     (username TEXT PRIMARY KEY NOT NULL,
                      password TEXT NOT NULL);''')
     conn.commit()
@@ -65,6 +65,30 @@ def register():
 
     return jsonify({'message': 'User registered successfully'}), 201
 
+@app.route('/verify_username', methods=['POST'])
+def verify_username():
+    # Récupérer le nom d'utilisateur à partir de la requête
+    username = request.json['username']
+
+    if not username:
+        return jsonify({'error': 'Username is required'}), 400
+
+    conn = sqlite3.connect('users.db')
+    cursor = conn.cursor()
+
+    # Requête pour vérifier l'existence du nom d'utilisateur
+    cursor.execute('SELECT * FROM users WHERE username = ?', (username,))
+    user = cursor.fetchone()
+
+    conn.close()
+
+    # Vérifier si le nom d'utilisateur a été trouvé
+    if user:
+        return jsonify(True), 200
+    else:
+        return jsonify(False), 200
+
+
 # Flask route for user login
 @app.route('/login', methods=['POST'])
 def login():
@@ -84,39 +108,46 @@ def login():
     else:
         return jsonify({'message': 'Invalid username or password'}), 401
 
-# Flask route for creating a conversation
-@app.route('/conversation', methods=['POST'])
-def create_conversation():
-    # Extracting sender, receiver, and message from request
-    sender = request.json['sender']
-    receiver = request.json['receiver']
-    message = request.json['message']
-
-    # Creating a new conversation in MongoDB
-    conversation_id = conversations_collection.insert_one({
-        'participants': [sender, receiver],
-        'messages': [{'sender': sender, 'message': message}]
-    }).inserted_id
-
-    return jsonify({'message': 'Conversation created', 'conversation_id': str(conversation_id)}), 201
-
 # Flask route for sending a message
-@app.route('/conversation/<conversation_id>', methods=['POST'])
-def send_message(conversation_id):
+@app.route('/send_message', methods=['POST'])
+def send_message():
     # Extracting sender and message from request
     sender = request.json['sender']
-    message = request.json['message']
+    receiver = request.json['receiver']
+    message_text = request.json['message']
+
+    message = {
+    'sender': sender,
+    'receiver': receiver,
+    'message': message_text
+    }
 
     # Adding message to an existing conversation in MongoDB
-    conversations_collection.update_one(
-        {'_id': conversation_id},
-        {'$push': {'messages': {'sender': sender, 'message': message}}}
-    )
+    messages_collection.insert_one(message)
 
-    return jsonify({'message': 'Message sent'}), 200
+    return jsonify({'message': 'Message sent successfully'}), 200
 
-# Uncomment the following line to start the Flask app (for deployment/testing)
-app.run(debug=True)
+@app.route('/synchronize', methods=['POST'])
+def synchronize():
+    # Extracting sender and message from request
+    receiver = request.json['receiver']
 
+    messages = messages_collection.find({'receiver': receiver})
+
+    synchronized_messages = []
+
+    # Ajouter chaque message à la liste synchronisée
+    for message in messages:
+        synchronized_messages.append({
+            'sender': message['sender'],
+            'receiver': message['receiver'],
+            'message': message['message']
+        })
+
+    return jsonify(synchronized_messages), 200
+
+if __name__ == '__main__':
+    create_users_table()  # Créer la table des utilisateurs au démarrage
+    app.run(debug=True)
 # Note: Additional error handling, input validation, and security measures (like API authentication) should be added in a production environment.
 
