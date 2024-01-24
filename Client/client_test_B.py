@@ -27,10 +27,6 @@ def login(username, password):
     response = requests.post(f"{SERVER_URL}/login", json={"username": username, "password": password})
     return response.json()
 
-# Function to create a new conversation
-def create_conversation(sender, receiver, message):
-    response = requests.post(f"{SERVER_URL}/conversation", json={"sender": sender, "receiver": receiver, "message": message})
-    return response.json()
 
 # Function to send a message in an existing conversation
 def send_message(sender, receiver, message):

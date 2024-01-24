@@ -115,11 +115,13 @@ def send_message():
     sender = request.json['sender']
     receiver = request.json['receiver']
     message_text = request.json['message']
+    timestamp = request.json['timestamp']
 
     message = {
     'sender': sender,
     'receiver': receiver,
-    'message': message_text
+    'message': message_text,
+    'timestamp': timestamp
     }
 
     # Adding message to an existing conversation in MongoDB
@@ -141,8 +143,13 @@ def synchronize():
         synchronized_messages.append({
             'sender': message['sender'],
             'receiver': message['receiver'],
-            'message': message['message']
+            'message': message['message'],
+            'timestamp': message['timestamp']
         })
+    
+    criteria = {'receiver': receiver}
+    deleted_result = messages_collection.delete_many(criteria)
+    print(f"Number of messages deleted: {deleted_result.deleted_count}")
 
     return jsonify(synchronized_messages), 200
 

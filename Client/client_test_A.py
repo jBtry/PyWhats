@@ -4,6 +4,8 @@ import os
 import requests
 import yaml
 from bson import json_util
+from datetime import datetime
+import pytz
 
 # Constants for server URLs (assuming localhost and default Flask port)
 SERVER_URL = "http://127.0.0.1:5000"
@@ -27,14 +29,10 @@ def login(username, password):
     response = requests.post(f"{SERVER_URL}/login", json={"username": username, "password": password})
     return response.json()
 
-# Function to create a new conversation
-def create_conversation(sender, receiver, message):
-    response = requests.post(f"{SERVER_URL}/conversation", json={"sender": sender, "receiver": receiver, "message": message})
-    return response.json()
 
 # Function to send a message in an existing conversation
-def send_message(sender, receiver, message):
-    response = requests.post(f"{SERVER_URL}/send_message", json={"sender": sender, "receiver": receiver, "message": message})
+def send_message(sender, receiver, message, timestamp):
+    response = requests.post(f"{SERVER_URL}/send_message", json={"sender": sender, "receiver": receiver, "message": message, "timestamp": timestamp})
     return response.json()
 
 def import_messages(receiver):
@@ -60,7 +58,7 @@ def import_messages(receiver):
             
             with open(filename, 'a') as file:  # Ouverture en mode write
                 yaml.dump(message_json, file)
-                file.write("\n---\n")
+                file.write("---\n")
     else:
         print(f"Erreur lors de la synchronisation des messages : {response.status_code}")
 
@@ -75,21 +73,27 @@ def display_messages(receiver):
     # Lire le contenu du fichier YAML
     with open(filename, 'r') as file:
         try:
-            yaml_content = yaml.safe_load(file)
+            yaml_documents = file.read().split("---\n")
 
-            # Vérifier si le contenu est vide
-            if not yaml_content:
-                print(f"No messages found for {receiver}")
-                return
-
-            # Afficher chaque message
-            for message_json in yaml_content:
-                message_data = json.loads(message_json)
-                sender = message_data.get('sender')
-                message_text = message_data.get('message')
-                print(f"From {sender}: {message_text}")
+            # Parcourir chaque document YAML
+            for yaml_doc in yaml_documents:
+                if yaml_doc.strip():  # Ignorer les documents vides
+                    message_data = json.loads(yaml_doc)
+                    sender = message_data.get('sender')
+                    message_text = message_data.get('message')
+                    timestamp = message_data.get('timestamp')
+                    print(f"De {sender} à {timestamp}: {message_text}")
         except Exception as e:
             print(f"Error reading messages for {receiver}: {str(e)}")
+
+def return_timestamp():
+    # Get the current time in UTC
+    utc_now = datetime.now(pytz.utc)
+
+    # Format the timestamp as required
+    formatted_timestamp = utc_now.strftime("%H:%M %d/%m/%Y")
+    
+    return formatted_timestamp
 
 # Main client interface in the terminal
 def main():
@@ -130,7 +134,7 @@ def main():
 
                                 if choice == '1':
                                     message = input("Enter message: ")
-                                    print(send_message(username, receiver, message))
+                                    print(send_message(username, receiver, message, return_timestamp()))
 
                                 elif choice == '2':
                                     break
