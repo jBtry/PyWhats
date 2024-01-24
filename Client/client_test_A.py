@@ -37,10 +37,7 @@ def send_message(sender, receiver, message, timestamp):
     filename = f"Messages/{receiver}.yaml"
 
     formatted_message = {
-        "message": message,
-        "receiver": receiver,
-        "sender": sender,
-        "timestamp": timestamp
+        {"message": message, "receiver": receiver, "sender": sender, "timestamp": timestamp}
     }
 
     if not os.path.exists(filename):
