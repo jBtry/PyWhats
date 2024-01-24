@@ -33,7 +33,26 @@ def login(username, password):
 # Function to send a message in an existing conversation
 def send_message(sender, receiver, message, timestamp):
     response = requests.post(f"{SERVER_URL}/send_message", json={"sender": sender, "receiver": receiver, "message": message, "timestamp": timestamp})
+    
+    filename = f"Messages/{receiver}.yaml"
+
+    formatted_message = {
+        "message": message,
+        "receiver": receiver,
+        "sender": sender,
+        "timestamp": timestamp
+    }
+
+    if not os.path.exists(filename):
+        with open(filename, 'w') as file:  # Ouverture en mode append
+            file.write("---\n")
+    
+    with open(filename, 'a') as file:  # Ouverture en mode write
+        yaml.dump(formatted_message, file)
+        file.write("---\n")
+    
     return response.json()
+
 
 def import_messages(receiver):
     if not os.path.exists("Messages"):

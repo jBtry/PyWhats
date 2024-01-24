@@ -4,6 +4,8 @@ import os
 import requests
 import yaml
 from bson import json_util
+from datetime import datetime
+import pytz
 
 # Constants for server URLs (assuming localhost and default Flask port)
 SERVER_URL = "http://127.0.0.1:5000"
@@ -29,9 +31,28 @@ def login(username, password):
 
 
 # Function to send a message in an existing conversation
-def send_message(sender, receiver, message):
-    response = requests.post(f"{SERVER_URL}/send_message", json={"sender": sender, "receiver": receiver, "message": message})
+def send_message(sender, receiver, message, timestamp):
+    response = requests.post(f"{SERVER_URL}/send_message", json={"sender": sender, "receiver": receiver, "message": message, "timestamp": timestamp})
+    
+    filename = f"Messages/{receiver}.yaml"
+
+    formatted_message = {
+        "message": message,
+        "receiver": receiver,
+        "sender": sender,
+        "timestamp": timestamp
+    }
+
+    if not os.path.exists(filename):
+        with open(filename, 'w') as file:  # Ouverture en mode append
+            file.write("---\n")
+    
+    with open(filename, 'a') as file:  # Ouverture en mode write
+        yaml.dump(formatted_message, file)
+        file.write("---\n")
+    
     return response.json()
+
 
 def import_messages(receiver):
     if not os.path.exists("Messages"):
@@ -79,9 +100,19 @@ def display_messages(receiver):
                     message_data = json.loads(yaml_doc)
                     sender = message_data.get('sender')
                     message_text = message_data.get('message')
-                    print(f"De {sender}: {message_text}")
+                    timestamp = message_data.get('timestamp')
+                    print(f"De {sender} à {timestamp}: {message_text}")
         except Exception as e:
             print(f"Error reading messages for {receiver}: {str(e)}")
+
+def return_timestamp():
+    # Get the current time in UTC
+    utc_now = datetime.now(pytz.utc)
+
+    # Format the timestamp as required
+    formatted_timestamp = utc_now.strftime("%H:%M %d/%m/%Y")
+    
+    return formatted_timestamp
 
 # Main client interface in the terminal
 def main():
@@ -122,7 +153,7 @@ def main():
 
                                 if choice == '1':
                                     message = input("Enter message: ")
-                                    print(send_message(username, receiver, message))
+                                    print(send_message(username, receiver, message, return_timestamp()))
 
                                 elif choice == '2':
                                     break
