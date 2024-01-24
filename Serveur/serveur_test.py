@@ -155,6 +155,6 @@ def synchronize():
 
 if __name__ == '__main__':
     create_users_table()  # Créer la table des utilisateurs au démarrage
-    app.run(debug=True)
+    app.run(host='0.0.0.0', port=61000, debug=True)
 # Note: Additional error handling, input validation, and security measures (like API authentication) should be added in a production environment.
 
