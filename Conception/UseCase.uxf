@@ -49,18 +49,6 @@
   <element>
     <id>UMLUseCase</id>
     <coordinates>
-      <x>450</x>
-      <y>387</y>
-      <w>297</w>
-      <h>72</h>
-    </coordinates>
-    <panel_attributes>Gérer ses contacts existants
-(Ajouter, Modifier, Supprimer) </panel_attributes>
-    <additional_attributes/>
-  </element>
-  <element>
-    <id>UMLUseCase</id>
-    <coordinates>
       <x>396</x>
       <y>657</y>
       <w>387</w>
@@ -107,18 +95,6 @@
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>729</x>
-      <y>414</y>
-      <w>360</w>
-      <h>108</h>
-    </coordinates>
-    <panel_attributes>lt=.
-</panel_attributes>
-    <additional_attributes>18.0;13.0;380.0;100.0</additional_attributes>
-  </element>
-  <element>
-    <id>Relation</id>
-    <coordinates>
       <x>297</x>
       <y>495</y>
       <w>207</w>
@@ -126,17 +102,6 @@
     </coordinates>
     <panel_attributes/>
     <additional_attributes>10.0;10.0;210.0;70.0</additional_attributes>
-  </element>
-  <element>
-    <id>Relation</id>
-    <coordinates>
-      <x>297</x>
-      <y>414</y>
-      <w>171</w>
-      <h>108</h>
-    </coordinates>
-    <panel_attributes/>
-    <additional_attributes>10.0;100.0;170.0;10.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
@@ -208,14 +173,14 @@
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>693</x>
-      <y>333</y>
-      <w>387</w>
-      <h>189</h>
+      <x>684</x>
+      <y>468</y>
+      <w>396</w>
+      <h>54</h>
     </coordinates>
     <panel_attributes>lt=.
 </panel_attributes>
-    <additional_attributes>10.0;13.0;410.0;190.0</additional_attributes>
+    <additional_attributes>10.0;13.0;420.0;40.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
@@ -244,8 +209,8 @@
   <element>
     <id>UMLUseCase</id>
     <coordinates>
-      <x>504</x>
-      <y>324</y>
+      <x>495</x>
+      <y>459</y>
       <w>198</w>
       <h>45</h>
     </coordinates>
@@ -257,18 +222,18 @@ des messages</panel_attributes>
     <id>Relation</id>
     <coordinates>
       <x>297</x>
-      <y>333</y>
-      <w>225</w>
-      <h>189</h>
+      <y>468</y>
+      <w>216</w>
+      <h>54</h>
     </coordinates>
     <panel_attributes/>
-    <additional_attributes>10.0;190.0;230.0;10.0</additional_attributes>
+    <additional_attributes>10.0;40.0;220.0;10.0</additional_attributes>
   </element>
   <element>
     <id>UMLUseCase</id>
     <coordinates>
-      <x>504</x>
-      <y>477</y>
+      <x>522</x>
+      <y>360</y>
       <w>153</w>
       <h>45</h>
     </coordinates>
@@ -279,12 +244,12 @@ des messages</panel_attributes>
     <id>Relation</id>
     <coordinates>
       <x>297</x>
-      <y>477</y>
-      <w>225</w>
-      <h>45</h>
+      <y>369</y>
+      <w>243</w>
+      <h>153</h>
     </coordinates>
     <panel_attributes/>
-    <additional_attributes>10.0;30.0;230.0;20.0</additional_attributes>
+    <additional_attributes>10.0;150.0;250.0;10.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
