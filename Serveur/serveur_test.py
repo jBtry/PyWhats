@@ -108,6 +108,53 @@ def login():
     else:
         return jsonify({'message': 'Invalid username or password'}), 401
 
+
+@app.route('/change_username', methods=['POST'])
+def change_username():
+    current_username = request.json['current-username']
+    new_username = request.json['new_password']
+
+    already_exist = verify_username(new_username)
+
+    if already_exist:
+        return jsonify({'message': 'Username already exists'}), 400
+    else:
+        # Inserting user into SQLite database
+        conn = get_sqlite_connection()
+        try:
+            conn.execute('UPDATE users SET username =? WHERE username =?', 
+                        (new_username, current_username))
+            conn.commit()
+        except sqlite3.IntegrityError:
+            return jsonify({'message': 'Error updating the username'}), 400
+        finally:
+            conn.close()
+
+        return jsonify({'message': 'Username changed successfully'}), 201
+
+
+
+@app.route('/change_password', methods=['POST'])
+def change_password():
+
+    username = request.json['username']
+    new_password = request.json['new_password']
+
+    hashed_password = hash_password(new_password)
+    # Inserting user into SQLite database
+    conn = get_sqlite_connection()
+    try:
+        conn.execute('UPDATE users SET password =? WHERE username =?', 
+                    (hashed_password, username))
+        conn.commit()
+    except sqlite3.IntegrityError:
+        return jsonify({'message': 'Error updating the password'}), 400
+    finally:
+        conn.close()
+
+    return jsonify({'message': 'Password changed successfully'}), 201
+
+
 # Flask route for sending a message
 @app.route('/send_message', methods=['POST'])
 def send_message():

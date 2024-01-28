@@ -31,7 +31,15 @@ def login(username, password):
     print(response.json())
     return response.status_code
 
+# Function to change the username
+def change_username(current_username, new_username):
+    response = requests.post(f"{SERVER_URL}/change_username", json={"current_username": current_username, "new_username": new_username})
+    return response.json()
 
+# Function to change the password
+def change_password(username, new_password):
+    response = requests.post(f"{SERVER_URL}/change_password", json={"username": username, "new_password": new_password})
+    return response.json()
 
 # Function to send a message in an existing conversation
 def send_message(sender, receiver, message, timestamp):
@@ -150,7 +158,9 @@ def main():
                     import_messages(username)
                     print("1. Create a new conversation")
                     print("2. See a conversation")
-                    print("3. Exit")
+                    print("3. Modifiy username")
+                    print("4. Modify password")
+                    print("5. Exit")
                     choice = input("Enter your choice: ")
 
                     if choice == '1':
@@ -200,8 +210,17 @@ def main():
                                     print("Invalid choice. Please try again.")
 
                         
-
                     elif choice == '3':
+                        new_username = input("Enter new username: ")
+                        response = change_username(username, new_username)
+                        print(response)
+                    
+                    elif choice == '4':
+                        new_password = input("Enter new password: ")
+                        response = change_password(username, new_password)
+                        print(response)
+                        
+                    elif choice == '5':
                         break
 
                     else:
