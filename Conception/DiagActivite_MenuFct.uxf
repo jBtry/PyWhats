@@ -1,0 +1,545 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<diagram program="umlet" version="15.1">
+  <zoom_level>7</zoom_level>
+  <element>
+    <id>UMLSpecialState</id>
+    <coordinates>
+      <x>805</x>
+      <y>126</y>
+      <w>14</w>
+      <h>14</h>
+    </coordinates>
+    <panel_attributes>type=initial</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>812</x>
+      <y>119</y>
+      <w>112</w>
+      <h>28</h>
+    </coordinates>
+    <panel_attributes>lt=.
+</panel_attributes>
+    <additional_attributes>10.0;20.0;140.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLNote</id>
+    <coordinates>
+      <x>910</x>
+      <y>119</y>
+      <w>182</w>
+      <h>28</h>
+    </coordinates>
+    <panel_attributes>L'application est démarrée,
+on se trouve sur le Menu d'Accueil</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLState</id>
+    <coordinates>
+      <x>728</x>
+      <y>203</y>
+      <w>168</w>
+      <h>42</h>
+    </coordinates>
+    <panel_attributes>bg=yellow
+Attente du choix
+de l'utilisateur</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>623</x>
+      <y>161</y>
+      <w>119</w>
+      <h>56</h>
+    </coordinates>
+    <panel_attributes>lt=.
+</panel_attributes>
+    <additional_attributes>10.0;10.0;150.0;60.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLNote</id>
+    <coordinates>
+      <x>525</x>
+      <y>84</y>
+      <w>217</w>
+      <h>84</h>
+    </coordinates>
+    <panel_attributes>Les choix possibles sont les suivants :
+1 - Créer un compte
+2 - Se connecter         
+3 - Quitter
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>805</x>
+      <y>133</y>
+      <w>21</w>
+      <h>84</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-</panel_attributes>
+    <additional_attributes>10.0;100.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLSpecialState</id>
+    <coordinates>
+      <x>784</x>
+      <y>301</y>
+      <w>56</w>
+      <h>49</h>
+    </coordinates>
+    <panel_attributes>bg=black
+type=decision</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>805</x>
+      <y>238</y>
+      <w>21</w>
+      <h>77</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-</panel_attributes>
+    <additional_attributes>10.0;90.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>525</x>
+      <y>308</y>
+      <w>273</w>
+      <h>56</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-
+L'utilisateur saisit "1"
+(Il souhaite créer un compte)
+</panel_attributes>
+    <additional_attributes>10.0;60.0;10.0;20.0;370.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLSpecialState</id>
+    <coordinates>
+      <x>504</x>
+      <y>441</y>
+      <w>56</w>
+      <h>49</h>
+    </coordinates>
+    <panel_attributes>bg=black
+type=decision</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>525</x>
+      <y>385</y>
+      <w>21</w>
+      <h>70</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-</panel_attributes>
+    <additional_attributes>10.0;80.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>553</x>
+      <y>434</y>
+      <w>168</w>
+      <h>42</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-
+Pseudo Invalide</panel_attributes>
+    <additional_attributes>220.0;10.0;220.0;40.0;10.0;40.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLState</id>
+    <coordinates>
+      <x>630</x>
+      <y>413</y>
+      <w>147</w>
+      <h>28</h>
+    </coordinates>
+    <panel_attributes>bg=red
+Affiche un message d'erreur
+(Pseudo invalide)</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>609</x>
+      <y>364</y>
+      <w>112</w>
+      <h>63</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-</panel_attributes>
+    <additional_attributes>10.0;10.0;140.0;10.0;140.0;70.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>525</x>
+      <y>483</y>
+      <w>91</w>
+      <h>70</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-
+Pseudo Valide</panel_attributes>
+    <additional_attributes>10.0;80.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLState</id>
+    <coordinates>
+      <x>448</x>
+      <y>350</y>
+      <w>168</w>
+      <h>42</h>
+    </coordinates>
+    <panel_attributes>bg=blue
+Demande à l'utilisateur
+de saisir un pseudo</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLState</id>
+    <coordinates>
+      <x>455</x>
+      <y>539</y>
+      <w>168</w>
+      <h>42</h>
+    </coordinates>
+    <panel_attributes>bg=blue
+Demande à l'utilisateur
+de saisir un mot de passe</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>553</x>
+      <y>623</y>
+      <w>168</w>
+      <h>42</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-
+Mot de passe Invalide</panel_attributes>
+    <additional_attributes>220.0;10.0;220.0;40.0;10.0;40.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLSpecialState</id>
+    <coordinates>
+      <x>504</x>
+      <y>630</y>
+      <w>56</w>
+      <h>49</h>
+    </coordinates>
+    <panel_attributes>bg=black
+type=decision</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>525</x>
+      <y>672</y>
+      <w>119</w>
+      <h>56</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-
+Mot de passe Valide</panel_attributes>
+    <additional_attributes>10.0;60.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>525</x>
+      <y>574</y>
+      <w>21</w>
+      <h>70</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-</panel_attributes>
+    <additional_attributes>10.0;80.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLState</id>
+    <coordinates>
+      <x>637</x>
+      <y>602</y>
+      <w>147</w>
+      <h>28</h>
+    </coordinates>
+    <panel_attributes>bg=red
+Affiche un message d'erreur
+(Mot de passe invalide)</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>616</x>
+      <y>546</y>
+      <w>105</w>
+      <h>63</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-</panel_attributes>
+    <additional_attributes>10.0;10.0;130.0;10.0;130.0;70.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLState</id>
+    <coordinates>
+      <x>441</x>
+      <y>714</y>
+      <w>210</w>
+      <h>56</h>
+    </coordinates>
+    <panel_attributes>bg=green
+Affichage d'un message
+confirmant la réussite
+lors de la création du compte</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>805</x>
+      <y>343</y>
+      <w>126</w>
+      <h>441</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-
+L'utilisateur saisit "3"
+(Il quitte l'application)</panel_attributes>
+    <additional_attributes>10.0;610.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLSpecialState</id>
+    <coordinates>
+      <x>805</x>
+      <y>770</y>
+      <w>14</w>
+      <h>14</h>
+    </coordinates>
+    <panel_attributes>type=final</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>399</x>
+      <y>217</y>
+      <w>343</w>
+      <h>630</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-
+</panel_attributes>
+    <additional_attributes>470.0;10.0;10.0;10.0;10.0;880.0;190.0;880.0;190.0;790.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>301</x>
+      <y>182</y>
+      <w>119</w>
+      <h>98</h>
+    </coordinates>
+    <panel_attributes>lt=.
+</panel_attributes>
+    <additional_attributes>10.0;10.0;150.0;120.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLNote</id>
+    <coordinates>
+      <x>140</x>
+      <y>147</y>
+      <w>168</w>
+      <h>49</h>
+    </coordinates>
+    <panel_attributes>Après la création du compte,
+l'utilisateur est rédirigé vers le 
+Menu d'Accueil
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>833</x>
+      <y>308</y>
+      <w>259</w>
+      <h>56</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-
+L'utilisateur saisit "2"
+(Il souhaite se connecter)</panel_attributes>
+    <additional_attributes>350.0;60.0;350.0;20.0;10.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLState</id>
+    <coordinates>
+      <x>994</x>
+      <y>350</y>
+      <w>168</w>
+      <h>42</h>
+    </coordinates>
+    <panel_attributes>bg=blue
+Demande à l'utilisateur
+de saisir son pseudo</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLState</id>
+    <coordinates>
+      <x>994</x>
+      <y>427</y>
+      <w>168</w>
+      <h>42</h>
+    </coordinates>
+    <panel_attributes>bg=blue
+Demande à l'utilisateur
+de saisir son mot de passe</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1071</x>
+      <y>385</y>
+      <w>21</w>
+      <h>56</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-</panel_attributes>
+    <additional_attributes>10.0;60.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLSpecialState</id>
+    <coordinates>
+      <x>1050</x>
+      <y>504</y>
+      <w>56</w>
+      <h>49</h>
+    </coordinates>
+    <panel_attributes>bg=black
+type=decision</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1071</x>
+      <y>462</y>
+      <w>21</w>
+      <h>56</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-</panel_attributes>
+    <additional_attributes>10.0;60.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1099</x>
+      <y>511</y>
+      <w>224</w>
+      <h>35</h>
+    </coordinates>
+    <panel_attributes>lt=-
+Couple pseudo/mot de passe
+Invalide</panel_attributes>
+    <additional_attributes>300.0;20.0;10.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1302</x>
+      <y>427</y>
+      <w>21</w>
+      <h>112</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;140.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLState</id>
+    <coordinates>
+      <x>1204</x>
+      <y>406</y>
+      <w>196</w>
+      <h>28</h>
+    </coordinates>
+    <panel_attributes>bg=red
+Affiche un message d'erreur
+(Pseudo ou mot de passe invalide)</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>889</x>
+      <y>217</y>
+      <w>434</w>
+      <h>203</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-</panel_attributes>
+    <additional_attributes>10.0;10.0;600.0;10.0;600.0;270.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1071</x>
+      <y>546</y>
+      <w>196</w>
+      <h>119</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-
+Couple pseudo/mot de passe Valide</panel_attributes>
+    <additional_attributes>10.0;150.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLState</id>
+    <coordinates>
+      <x>973</x>
+      <y>651</y>
+      <w>203</w>
+      <h>28</h>
+    </coordinates>
+    <panel_attributes>bg=green
+Affichage du menu "fonctionnalités"
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLNote</id>
+    <coordinates>
+      <x>1246</x>
+      <y>644</y>
+      <w>168</w>
+      <h>49</h>
+    </coordinates>
+    <panel_attributes>Ce menu permet de :
+- Envoyer un message
+- Envoyer un fichier
+- Voir les conversations
+- Gérer son profil
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1169</x>
+      <y>651</y>
+      <w>91</w>
+      <h>28</h>
+    </coordinates>
+    <panel_attributes>lt=.
+</panel_attributes>
+    <additional_attributes>10.0;20.0;110.0;20.0</additional_attributes>
+  </element>
+</diagram>
