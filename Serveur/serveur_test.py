@@ -133,7 +133,6 @@ def change_username():
         return jsonify({'message': 'Username changed successfully'}), 201
 
 
-
 @app.route('/change_password', methods=['POST'])
 def change_password():
 
