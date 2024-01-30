@@ -2,12 +2,11 @@
 import json
 import os
 import requests
-import yaml
 from bson import json_util
 from datetime import datetime
 import pytz
 
-# Constants for server URLs (assuming localhost and default Flask port)
+# Constants for server URLs
 SERVER_URL = "http://127.0.0.1:61000"
 
 def welcome():
@@ -240,5 +239,4 @@ def main():
 # Uncomment the following line to run the client application (for deployment/testing)
 main()
 
-# Note: This is a simple CLI-based client. For production, error handling and input validation should be added.
 
