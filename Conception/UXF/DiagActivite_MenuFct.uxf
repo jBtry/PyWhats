@@ -5,7 +5,7 @@
     <id>Relation</id>
     <coordinates>
       <x>1287</x>
-      <y>135</y>
+      <y>54</y>
       <w>153</w>
       <h>36</h>
     </coordinates>
@@ -17,7 +17,7 @@
     <id>UMLNote</id>
     <coordinates>
       <x>1422</x>
-      <y>135</y>
+      <y>54</y>
       <w>306</w>
       <h>36</h>
     </coordinates>
@@ -29,7 +29,7 @@ après l'affichage du menu "fonctionnalités"</panel_attributes>
     <id>UMLState</id>
     <coordinates>
       <x>1188</x>
-      <y>234</y>
+      <y>153</y>
       <w>216</w>
       <h>54</h>
     </coordinates>
@@ -42,7 +42,7 @@ de l'utilisateur</panel_attributes>
     <id>Relation</id>
     <coordinates>
       <x>1053</x>
-      <y>180</y>
+      <y>99</y>
       <w>153</w>
       <h>72</h>
     </coordinates>
@@ -54,7 +54,7 @@ de l'utilisateur</panel_attributes>
     <id>UMLNote</id>
     <coordinates>
       <x>927</x>
-      <y>81</y>
+      <y>0</y>
       <w>279</w>
       <h>108</h>
     </coordinates>
@@ -70,7 +70,7 @@ de l'utilisateur</panel_attributes>
     <id>Relation</id>
     <coordinates>
       <x>1287</x>
-      <y>144</y>
+      <y>63</y>
       <w>27</w>
       <h>108</h>
     </coordinates>
@@ -81,7 +81,7 @@ de l'utilisateur</panel_attributes>
     <id>UMLSpecialState</id>
     <coordinates>
       <x>1260</x>
-      <y>360</y>
+      <y>279</y>
       <w>72</w>
       <h>63</h>
     </coordinates>
@@ -93,7 +93,7 @@ type=decision</panel_attributes>
     <id>Relation</id>
     <coordinates>
       <x>1287</x>
-      <y>279</y>
+      <y>198</y>
       <w>27</w>
       <h>99</h>
     </coordinates>
@@ -104,7 +104,7 @@ type=decision</panel_attributes>
     <id>Relation</id>
     <coordinates>
       <x>1026</x>
-      <y>558</y>
+      <y>477</y>
       <w>162</w>
       <h>162</h>
     </coordinates>
@@ -117,7 +117,7 @@ L'utilisateur saisit "4"
     <id>Relation</id>
     <coordinates>
       <x>1323</x>
-      <y>369</y>
+      <y>288</y>
       <w>792</w>
       <h>54</h>
     </coordinates>
@@ -130,7 +130,7 @@ L'utilisateur saisit "2"
     <id>Relation</id>
     <coordinates>
       <x>468</x>
-      <y>369</y>
+      <y>288</y>
       <w>810</w>
       <h>54</h>
     </coordinates>
@@ -144,7 +144,7 @@ L'utilisateur saisit "1"
     <id>UMLState</id>
     <coordinates>
       <x>945</x>
-      <y>702</y>
+      <y>621</y>
       <w>216</w>
       <h>45</h>
     </coordinates>
@@ -156,7 +156,7 @@ Affichage du menu d'Accueil</panel_attributes>
     <id>UMLNote</id>
     <coordinates>
       <x>882</x>
-      <y>765</y>
+      <y>684</y>
       <w>315</w>
       <h>81</h>
     </coordinates>
@@ -172,7 +172,7 @@ vers le noeud initial sur le schéma précédent.)
     <id>Relation</id>
     <coordinates>
       <x>1026</x>
-      <y>738</y>
+      <y>657</y>
       <w>27</w>
       <h>45</h>
     </coordinates>
@@ -184,7 +184,7 @@ vers le noeud initial sur le schéma précédent.)
     <id>Relation</id>
     <coordinates>
       <x>1287</x>
-      <y>414</y>
+      <y>333</y>
       <w>198</w>
       <h>135</h>
     </coordinates>
@@ -197,7 +197,7 @@ L'utilisateur saisit "3"
     <id>UMLState</id>
     <coordinates>
       <x>414</x>
-      <y>684</y>
+      <y>603</y>
       <w>144</w>
       <h>54</h>
     </coordinates>
@@ -210,7 +210,7 @@ le destinataire</panel_attributes>
     <id>Relation</id>
     <coordinates>
       <x>468</x>
-      <y>729</y>
+      <y>648</y>
       <w>27</w>
       <h>117</h>
     </coordinates>
@@ -222,7 +222,7 @@ le destinataire</panel_attributes>
     <id>UMLSpecialState</id>
     <coordinates>
       <x>441</x>
-      <y>828</y>
+      <y>747</y>
       <w>72</w>
       <h>63</h>
     </coordinates>
@@ -234,7 +234,7 @@ type=decision</panel_attributes>
     <id>Relation</id>
     <coordinates>
       <x>504</x>
-      <y>837</y>
+      <y>756</y>
       <w>153</w>
       <h>45</h>
     </coordinates>
@@ -247,7 +247,7 @@ Invalide</panel_attributes>
     <id>UMLState</id>
     <coordinates>
       <x>549</x>
-      <y>756</y>
+      <y>675</y>
       <w>243</w>
       <h>45</h>
     </coordinates>
@@ -260,7 +260,7 @@ Affichage d'un message d'erreur
     <id>Relation</id>
     <coordinates>
       <x>549</x>
-      <y>693</y>
+      <y>612</y>
       <w>108</w>
       <h>81</h>
     </coordinates>
@@ -272,7 +272,7 @@ Affichage d'un message d'erreur
     <id>Relation</id>
     <coordinates>
       <x>468</x>
-      <y>882</y>
+      <y>801</y>
       <w>135</w>
       <h>63</h>
     </coordinates>
@@ -284,7 +284,7 @@ Destinatire Valide</panel_attributes>
     <id>UMLState</id>
     <coordinates>
       <x>369</x>
-      <y>459</y>
+      <y>378</y>
       <w>216</w>
       <h>54</h>
     </coordinates>
@@ -297,7 +297,7 @@ de l'utilisateur</panel_attributes>
     <id>UMLSpecialState</id>
     <coordinates>
       <x>441</x>
-      <y>531</y>
+      <y>450</y>
       <w>72</w>
       <h>63</h>
     </coordinates>
@@ -309,7 +309,7 @@ type=decision</panel_attributes>
     <id>Relation</id>
     <coordinates>
       <x>468</x>
-      <y>504</y>
+      <y>423</y>
       <w>27</w>
       <h>45</h>
     </coordinates>
@@ -320,7 +320,7 @@ type=decision</panel_attributes>
     <id>Relation</id>
     <coordinates>
       <x>81</x>
-      <y>540</y>
+      <y>459</y>
       <w>378</w>
       <h>45</h>
     </coordinates>
@@ -333,7 +333,7 @@ L'utilisateur saisit "2"
     <id>UMLNote</id>
     <coordinates>
       <x>630</x>
-      <y>486</y>
+      <y>405</y>
       <w>270</w>
       <h>63</h>
     </coordinates>
@@ -346,7 +346,7 @@ L'utilisateur saisit "2"
     <id>Relation</id>
     <coordinates>
       <x>576</x>
-      <y>468</y>
+      <y>387</y>
       <w>72</w>
       <h>36</h>
     </coordinates>
@@ -358,7 +358,7 @@ L'utilisateur saisit "2"
     <id>Relation</id>
     <coordinates>
       <x>81</x>
-      <y>252</y>
+      <y>171</y>
       <w>1125</w>
       <h>324</h>
     </coordinates>
@@ -369,7 +369,7 @@ L'utilisateur saisit "2"
     <id>Relation</id>
     <coordinates>
       <x>468</x>
-      <y>585</y>
+      <y>504</y>
       <w>261</w>
       <h>117</h>
     </coordinates>
@@ -382,7 +382,7 @@ L'utilisateur saisit "1"
     <id>UMLState</id>
     <coordinates>
       <x>405</x>
-      <y>1323</y>
+      <y>1242</y>
       <w>144</w>
       <h>36</h>
     </coordinates>
@@ -394,7 +394,7 @@ Envoi du message</panel_attributes>
     <id>Relation</id>
     <coordinates>
       <x>468</x>
-      <y>1449</y>
+      <y>1368</y>
       <w>207</w>
       <h>81</h>
     </coordinates>
@@ -406,7 +406,7 @@ L'envoi du message a réussi</panel_attributes>
     <id>UMLSpecialState</id>
     <coordinates>
       <x>441</x>
-      <y>1395</y>
+      <y>1314</y>
       <w>72</w>
       <h>63</h>
     </coordinates>
@@ -418,7 +418,7 @@ type=decision</panel_attributes>
     <id>Relation</id>
     <coordinates>
       <x>468</x>
-      <y>1350</y>
+      <y>1269</y>
       <w>27</w>
       <h>63</h>
     </coordinates>
@@ -429,7 +429,7 @@ type=decision</panel_attributes>
     <id>UMLState</id>
     <coordinates>
       <x>387</x>
-      <y>1242</y>
+      <y>1161</y>
       <w>180</w>
       <h>54</h>
     </coordinates>
@@ -442,7 +442,7 @@ le contenu du message</panel_attributes>
     <id>Relation</id>
     <coordinates>
       <x>468</x>
-      <y>1287</y>
+      <y>1206</y>
       <w>27</w>
       <h>54</h>
     </coordinates>
@@ -453,7 +453,7 @@ le contenu du message</panel_attributes>
     <id>Relation</id>
     <coordinates>
       <x>216</x>
-      <y>1413</y>
+      <y>1332</y>
       <w>243</w>
       <h>36</h>
     </coordinates>
@@ -465,7 +465,7 @@ Echec de l'envoi du message</panel_attributes>
     <id>UMLState</id>
     <coordinates>
       <x>90</x>
-      <y>1296</y>
+      <y>1215</y>
       <w>243</w>
       <h>45</h>
     </coordinates>
@@ -478,7 +478,7 @@ Affichage d'un message d'erreur
     <id>Relation</id>
     <coordinates>
       <x>0</x>
-      <y>414</y>
+      <y>333</y>
       <w>243</w>
       <h>900</h>
     </coordinates>
@@ -490,7 +490,7 @@ Affichage d'un message d'erreur
     <id>Relation</id>
     <coordinates>
       <x>90</x>
-      <y>414</y>
+      <y>333</y>
       <w>306</w>
       <h>27</h>
     </coordinates>
@@ -501,7 +501,7 @@ Affichage d'un message d'erreur
     <id>Relation</id>
     <coordinates>
       <x>216</x>
-      <y>1332</y>
+      <y>1251</y>
       <w>27</w>
       <h>117</h>
     </coordinates>
@@ -512,7 +512,7 @@ Affichage d'un message d'erreur
     <id>UMLState</id>
     <coordinates>
       <x>333</x>
-      <y>1512</y>
+      <y>1431</y>
       <w>297</w>
       <h>54</h>
     </coordinates>
@@ -525,7 +525,7 @@ Affichage d'un message de confirmation
     <id>Relation</id>
     <coordinates>
       <x>468</x>
-      <y>936</y>
+      <y>855</y>
       <w>441</w>
       <h>693</h>
     </coordinates>
@@ -536,7 +536,7 @@ Affichage d'un message de confirmation
     <id>Relation</id>
     <coordinates>
       <x>630</x>
-      <y>792</y>
+      <y>711</y>
       <w>27</w>
       <h>81</h>
     </coordinates>
@@ -547,7 +547,7 @@ Affichage d'un message de confirmation
     <id>UMLSpecialState</id>
     <coordinates>
       <x>441</x>
-      <y>1134</y>
+      <y>1053</y>
       <w>72</w>
       <h>63</h>
     </coordinates>
@@ -559,7 +559,7 @@ type=decision</panel_attributes>
     <id>Relation</id>
     <coordinates>
       <x>468</x>
-      <y>1125</y>
+      <y>1044</y>
       <w>27</w>
       <h>27</h>
     </coordinates>
@@ -570,7 +570,7 @@ type=decision</panel_attributes>
     <id>Relation</id>
     <coordinates>
       <x>468</x>
-      <y>1188</y>
+      <y>1107</y>
       <w>162</w>
       <h>72</h>
     </coordinates>
@@ -582,7 +582,7 @@ L'utilisateur saisit "1"</panel_attributes>
     <id>UMLNote</id>
     <coordinates>
       <x>612</x>
-      <y>1116</y>
+      <y>1035</y>
       <w>252</w>
       <h>63</h>
     </coordinates>
@@ -595,7 +595,7 @@ L'utilisateur saisit "1"</panel_attributes>
     <id>Relation</id>
     <coordinates>
       <x>594</x>
-      <y>1071</y>
+      <y>990</y>
       <w>108</w>
       <h>63</h>
     </coordinates>
@@ -607,7 +607,7 @@ L'utilisateur saisit "1"</panel_attributes>
     <id>Relation</id>
     <coordinates>
       <x>0</x>
-      <y>684</y>
+      <y>603</y>
       <w>243</w>
       <h>495</h>
     </coordinates>
@@ -618,7 +618,7 @@ L'utilisateur saisit "1"</panel_attributes>
     <id>Relation</id>
     <coordinates>
       <x>216</x>
-      <y>1143</y>
+      <y>1062</y>
       <w>243</w>
       <h>54</h>
     </coordinates>
@@ -632,7 +632,7 @@ saisit "2"
     <id>UMLState</id>
     <coordinates>
       <x>378</x>
-      <y>405</y>
+      <y>324</y>
       <w>207</w>
       <h>36</h>
     </coordinates>
@@ -645,7 +645,7 @@ de message</panel_attributes>
     <id>Relation</id>
     <coordinates>
       <x>468</x>
-      <y>432</y>
+      <y>351</y>
       <w>27</w>
       <h>45</h>
     </coordinates>
@@ -656,20 +656,20 @@ de message</panel_attributes>
     <id>UMLState</id>
     <coordinates>
       <x>360</x>
-      <y>990</y>
+      <y>909</y>
       <w>270</w>
       <h>36</h>
     </coordinates>
     <panel_attributes>bg=green
 Affichage du menu d'envoi
-de message au destinataire Guillaume</panel_attributes>
+de message au destinataire</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
       <x>468</x>
-      <y>1017</y>
+      <y>936</y>
       <w>27</w>
       <h>63</h>
     </coordinates>
@@ -681,7 +681,7 @@ de message au destinataire Guillaume</panel_attributes>
     <id>UMLState</id>
     <coordinates>
       <x>1980</x>
-      <y>405</y>
+      <y>324</y>
       <w>207</w>
       <h>45</h>
     </coordinates>
@@ -694,7 +694,7 @@ de fichier</panel_attributes>
     <id>UMLState</id>
     <coordinates>
       <x>2034</x>
-      <y>477</y>
+      <y>396</y>
       <w>144</w>
       <h>36</h>
     </coordinates>
@@ -707,7 +707,7 @@ de l'utilisateur</panel_attributes>
     <id>Relation</id>
     <coordinates>
       <x>2088</x>
-      <y>441</y>
+      <y>360</y>
       <w>27</w>
       <h>54</h>
     </coordinates>
@@ -718,7 +718,7 @@ de l'utilisateur</panel_attributes>
     <id>UMLNote</id>
     <coordinates>
       <x>1764</x>
-      <y>468</y>
+      <y>387</y>
       <w>261</w>
       <h>54</h>
     </coordinates>
@@ -731,7 +731,7 @@ de l'utilisateur</panel_attributes>
     <id>Relation</id>
     <coordinates>
       <x>2016</x>
-      <y>477</y>
+      <y>396</y>
       <w>36</w>
       <h>36</h>
     </coordinates>
@@ -743,7 +743,7 @@ de l'utilisateur</panel_attributes>
     <id>UMLSpecialState</id>
     <coordinates>
       <x>2061</x>
-      <y>540</y>
+      <y>459</y>
       <w>72</w>
       <h>63</h>
     </coordinates>
@@ -755,7 +755,7 @@ type=decision</panel_attributes>
     <id>Relation</id>
     <coordinates>
       <x>2124</x>
-      <y>549</y>
+      <y>468</y>
       <w>387</w>
       <h>45</h>
     </coordinates>
@@ -768,7 +768,7 @@ L'utilisateur saisit "2"
     <id>Relation</id>
     <coordinates>
       <x>1395</x>
-      <y>252</y>
+      <y>171</y>
       <w>1116</w>
       <h>333</h>
     </coordinates>
@@ -779,7 +779,7 @@ L'utilisateur saisit "2"
     <id>Relation</id>
     <coordinates>
       <x>2088</x>
-      <y>594</y>
+      <y>513</y>
       <w>243</w>
       <h>126</h>
     </coordinates>
@@ -792,7 +792,7 @@ L'utilisateur saisit "1"
     <id>Relation</id>
     <coordinates>
       <x>2088</x>
-      <y>504</y>
+      <y>423</y>
       <w>27</w>
       <h>54</h>
     </coordinates>
@@ -803,7 +803,7 @@ L'utilisateur saisit "1"
     <id>UMLState</id>
     <coordinates>
       <x>2034</x>
-      <y>702</y>
+      <y>621</y>
       <w>144</w>
       <h>54</h>
     </coordinates>
@@ -816,7 +816,7 @@ le destinataire</panel_attributes>
     <id>UMLState</id>
     <coordinates>
       <x>2214</x>
-      <y>774</y>
+      <y>693</y>
       <w>243</w>
       <h>45</h>
     </coordinates>
@@ -829,7 +829,7 @@ Affichage d'un message d'erreur
     <id>Relation</id>
     <coordinates>
       <x>2169</x>
-      <y>711</y>
+      <y>630</y>
       <w>108</w>
       <h>81</h>
     </coordinates>
@@ -841,7 +841,7 @@ Affichage d'un message d'erreur
     <id>Relation</id>
     <coordinates>
       <x>2250</x>
-      <y>810</y>
+      <y>729</y>
       <w>27</w>
       <h>90</h>
     </coordinates>
@@ -852,7 +852,7 @@ Affichage d'un message d'erreur
     <id>Relation</id>
     <coordinates>
       <x>2124</x>
-      <y>864</y>
+      <y>783</y>
       <w>153</w>
       <h>45</h>
     </coordinates>
@@ -865,7 +865,7 @@ Invalide</panel_attributes>
     <id>UMLSpecialState</id>
     <coordinates>
       <x>2061</x>
-      <y>846</y>
+      <y>765</y>
       <w>72</w>
       <h>63</h>
     </coordinates>
@@ -877,7 +877,7 @@ type=decision</panel_attributes>
     <id>Relation</id>
     <coordinates>
       <x>2088</x>
-      <y>747</y>
+      <y>666</y>
       <w>27</w>
       <h>117</h>
     </coordinates>
@@ -889,7 +889,7 @@ type=decision</panel_attributes>
     <id>Relation</id>
     <coordinates>
       <x>2088</x>
-      <y>900</y>
+      <y>819</y>
       <w>135</w>
       <h>81</h>
     </coordinates>
@@ -901,7 +901,7 @@ Destinatire Valide</panel_attributes>
     <id>UMLState</id>
     <coordinates>
       <x>1962</x>
-      <y>963</y>
+      <y>882</y>
       <w>279</w>
       <h>36</h>
     </coordinates>
@@ -914,7 +914,7 @@ de fichier au destinataire Guillaume</panel_attributes>
     <id>UMLState</id>
     <coordinates>
       <x>387</x>
-      <y>1062</y>
+      <y>981</y>
       <w>216</w>
       <h>54</h>
     </coordinates>
@@ -927,7 +927,7 @@ de l'utilisateur</panel_attributes>
     <id>Relation</id>
     <coordinates>
       <x>2088</x>
-      <y>990</y>
+      <y>909</y>
       <w>27</w>
       <h>63</h>
     </coordinates>
@@ -939,7 +939,7 @@ de l'utilisateur</panel_attributes>
     <id>UMLState</id>
     <coordinates>
       <x>1998</x>
-      <y>1035</y>
+      <y>954</y>
       <w>216</w>
       <h>54</h>
     </coordinates>
@@ -952,7 +952,7 @@ de l'utilisateur</panel_attributes>
     <id>UMLNote</id>
     <coordinates>
       <x>2286</x>
-      <y>1035</y>
+      <y>954</y>
       <w>252</w>
       <h>63</h>
     </coordinates>
@@ -965,7 +965,7 @@ de l'utilisateur</panel_attributes>
     <id>Relation</id>
     <coordinates>
       <x>2205</x>
-      <y>1044</y>
+      <y>963</y>
       <w>99</w>
       <h>36</h>
     </coordinates>
@@ -977,7 +977,7 @@ de l'utilisateur</panel_attributes>
     <id>UMLSpecialState</id>
     <coordinates>
       <x>2061</x>
-      <y>1107</y>
+      <y>1026</y>
       <w>72</w>
       <h>63</h>
     </coordinates>
@@ -989,7 +989,19 @@ type=decision</panel_attributes>
     <id>Relation</id>
     <coordinates>
       <x>468</x>
-      <y>1107</y>
+      <y>1026</y>
+      <w>27</w>
+      <h>45</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-
+</panel_attributes>
+    <additional_attributes>10.0;30.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>2088</x>
+      <y>999</y>
       <w>27</w>
       <h>45</h>
     </coordinates>
@@ -1002,18 +1014,6 @@ type=decision</panel_attributes>
     <coordinates>
       <x>2088</x>
       <y>1080</y>
-      <w>27</w>
-      <h>45</h>
-    </coordinates>
-    <panel_attributes>lt=&lt;-
-</panel_attributes>
-    <additional_attributes>10.0;30.0;10.0;10.0</additional_attributes>
-  </element>
-  <element>
-    <id>Relation</id>
-    <coordinates>
-      <x>2088</x>
-      <y>1161</y>
       <w>162</w>
       <h>81</h>
     </coordinates>
@@ -1025,7 +1025,7 @@ L'utilisateur saisit "1"</panel_attributes>
     <id>Relation</id>
     <coordinates>
       <x>2124</x>
-      <y>1125</y>
+      <y>1044</y>
       <w>549</w>
       <h>54</h>
     </coordinates>
@@ -1039,7 +1039,7 @@ saisit "2"
     <id>Relation</id>
     <coordinates>
       <x>2178</x>
-      <y>414</y>
+      <y>333</y>
       <w>324</w>
       <h>27</h>
     </coordinates>
@@ -1050,7 +1050,7 @@ saisit "2"
     <id>Relation</id>
     <coordinates>
       <x>2493</x>
-      <y>414</y>
+      <y>333</y>
       <w>180</w>
       <h>747</h>
     </coordinates>
@@ -1062,7 +1062,7 @@ saisit "2"
     <id>UMLState</id>
     <coordinates>
       <x>2052</x>
-      <y>1224</y>
+      <y>1143</y>
       <w>153</w>
       <h>36</h>
     </coordinates>
@@ -1075,7 +1075,7 @@ bg=blue</panel_attributes>
     <id>UMLSpecialState</id>
     <coordinates>
       <x>2061</x>
-      <y>1314</y>
+      <y>1233</y>
       <w>72</w>
       <h>63</h>
     </coordinates>
@@ -1087,7 +1087,7 @@ type=decision</panel_attributes>
     <id>Relation</id>
     <coordinates>
       <x>2088</x>
-      <y>1251</y>
+      <y>1170</y>
       <w>27</w>
       <h>81</h>
     </coordinates>
@@ -1099,7 +1099,7 @@ type=decision</panel_attributes>
     <id>Relation</id>
     <coordinates>
       <x>2124</x>
-      <y>1305</y>
+      <y>1224</y>
       <w>288</w>
       <h>63</h>
     </coordinates>
@@ -1111,7 +1111,7 @@ URL inavlide</panel_attributes>
     <id>UMLState</id>
     <coordinates>
       <x>2277</x>
-      <y>1269</y>
+      <y>1188</y>
       <w>243</w>
       <h>45</h>
     </coordinates>
@@ -1124,7 +1124,7 @@ Affichage d'un message d'erreur
     <id>Relation</id>
     <coordinates>
       <x>2196</x>
-      <y>1224</y>
+      <y>1143</y>
       <w>216</w>
       <h>63</h>
     </coordinates>
@@ -1136,7 +1136,7 @@ Affichage d'un message d'erreur
     <id>UMLState</id>
     <coordinates>
       <x>2025</x>
-      <y>1431</y>
+      <y>1350</y>
       <w>153</w>
       <h>36</h>
     </coordinates>
@@ -1148,7 +1148,7 @@ Envoi du fichier</panel_attributes>
     <id>Relation</id>
     <coordinates>
       <x>2088</x>
-      <y>1368</y>
+      <y>1287</y>
       <w>27</w>
       <h>81</h>
     </coordinates>
@@ -1160,7 +1160,7 @@ Envoi du fichier</panel_attributes>
     <id>UMLSpecialState</id>
     <coordinates>
       <x>2061</x>
-      <y>1503</y>
+      <y>1422</y>
       <w>72</w>
       <h>63</h>
     </coordinates>
@@ -1172,7 +1172,7 @@ type=decision</panel_attributes>
     <id>Relation</id>
     <coordinates>
       <x>2088</x>
-      <y>1458</y>
+      <y>1377</y>
       <w>27</w>
       <h>63</h>
     </coordinates>
@@ -1183,7 +1183,7 @@ type=decision</panel_attributes>
     <id>Relation</id>
     <coordinates>
       <x>2124</x>
-      <y>1512</y>
+      <y>1431</y>
       <w>243</w>
       <h>36</h>
     </coordinates>
@@ -1195,7 +1195,7 @@ Echec de l'envoi du fichier</panel_attributes>
     <id>UMLState</id>
     <coordinates>
       <x>2610</x>
-      <y>1440</y>
+      <y>1359</y>
       <w>243</w>
       <h>45</h>
     </coordinates>
@@ -1208,7 +1208,7 @@ Affichage d'un message d'erreur
     <id>Relation</id>
     <coordinates>
       <x>2340</x>
-      <y>1476</y>
+      <y>1395</y>
       <w>414</w>
       <h>72</h>
     </coordinates>
@@ -1219,7 +1219,7 @@ Affichage d'un message d'erreur
     <id>Relation</id>
     <coordinates>
       <x>2646</x>
-      <y>414</y>
+      <y>333</y>
       <w>108</w>
       <h>1044</h>
     </coordinates>
@@ -1230,7 +1230,7 @@ Affichage d'un message d'erreur
     <id>Relation</id>
     <coordinates>
       <x>2088</x>
-      <y>1557</y>
+      <y>1476</y>
       <w>189</w>
       <h>81</h>
     </coordinates>
@@ -1242,7 +1242,7 @@ L'envoi du fichier a réussi</panel_attributes>
     <id>UMLState</id>
     <coordinates>
       <x>1971</x>
-      <y>1620</y>
+      <y>1539</y>
       <w>297</w>
       <h>54</h>
     </coordinates>
@@ -1255,7 +1255,7 @@ Affichage d'un message de confirmation
     <id>Relation</id>
     <coordinates>
       <x>1926</x>
-      <y>972</y>
+      <y>891</y>
       <w>189</w>
       <h>756</h>
     </coordinates>
@@ -1266,7 +1266,7 @@ Affichage d'un message de confirmation
     <id>UMLState</id>
     <coordinates>
       <x>1224</x>
-      <y>531</y>
+      <y>450</y>
       <w>162</w>
       <h>36</h>
     </coordinates>
@@ -1279,7 +1279,7 @@ de gestion de profil</panel_attributes>
     <id>UMLNote</id>
     <coordinates>
       <x>1404</x>
-      <y>522</y>
+      <y>441</y>
       <w>189</w>
       <h>90</h>
     </coordinates>
@@ -1294,7 +1294,7 @@ les suivants :
     <id>UMLState</id>
     <coordinates>
       <x>1224</x>
-      <y>603</y>
+      <y>522</y>
       <w>144</w>
       <h>36</h>
     </coordinates>
@@ -1307,7 +1307,7 @@ de l'utilisateur</panel_attributes>
     <id>Relation</id>
     <coordinates>
       <x>1332</x>
-      <y>558</y>
+      <y>477</y>
       <w>27</w>
       <h>63</h>
     </coordinates>
@@ -1318,7 +1318,7 @@ de l'utilisateur</panel_attributes>
     <id>Relation</id>
     <coordinates>
       <x>1377</x>
-      <y>531</y>
+      <y>450</y>
       <w>45</w>
       <h>36</h>
     </coordinates>
@@ -1330,7 +1330,7 @@ de l'utilisateur</panel_attributes>
     <id>UMLSpecialState</id>
     <coordinates>
       <x>1305</x>
-      <y>711</y>
+      <y>630</y>
       <w>72</w>
       <h>63</h>
     </coordinates>
@@ -1342,7 +1342,7 @@ type=decision</panel_attributes>
     <id>Relation</id>
     <coordinates>
       <x>1332</x>
-      <y>630</y>
+      <y>549</y>
       <w>27</w>
       <h>99</h>
     </coordinates>
@@ -1353,7 +1353,7 @@ type=decision</panel_attributes>
     <id>Relation</id>
     <coordinates>
       <x>1368</x>
-      <y>720</y>
+      <y>639</y>
       <w>288</w>
       <h>54</h>
     </coordinates>
@@ -1367,7 +1367,7 @@ L'utilisateur saisit "3"
     <id>Relation</id>
     <coordinates>
       <x>1467</x>
-      <y>432</y>
+      <y>351</y>
       <w>189</w>
       <h>324</h>
     </coordinates>
@@ -1379,7 +1379,7 @@ L'utilisateur saisit "3"
     <id>Relation</id>
     <coordinates>
       <x>1368</x>
-      <y>279</y>
+      <y>198</y>
       <w>126</w>
       <h>63</h>
     </coordinates>
@@ -1390,7 +1390,7 @@ L'utilisateur saisit "3"
     <id>Relation</id>
     <coordinates>
       <x>1467</x>
-      <y>315</y>
+      <y>234</y>
       <w>27</w>
       <h>81</h>
     </coordinates>
@@ -1401,7 +1401,7 @@ L'utilisateur saisit "3"
     <id>Relation</id>
     <coordinates>
       <x>1467</x>
-      <y>387</y>
+      <y>306</y>
       <w>27</w>
       <h>72</h>
     </coordinates>
@@ -1412,7 +1412,7 @@ L'utilisateur saisit "3"
     <id>UMLState</id>
     <coordinates>
       <x>1215</x>
-      <y>864</y>
+      <y>783</y>
       <w>216</w>
       <h>54</h>
     </coordinates>
@@ -1425,7 +1425,7 @@ de saisir un pseudo</panel_attributes>
     <id>Relation</id>
     <coordinates>
       <x>1323</x>
-      <y>909</y>
+      <y>828</y>
       <w>27</w>
       <h>63</h>
     </coordinates>
@@ -1436,7 +1436,7 @@ de saisir un pseudo</panel_attributes>
     <id>UMLSpecialState</id>
     <coordinates>
       <x>1296</x>
-      <y>954</y>
+      <y>873</y>
       <w>72</w>
       <h>63</h>
     </coordinates>
@@ -1448,7 +1448,7 @@ type=decision</panel_attributes>
     <id>Relation</id>
     <coordinates>
       <x>1107</x>
-      <y>954</y>
+      <y>873</y>
       <w>198</w>
       <h>54</h>
     </coordinates>
@@ -1460,7 +1460,7 @@ Pseudo Invalide</panel_attributes>
     <id>UMLState</id>
     <coordinates>
       <x>1044</x>
-      <y>927</y>
+      <y>846</y>
       <w>189</w>
       <h>36</h>
     </coordinates>
@@ -1473,7 +1473,7 @@ Affiche un message d'erreur
     <id>Relation</id>
     <coordinates>
       <x>1107</x>
-      <y>873</y>
+      <y>792</y>
       <w>126</w>
       <h>72</h>
     </coordinates>
@@ -1484,7 +1484,7 @@ Affiche un message d'erreur
     <id>Relation</id>
     <coordinates>
       <x>1323</x>
-      <y>1008</y>
+      <y>927</y>
       <w>117</w>
       <h>72</h>
     </coordinates>
@@ -1496,7 +1496,7 @@ Pseudo Valide</panel_attributes>
     <id>Relation</id>
     <coordinates>
       <x>1800</x>
-      <y>810</y>
+      <y>729</y>
       <w>27</w>
       <h>117</h>
     </coordinates>
@@ -1507,7 +1507,7 @@ Pseudo Valide</panel_attributes>
     <id>Relation</id>
     <coordinates>
       <x>1332</x>
-      <y>765</y>
+      <y>684</y>
       <w>99</w>
       <h>117</h>
     </coordinates>
@@ -1521,7 +1521,7 @@ saisit "1"
     <id>Relation</id>
     <coordinates>
       <x>1548</x>
-      <y>801</y>
+      <y>720</y>
       <w>279</w>
       <h>45</h>
     </coordinates>
@@ -1534,7 +1534,7 @@ L'utilisateur saisit "2"
     <id>UMLState</id>
     <coordinates>
       <x>1665</x>
-      <y>909</y>
+      <y>828</y>
       <w>216</w>
       <h>54</h>
     </coordinates>
@@ -1547,7 +1547,7 @@ de saisir un mot de passe</panel_attributes>
     <id>Relation</id>
     <coordinates>
       <x>1800</x>
-      <y>954</y>
+      <y>873</y>
       <w>27</w>
       <h>108</h>
     </coordinates>
@@ -1558,7 +1558,7 @@ de saisir un mot de passe</panel_attributes>
     <id>UMLSpecialState</id>
     <coordinates>
       <x>1773</x>
-      <y>1044</y>
+      <y>963</y>
       <w>72</w>
       <h>63</h>
     </coordinates>
@@ -1570,7 +1570,7 @@ type=decision</panel_attributes>
     <id>Relation</id>
     <coordinates>
       <x>1602</x>
-      <y>1053</y>
+      <y>972</y>
       <w>189</w>
       <h>36</h>
     </coordinates>
@@ -1582,7 +1582,7 @@ Mot de passe invalide</panel_attributes>
     <id>Relation</id>
     <coordinates>
       <x>1602</x>
-      <y>1017</y>
+      <y>936</y>
       <w>27</w>
       <h>72</h>
     </coordinates>
@@ -1593,7 +1593,7 @@ Mot de passe invalide</panel_attributes>
     <id>UMLState</id>
     <coordinates>
       <x>1512</x>
-      <y>990</y>
+      <y>909</y>
       <w>189</w>
       <h>36</h>
     </coordinates>
@@ -1606,7 +1606,7 @@ Affiche un message d'erreur
     <id>Relation</id>
     <coordinates>
       <x>1602</x>
-      <y>927</y>
+      <y>846</y>
       <w>81</w>
       <h>81</h>
     </coordinates>
@@ -1617,7 +1617,7 @@ Affiche un message d'erreur
     <id>UMLState</id>
     <coordinates>
       <x>1197</x>
-      <y>1062</y>
+      <y>981</y>
       <w>297</w>
       <h>54</h>
     </coordinates>
@@ -1630,7 +1630,7 @@ Affichage d'un message de confirmation
     <id>Relation</id>
     <coordinates>
       <x>1800</x>
-      <y>1098</y>
+      <y>1017</y>
       <w>108</w>
       <h>108</h>
     </coordinates>
@@ -1643,7 +1643,7 @@ valide</panel_attributes>
     <id>UMLState</id>
     <coordinates>
       <x>1584</x>
-      <y>1188</y>
+      <y>1107</y>
       <w>297</w>
       <h>54</h>
     </coordinates>
@@ -1656,7 +1656,7 @@ Affichage d'un message de confirmation
     <id>Relation</id>
     <coordinates>
       <x>1323</x>
-      <y>252</y>
+      <y>171</y>
       <w>1575</w>
       <h>1512</h>
     </coordinates>
@@ -1667,7 +1667,7 @@ Affichage d'un message de confirmation
     <id>Relation</id>
     <coordinates>
       <x>1800</x>
-      <y>1233</y>
+      <y>1152</y>
       <w>27</w>
       <h>522</h>
     </coordinates>
@@ -1678,7 +1678,7 @@ Affichage d'un message de confirmation
     <id>Relation</id>
     <coordinates>
       <x>1026</x>
-      <y>396</y>
+      <y>315</y>
       <w>261</w>
       <h>189</h>
     </coordinates>
@@ -1690,7 +1690,7 @@ Affichage d'un message de confirmation
     <id>Relation</id>
     <coordinates>
       <x>1350</x>
-      <y>747</y>
+      <y>666</y>
       <w>225</w>
       <h>90</h>
     </coordinates>
@@ -1702,7 +1702,7 @@ Affichage d'un message de confirmation
     <id>UMLState</id>
     <coordinates>
       <x>360</x>
-      <y>927</y>
+      <y>846</y>
       <w>270</w>
       <h>36</h>
     </coordinates>
@@ -1715,7 +1715,7 @@ Affichage de la conversation
     <id>Relation</id>
     <coordinates>
       <x>468</x>
-      <y>954</y>
+      <y>873</y>
       <w>27</w>
       <h>54</h>
     </coordinates>
@@ -1727,7 +1727,7 @@ Affichage de la conversation
     <id>UMLNote</id>
     <coordinates>
       <x>261</x>
-      <y>756</y>
+      <y>675</y>
       <w>135</w>
       <h>36</h>
     </coordinates>
@@ -1739,7 +1739,7 @@ Affichage de la conversation
     <id>Relation</id>
     <coordinates>
       <x>369</x>
-      <y>702</y>
+      <y>621</y>
       <w>63</w>
       <h>72</h>
     </coordinates>
