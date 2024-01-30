@@ -75,17 +75,6 @@ bg=green</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>950</x>
-      <y>450</y>
-      <w>30</w>
-      <h>150</h>
-    </coordinates>
-    <panel_attributes>lt=.</panel_attributes>
-    <additional_attributes>10.0;10.0;10.0;130.0</additional_attributes>
-  </element>
-  <element>
-    <id>Relation</id>
-    <coordinates>
       <x>1110</x>
       <y>180</y>
       <w>30</w>
@@ -106,30 +95,6 @@ bg=green</panel_attributes>
 Envoi d'un fichier
 Au client B (Ex : exemple.pdf)</panel_attributes>
     <additional_attributes>290.0;20.0;10.0;20.0</additional_attributes>
-  </element>
-  <element>
-    <id>UMLFrame</id>
-    <coordinates>
-      <x>540</x>
-      <y>260</y>
-      <w>630</w>
-      <h>530</h>
-    </coordinates>
-    <panel_attributes>alt
---
-
-Le client B est connecté aussi
--
-
-
-
-
-Le client B n'est pas connecté
--
-
-
-bg=LIGHT_GRAY</panel_attributes>
-    <additional_attributes/>
   </element>
   <element>
     <id>UMLGeneric</id>
@@ -157,47 +122,13 @@ bg=LIGHT_GRAY</panel_attributes>
     <id>Relation</id>
     <coordinates>
       <x>610</x>
-      <y>340</y>
-      <w>520</w>
-      <h>40</h>
-    </coordinates>
-    <panel_attributes>lt=&lt;-
-Distribution du fichier au client B</panel_attributes>
-    <additional_attributes>500.0;20.0;10.0;20.0</additional_attributes>
-  </element>
-  <element>
-    <id>UMLGeneric</id>
-    <coordinates>
-      <x>1110</x>
-      <y>340</y>
-      <w>20</w>
-      <h>50</h>
-    </coordinates>
-    <panel_attributes/>
-    <additional_attributes/>
-  </element>
-  <element>
-    <id>UMLGeneric</id>
-    <coordinates>
-      <x>950</x>
-      <y>450</y>
-      <w>20</w>
-      <h>120</h>
-    </coordinates>
-    <panel_attributes/>
-    <additional_attributes/>
-  </element>
-  <element>
-    <id>Relation</id>
-    <coordinates>
-      <x>610</x>
-      <y>490</y>
+      <y>330</y>
       <w>360</w>
       <h>50</h>
     </coordinates>
     <panel_attributes>lt=&lt;-
-Enregistrement de l'emplacement du fichier
-stocké sur le serveur en BD</panel_attributes>
+Enregistrement du fichier
+dans la BD</panel_attributes>
     <additional_attributes>340.0;20.0;10.0;20.0</additional_attributes>
   </element>
   <element>
@@ -209,8 +140,8 @@ stocké sur le serveur en BD</panel_attributes>
       <h>50</h>
     </coordinates>
     <panel_attributes>lt=&lt;-
-Suppresion du message
-de la BD du serveur</panel_attributes>
+Suppresion du fichier
+de la BD</panel_attributes>
     <additional_attributes>340.0;20.0;10.0;20.0</additional_attributes>
   </element>
   <element>
@@ -219,48 +150,21 @@ de la BD du serveur</panel_attributes>
       <x>950</x>
       <y>180</y>
       <w>30</w>
-      <h>110</h>
+      <h>260</h>
     </coordinates>
     <panel_attributes>lt=.</panel_attributes>
-    <additional_attributes>10.0;10.0;10.0;90.0</additional_attributes>
+    <additional_attributes>10.0;10.0;10.0;240.0</additional_attributes>
   </element>
   <element>
     <id>UMLGeneric</id>
     <coordinates>
       <x>1110</x>
-      <y>580</y>
+      <y>450</y>
       <w>20</w>
-      <h>70</h>
+      <h>30</h>
     </coordinates>
     <panel_attributes/>
     <additional_attributes/>
-  </element>
-  <element>
-    <id>UMLNote</id>
-    <coordinates>
-      <x>1180</x>
-      <y>570</y>
-      <w>310</w>
-      <h>70</h>
-    </coordinates>
-    <panel_attributes>Le client B est à présent connecté,
-on suppose que l'étape d'authentification
-a bien été réalisée
-bg=orange</panel_attributes>
-    <additional_attributes/>
-  </element>
-  <element>
-    <id>Relation</id>
-    <coordinates>
-      <x>610</x>
-      <y>580</y>
-      <w>520</w>
-      <h>50</h>
-    </coordinates>
-    <panel_attributes>lt=&lt;-
-Synchronisation des fichiers en attente
-Délivre le fichier exemple.pdf</panel_attributes>
-    <additional_attributes>500.0;20.0;10.0;20.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
@@ -277,7 +181,7 @@ Délivre le fichier exemple.pdf</panel_attributes>
     <id>Relation</id>
     <coordinates>
       <x>610</x>
-      <y>530</y>
+      <y>370</y>
       <w>360</w>
       <h>40</h>
     </coordinates>
@@ -314,34 +218,54 @@ Suppression Ok</panel_attributes>
       <x>950</x>
       <y>410</y>
       <w>30</w>
-      <h>70</h>
+      <h>60</h>
     </coordinates>
     <panel_attributes>lt=.</panel_attributes>
-    <additional_attributes>10.0;10.0;10.0;50.0</additional_attributes>
+    <additional_attributes>10.0;10.0;10.0;40.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
       <x>610</x>
       <y>440</y>
-      <w>340</w>
-      <h>60</h>
-    </coordinates>
-    <panel_attributes>lt=&lt;-
-Enregistrement du fichier exemple.pdf
-sur le serveur</panel_attributes>
-    <additional_attributes>10.0;40.0;50.0;40.0;50.0;10.0;10.0;10.0</additional_attributes>
-  </element>
-  <element>
-    <id>Relation</id>
-    <coordinates>
-      <x>610</x>
-      <y>620</y>
       <w>520</w>
       <h>40</h>
     </coordinates>
     <panel_attributes>lt=&lt;-
-Confirmation de la bonne réception des fichiers</panel_attributes>
+Synchronisation</panel_attributes>
     <additional_attributes>10.0;20.0;500.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLGeneric</id>
+    <coordinates>
+      <x>950</x>
+      <y>330</y>
+      <w>20</w>
+      <h>100</h>
+    </coordinates>
+    <panel_attributes/>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLGeneric</id>
+    <coordinates>
+      <x>950</x>
+      <y>490</y>
+      <w>20</w>
+      <h>60</h>
+    </coordinates>
+    <panel_attributes/>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>950</x>
+      <y>470</y>
+      <w>30</w>
+      <h>160</h>
+    </coordinates>
+    <panel_attributes>lt=.</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;140.0</additional_attributes>
   </element>
 </diagram>
