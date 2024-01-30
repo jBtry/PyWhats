@@ -1,4 +1,5 @@
 # Importing necessary libraries
+import base64
 from flask import Flask, request, jsonify
 import sqlite3
 from pymongo import MongoClient
@@ -11,6 +12,7 @@ app = Flask(__name__)
 mongo_client = MongoClient('mongodb://localhost:27017/')
 mongo_db = mongo_client['messaging_app']  # Database name: messaging_app
 messages_collection = mongo_db['conversations']  # Collection for conversations
+files_collection = mongo_db['files_collection']
 
 # Function to connect to SQLite database for user authentication
 def get_sqlite_connection():
@@ -171,9 +173,42 @@ def send_message():
     }
 
     # Adding message to an existing conversation in MongoDB
-    messages_collection.insert_one(message)
+    result = messages_collection.insert_one(message)
 
-    return jsonify({'message': 'Message sent successfully'}), 200
+    if result.acknowledged:
+        return jsonify({'message': 'Message send successfully'}), 200
+    else:
+        return jsonify({'message': 'Failed to send the message'}), 500
+
+
+# Flask route for sending a message
+@app.route('/send_file', methods=['POST'])
+def send_file():
+    # Extracting sender and message from request
+    sender = request.json['sender']
+    receiver = request.json['receiver']
+    file_data_base64 = request.json['file_data']
+    filename = request.json['filename']
+    timestamp = request.json['timestamp']
+
+    file_data = base64.b64decode(file_data_base64)
+
+    file = {
+    'sender': sender,
+    'receiver': receiver,
+    'filename': filename,
+    'file_data': file_data,
+    'timestamp': timestamp
+    }
+
+    # Adding message to an existing conversation in MongoDB
+    result = files_collection.insert_one(file)
+
+    if result.acknowledged:
+        return jsonify({'message': 'File stored successfully'}), 200
+    else:
+        return jsonify({'message': 'Failed to store the file'}), 500
+
 
 @app.route('/synchronize', methods=['POST'])
 def synchronize():
@@ -198,6 +233,42 @@ def synchronize():
     print(f"Number of messages deleted: {deleted_result.deleted_count}")
 
     return jsonify(synchronized_messages), 200
+
+
+@app.route('/synchronize_files', methods=['POST'])
+def synchronize_files():
+    # Extracting sender and message from request
+    receiver = request.json['receiver']
+
+    files = files_collection.find({'receiver': receiver})
+
+    synchronized_files = []
+
+    # Ajouter chaque message à la liste synchronisée
+    for file in files:
+        sender = file['sender']
+        receiver = file['receiver']
+        filename = file['filename']
+        file_data = file['file_data']
+        timestamp = file['timestamp']
+    
+        file_data_base64 = base64.b64encode(file_data).decode('utf-8')
+
+        synchronized_files.append({
+            'sender': sender,
+            'receiver': receiver,
+            'filename': filename,
+            'file_data': file_data_base64,
+            'timestamp': timestamp
+        })
+    
+    criteria = {'receiver': receiver}
+    deleted_result = files_collection.delete_many(criteria)
+    print(f"Number of files deleted: {deleted_result.deleted_count}")
+
+    return jsonify(synchronized_files), 200
+
+
 
 if __name__ == '__main__':
     create_users_table()  # Créer la table des utilisateurs au démarrage
