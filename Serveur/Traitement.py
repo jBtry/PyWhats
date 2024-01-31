@@ -30,7 +30,9 @@ def register():
     try:
         conn.execute('INSERT INTO utilisateurs (pseudo, mdp) VALUES (?, ?)',
                      (pseudo, hashed_mdp))
+        conn.commit()
     except sqlite3.IntegrityError:
+        conn.rollback()
         return jsonify({'message': 'Le pseudo existe deja'}), 400
     finally:
         conn.close()
@@ -46,7 +48,7 @@ def verificationUtilisateur():
     if not pseudo:
         return jsonify({'error': 'Username is required'}), 400
 
-    conn = sqlite3.connect('users.db')
+    conn = sqlite3.connect('utilisateurs.db')
     cursor = conn.cursor()
 
     # Vérifie l'existence du nom d'utilisateur

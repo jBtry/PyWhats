@@ -5,7 +5,7 @@ from Requetes import *
 from OutilsClient import *
 
 def demanderChoix() :
-    return input("CHOIX")
+    return input(CHOIX)
 
 def menuAccueil() :
     while True :
@@ -31,7 +31,7 @@ def menuAccueil() :
 
         elif choix == '2': # Se connecter
             pseudo = input("Saisir le pseudo : ")
-            mdp = input("Saisir le pseudo : ")
+            mdp = input("Saisir le mot de passe : ")
             codeErreur = seConnecter(pseudo, mdp)
             return codeErreur, pseudo
 
@@ -55,7 +55,7 @@ def menuFonctionnalites(pseudo) :
                     choix = demanderChoix()
                     if choix == '1':
                         message = input("Saisir un message : ")
-                        print(send_message(pseudo, destinataire, message, return_timestamp()))
+                        print(envoyer_message(pseudo, destinataire, message, return_timestamp()))
                     elif choix == '2':
                         break
                     else:
@@ -81,5 +81,5 @@ def menuFonctionnalites(pseudo) :
 
 
 def menuEnvoi(destinataire):
-    print(MENU_ENVOI.format(destinataire))
+    print(MENU_ENVOI % destinataire)
 
