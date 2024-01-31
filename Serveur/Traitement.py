@@ -34,11 +34,11 @@ def register():
         conn.commit()
     except sqlite3.IntegrityError:
         conn.rollback()
-        return jsonify({'message': 'Le pseudo existe deja'}), 400
+        return jsonify("Le pseudo existe déjà !"), 400
     finally:
         conn.close()
 
-    return jsonify({'message': 'L\'utilisateur a bien été enregistré'}), 201
+    return jsonify("L\'utilisateur a bien été enregistré"), 201
 
 # Vérifie le pseudo
 @app.route('/verificationUtilisateur', methods=['POST'])
@@ -47,7 +47,7 @@ def verificationUtilisateur():
     pseudo = request.json['pseudo']
 
     if not pseudo:
-        return jsonify({'error': 'Username is required'}), 400
+        return jsonify("Erreur, le pseudo est requis"), 400
 
     conn = sqlite3.connect('utilisateurs.db')
     cursor = conn.cursor()
@@ -79,34 +79,45 @@ def login():
 
     # Verifying mdp
     if user and verifmdp(user[0], mdp):
-        return jsonify({'message': 'Connexion réussi'}), 200
+        return jsonify("Connexion réussi"), 200
     else:
-        return jsonify({'message': 'Pseudo ou Mot de passe invalide'}), 403
+        return jsonify("Pseudo ou Mot de passe invalide"), 403
 
 # Change le pseudo
 @app.route('/changer_pseudo', methods=['POST'])
 def changer_pseudo():
 
-    pseudo_actuel = request.json['current-username']
-    new_pseudo = request.json['new_username']
+    pseudo_actuel = request.json['pseudo_actuel']
+    new_pseudo = request.json['new_pseudo']
 
-    already_exist = verificationUtilisateur(new_pseudo)
+    if not pseudo_actuel:
+        return jsonify({'error': 'pseudo is required'}), 400
 
-    if already_exist:
-        return jsonify({'message': 'le pseudo existe deja'}), 400
-    else:
+    conn = sqlite3.connect('utilisateurs.db')
+    cursor = conn.cursor()
+
+    # Vérifie l'existence du nom d'utilisateur
+    cursor.execute('SELECT * FROM utilisateurs WHERE pseudo = ?', (pseudo_actuel,))
+    user = cursor.fetchone()
+
+    conn.close()
+    if user:
         conn = get_sqlite_connection()
         try:
-            conn.execute('UPDATE users SET username =? WHERE username =?',
+            conn.execute('UPDATE utilisateurs SET pseudo =? WHERE pseudo =?',
                          (new_pseudo, pseudo_actuel))
             conn.commit()
         except sqlite3.IntegrityError:
-            return jsonify({'message': 'Error updating the username'}), 400 # TODO : changer code erreur
+            return jsonify("Erreur dans la mise à jour du pseudo"), 400 # TODO : changer code erreur
         finally:
             conn.rollback()
             conn.close()
 
-        return jsonify({'message': 'Username changed successfully'}), 201
+        return jsonify("Pseudo changé avec succès !"), 201
+        
+    else:
+        return jsonify("Le pseudo existe déjà"), 400
+
 
 # Change le mot de passe
 @app.route('/changer_mdp', methods=['POST'])
@@ -114,20 +125,20 @@ def changer_mdp():
     pseudo = request.json['pseudo']
     new_mdp = request.json['new_mdp']
 
-    hashed_password = hashmdp(new_mdp)
+    hashed_mdp = hashmdp(new_mdp)
 
     conn = get_sqlite_connection()
     try:
-        conn.execute('UPDATE users SET password =? WHERE pseudo =?',
-                     (hashed_password, pseudo))
+        conn.execute('UPDATE utilisateurs SET mdp =? WHERE pseudo =?',
+                     (hashed_mdp, pseudo))
         conn.commit()
     except sqlite3.IntegrityError:
         conn.rollback()
-        return jsonify({'message': 'Erreur lors de la mise à jour du mot de passe, aucune modification n\'a été effectué'}), 400
+        return jsonify("Erreur lors de la mise à jour du mot de passe, aucune modification n\'a été effectué"), 400
     finally:
         conn.close()
 
-    return jsonify({'message': 'Le mot de passe a été changé !'}), 201
+    return jsonify("Le mot de passe a bien été changé !"), 201
 
 
 # Envoi message
@@ -149,15 +160,15 @@ def envoyer_message():
     # Adding message to an existing conversation in MongoDB
     messages_collection.insert_one(message)
 
-    return jsonify({'message': 'Message sent successfully'}), 200
+    return jsonify("Message envoyé avec succès"), 200
 
 
 # Flask route for sending a message
-@app.route('/send_file', methods=['POST'])
-def send_file():
-    # Extracting sender and message from request
-    sender = request.json['sender']
-    receiver = request.json['receiver']
+@app.route('/envoyer_fichier', methods=['POST'])
+def envoyer_fichier_file():
+    # Extracting envoyeur and message from request
+    envoyeur = request.json['envoyeur']
+    destinataire = request.json['destinataire']
     file_data_base64 = request.json['file_data']
     filename = request.json['filename']
     timestamp = request.json['timestamp']
@@ -165,8 +176,8 @@ def send_file():
     file_data = base64.b64decode(file_data_base64)
 
     file = {
-    'sender': sender,
-    'receiver': receiver,
+    'envoyeur': envoyeur,
+    'destinataire': destinataire,
     'filename': filename,
     'file_data': file_data,
     'timestamp': timestamp
@@ -176,14 +187,14 @@ def send_file():
     result = fichiers_collection.insert_one(file)
 
     if result.acknowledged:
-        return jsonify({'message': 'File stored successfully'}), 200
+        return jsonify("Fichier envoyé avec succès"), 200
     else:
-        return jsonify({'message': 'Failed to store the file'}), 500
+        return jsonify("Erreur: le fichier n\'a pas été envoyé avec succès"), 500
 
 
 # Distribue les messages
-@app.route('/synchroniser', methods=['POST'])
-def synchroniser():
+@app.route('/synchroniser_messages', methods=['POST'])
+def synchroniser_messages():
 
     destinataire = request.json['destinataire']
 
@@ -207,19 +218,19 @@ def synchroniser():
     return jsonify(synchronized_messages), 200
 
 
-@app.route('/synchronize_files', methods=['POST'])
-def synchronize_files():
-    # Extracting sender and message from request
-    receiver = request.json['receiver']
+@app.route('/synchroniser_fichiers', methods=['POST'])
+def synchroniser_fichiers():
+    # Extracting envoyeur and message from request
+    destinataire = request.json['destinataire']
 
-    files = fichiers_collection.find({'receiver': receiver})
+    files = fichiers_collection.find({'destinataire': destinataire})
 
     synchronized_files = []
 
     # Ajouter chaque message à la liste synchronisée
     for file in files:
-        sender = file['sender']
-        receiver = file['receiver']
+        envoyeur = file['envoyeur']
+        destinataire = file['destinataire']
         filename = file['filename']
         file_data = file['file_data']
         timestamp = file['timestamp']
@@ -227,14 +238,14 @@ def synchronize_files():
         file_data_base64 = base64.b64encode(file_data).decode('utf-8')
 
         synchronized_files.append({
-            'sender': sender,
-            'receiver': receiver,
+            'envoyeur': envoyeur,
+            'destinataire': destinataire,
             'filename': filename,
             'file_data': file_data_base64,
             'timestamp': timestamp
         })
     
-    criteria = {'receiver': receiver}
+    criteria = {'destinataire': destinataire}
     deleted_result = fichiers_collection.delete_many(criteria)
     print(f"Number of files deleted: {deleted_result.deleted_count}")
 

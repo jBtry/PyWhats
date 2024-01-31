@@ -18,9 +18,11 @@ FCT = ("1. Envoyer un message" + "\n" + "2. Envoyer un fichier"
        + "\n" + "3. Gérer son profil" + "\n" + "4. Supprimer une conversation"
        + "\n" + "5. Se déconnecter")
 
-MENU_ENVOI = "1. Envoyer un message à %s" + "\n" + "2. Quitter" + "\n"
+MENU_ENVOI_MESSAGE = "1. Envoyer un message à %s" + "\n" + "2. Quitter" + "\n"
 
-MENU_SUPPRIMER = "1. Supprimer conversation %s" + "\n" + "2. Quitter" + "\n"
+MENU_ENVOI_FICHIER = "1. Envoyer un fichier à %s" + "\n" + "2. Quitter" + "\n"
+
+MENU_SUPPRIMER = "1. Supprimer conversation avec %s" + "\n" + "2. Quitter" + "\n"
 
 MENU_GERER_PROFIL = "1. Modifier pseudo" + "\n" + "2. Modifier mot de passe" + "\n" + "3. Quitter" + "\n"
 

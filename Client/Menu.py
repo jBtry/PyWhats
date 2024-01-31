@@ -51,10 +51,13 @@ def menuFonctionnalites(pseudo) :
             destinataire = input("Saisir le pseudo du destinataire: ")
             while True:
                 if verificationUtilisateur(destinataire): # pseudo Valide
-                    menuEnvoi(destinataire)
+                    menuEnvoiMessage(destinataire)
                     choix = demanderChoix()
                     if choix == '1':
-                        message = input("Saisir un message : ")
+                        display_messages(pseudo, destinataire)
+                        message = input("Saisir un message (x pour retour): ")
+                        if message == 'x':
+                            break
                         print(envoyer_message(pseudo, destinataire, message, return_timestamp()))
                     elif choix == '2':
                         break
@@ -68,7 +71,7 @@ def menuFonctionnalites(pseudo) :
             destinataire = input("Saisir le pseudo du destinataire: ")
             while True:
                 if verificationUtilisateur(destinataire): # pseudo Valide
-                    menuEnvoi(destinataire)
+                    menuEnvoiFichier(destinataire)
                     choix = demanderChoix()
                     if choix == '1':
                         chemin_fichier = input("Saisir le chemin du fichier : ")
@@ -78,7 +81,7 @@ def menuFonctionnalites(pseudo) :
                                 données_fichier = fichier.read()
 
                             nom_fichier = os.path.basename(chemin_fichier)
-                            print(envoyer_fichier(pseudo, destinataire, nom_fichier, données_fichier))
+                            print(envoyer_fichier(pseudo, destinataire, nom_fichier, données_fichier, return_timestamp()))
                             time.sleep(5)
                         
                         else:
@@ -117,7 +120,9 @@ def menuFonctionnalites(pseudo) :
             destinataire = input("Saisir le pseudo du destinataire: ")
             while True:
                 if verificationUtilisateur(destinataire): # pseudo Valide
+                    display_messages(pseudo, destinataire)
                     menuSupprimerConversation(destinataire)
+                    choix = demanderChoix()
 
                     if choix == '1':
                         print(delete_conversation(pseudo, destinataire))
@@ -137,8 +142,11 @@ def menuFonctionnalites(pseudo) :
             print(MESSAGE_ERREUR_MENU_CINQ_CHOIX)
 
 
-def menuEnvoi(destinataire):
-    print(MENU_ENVOI % destinataire)
+def menuEnvoiMessage(destinataire):
+    print(MENU_ENVOI_MESSAGE % destinataire)
+
+def menuEnvoiFichier(destinataire):
+    print(MENU_ENVOI_FICHIER % destinataire)
 
 def menuSupprimerConversation(destinataire):
     print(MENU_SUPPRIMER % destinataire)
