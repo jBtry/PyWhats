@@ -709,23 +709,24 @@ Suppression de la conversation</panel_attributes>
       <x>1130</x>
       <y>540</y>
       <w>165</w>
-      <h>20</h>
+      <h>35</h>
     </coordinates>
     <panel_attributes>bg=blue
 Enregistre la conversation
-à la racine du répertoire utilisateur</panel_attributes>
+dans un dossier à la racine du répertoire de
+l'application.</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
       <x>1210</x>
-      <y>555</y>
+      <y>570</y>
       <w>15</w>
-      <h>45</h>
+      <h>30</h>
     </coordinates>
     <panel_attributes>lt=&lt;-</panel_attributes>
-    <additional_attributes>10.0;70.0;10.0;10.0</additional_attributes>
+    <additional_attributes>10.0;40.0;10.0;10.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
