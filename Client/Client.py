@@ -1,5 +1,6 @@
 # Cette classe contient le MAIN du client
 
+import threading
 from Menu import *
 
 # -------------------------------- MAIN --------------------------
@@ -9,7 +10,9 @@ while True:
     if codeRetour == 0 :
         pass
     elif codeRetour == 200: # Authentification validée par le serveur
-        # TODO : threads de synchro
+        import_messages_thread = threading.Thread(target=import_periodically, args=(pseudo,))
+        import_messages_thread.daemon = True
+        import_messages_thread.start()
         menuFonctionnalites(pseudo)
     else : # codeRetour == 400
         pass
