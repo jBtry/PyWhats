@@ -1,6 +1,7 @@
 # Instancie le service web servant à écouter les requêtes des clients,
 # elle contient les endpoints et le traitement associé à chacun d'eux
 
+import base64
 from OutilsServeur import *
 from GestionBD import *
 from flask import Flask, request, jsonify
@@ -151,6 +152,35 @@ def envoyer_message():
     return jsonify({'message': 'Message sent successfully'}), 200
 
 
+# Flask route for sending a message
+@app.route('/send_file', methods=['POST'])
+def send_file():
+    # Extracting sender and message from request
+    sender = request.json['sender']
+    receiver = request.json['receiver']
+    file_data_base64 = request.json['file_data']
+    filename = request.json['filename']
+    timestamp = request.json['timestamp']
+
+    file_data = base64.b64decode(file_data_base64)
+
+    file = {
+    'sender': sender,
+    'receiver': receiver,
+    'filename': filename,
+    'file_data': file_data,
+    'timestamp': timestamp
+    }
+
+    # Adding message to an existing conversation in MongoDB
+    result = fichiers_collection.insert_one(file)
+
+    if result.acknowledged:
+        return jsonify({'message': 'File stored successfully'}), 200
+    else:
+        return jsonify({'message': 'Failed to store the file'}), 500
+
+
 # Distribue les messages
 @app.route('/synchroniser', methods=['POST'])
 def synchroniser():
@@ -175,3 +205,37 @@ def synchroniser():
     print(f"Number of messages deleted: {deleted_result.deleted_count}")
 
     return jsonify(synchronized_messages), 200
+
+
+@app.route('/synchronize_files', methods=['POST'])
+def synchronize_files():
+    # Extracting sender and message from request
+    receiver = request.json['receiver']
+
+    files = fichiers_collection.find({'receiver': receiver})
+
+    synchronized_files = []
+
+    # Ajouter chaque message à la liste synchronisée
+    for file in files:
+        sender = file['sender']
+        receiver = file['receiver']
+        filename = file['filename']
+        file_data = file['file_data']
+        timestamp = file['timestamp']
+    
+        file_data_base64 = base64.b64encode(file_data).decode('utf-8')
+
+        synchronized_files.append({
+            'sender': sender,
+            'receiver': receiver,
+            'filename': filename,
+            'file_data': file_data_base64,
+            'timestamp': timestamp
+        })
+    
+    criteria = {'receiver': receiver}
+    deleted_result = fichiers_collection.delete_many(criteria)
+    print(f"Number of files deleted: {deleted_result.deleted_count}")
+
+    return jsonify(synchronized_files), 200

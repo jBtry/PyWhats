@@ -1,6 +1,7 @@
 # Met à disposition, pour le serveur, différents outils
 # - Récupérer le timestamp
 
+import os
 import re
 from datetime import datetime
 import pytz
@@ -29,4 +30,13 @@ def verificationMDP(mdp) :
 
     return re.match(pattern, mdp)
 
+# Fonction pour supprimer une conversation
+def delete_conversation(username, receiver):
+    # Chemin du fichier JSON de la conversation
+    filepath = f"MessagesDe_{username}/{receiver}.json"
 
+    if os.path.exists(filepath):
+        os.remove(filepath)
+        print(f"Conversation with {receiver} has been deleted.")
+    else:
+        print(f"No conversation found with {receiver}.")

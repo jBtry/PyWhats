@@ -20,6 +20,10 @@ FCT = ("1. Envoyer un message" + "\n" + "2. Envoyer un fichier"
 
 MENU_ENVOI = "1. Envoyer un message à %s" + "\n" + "2. Quitter" + "\n"
 
+MENU_SUPPRIMER = "1. Supprimer conversation %s" + "\n" + "2. Quitter" + "\n"
+
+MENU_GERER_PROFIL = "1. Modifier pseudo" + "\n" + "2. Modifier mot de passe" + "\n" + "3. Quitter" + "\n"
+
 MESSAGE_PSEUDO_INVALIDE = "Le pseudo doit avoir une taille comprise entre 3 et 15 caractères"
 
 MESSAGE_MDP_INVALIDE = ("Le mot de passe doit avoir une taille comprise entre 12 et 80 caractères "
