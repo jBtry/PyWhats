@@ -31,12 +31,12 @@ def verificationMDP(mdp) :
     return re.match(pattern, mdp)
 
 # Fonction pour supprimer une conversation
-def delete_conversation(username, receiver):
+def suppConversation(pseudo, destinataire):
     # Chemin du fichier JSON de la conversation
-    filepath = f"MessagesDe_{username}/{receiver}.json"
+    filepath = f"MessagesDe_{pseudo}/{destinataire}.json"
 
     if os.path.exists(filepath):
         os.remove(filepath)
-        print(f"Conversation with {receiver} has been deleted.")
+        print(f"Conversation with {destinataire} has been deleted.")
     else:
-        print(f"No conversation found with {receiver}.")
+        print(f"No conversation found with {destinataire}.")

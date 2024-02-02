@@ -10,7 +10,7 @@ while True:
     if codeRetour == 0 :
         pass
     elif codeRetour == 200: # Authentification validée par le serveur
-        import_messages_thread = threading.Thread(target=import_periodically, args=(pseudo,))
+        import_messages_thread = threading.Thread(target=importPeriodique, args=(pseudo,))
         import_messages_thread.daemon = True
         import_messages_thread.start()
         menuFonctionnalites(pseudo)

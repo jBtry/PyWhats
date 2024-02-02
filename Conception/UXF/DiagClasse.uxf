@@ -1,27 +1,44 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <diagram program="umlet" version="15.1">
-  <zoom_level>10</zoom_level>
+  <zoom_level>7</zoom_level>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>900</x>
-      <y>160</y>
-      <w>180</w>
-      <h>140</h>
+      <x>1085</x>
+      <y>217</y>
+      <w>259</w>
+      <h>196</h>
     </coordinates>
     <panel_attributes>Textes.py
+--
+MESSAGE_ERREUR_MENU_TROIS_CHOIX : String
+MESSAGE_ERREUR_MENU_DEUX_CHOIX : String
+MESSAGE_ERREUR_MENU_CINQ_CHOIX : String
+MESSAGE_QUITTER : String
+WELCOME : String
+CHOIX : String
+MENU_ACCUEIL : String
+FCT : String
+MENU_ENVOI_MESSAGE : String
+MENU_ENVOI_FICHIER : String
+MENU_SUPPRIMER : String
+MENU_GERER_PROFIL : String
+MESSAGE_PSEUDO_INVALIDE : String
+MESSAGE_MDP_INVALIDE : String
 --</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>760</x>
-      <y>170</y>
-      <w>90</w>
-      <h>70</h>
+      <x>658</x>
+      <y>217</y>
+      <w>119</w>
+      <h>84</h>
     </coordinates>
     <panel_attributes>Client.py
+--
+
 --
 main()</panel_attributes>
     <additional_attributes/>
@@ -29,34 +46,44 @@ main()</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>180</x>
-      <y>450</y>
-      <w>180</w>
-      <h>190</h>
+      <x>315</x>
+      <y>434</y>
+      <w>126</w>
+      <h>133</h>
     </coordinates>
     <panel_attributes>Traitement
---</panel_attributes>
+--
+app : Flask
+--
+
+</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>450</x>
-      <y>230</y>
-      <w>180</w>
-      <h>190</h>
+      <x>392</x>
+      <y>231</y>
+      <w>175</w>
+      <h>91</h>
     </coordinates>
     <panel_attributes>GestionBD.py
---</panel_attributes>
+--
+get_sqlite_connexion
+--
+mongo_client : MongoClient
+mongo_db : Database
+messages_collection : Collection
+fichiers_collection : Collection</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <id>UMLGeneric</id>
     <coordinates>
-      <x>730</x>
-      <y>100</y>
-      <w>680</w>
-      <h>670</h>
+      <x>644</x>
+      <y>182</y>
+      <w>721</w>
+      <h>574</h>
     </coordinates>
     <panel_attributes>Côté CLIENT
 layer=-1</panel_attributes>
@@ -65,10 +92,10 @@ layer=-1</panel_attributes>
   <element>
     <id>UMLGeneric</id>
     <coordinates>
-      <x>120</x>
-      <y>100</y>
-      <w>590</w>
-      <h>670</h>
+      <x>175</x>
+      <y>189</y>
+      <w>413</w>
+      <h>469</h>
     </coordinates>
     <panel_attributes>Côté SERVEUR
 layer=-1</panel_attributes>
@@ -77,69 +104,96 @@ layer=-1</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>780</x>
-      <y>320</y>
-      <w>540</w>
-      <h>190</h>
+      <x>665</x>
+      <y>616</y>
+      <w>378</w>
+      <h>126</h>
     </coordinates>
     <panel_attributes>Menu.py
 --
-demanderChoix() : String choix (représente le choix du client)
-menuAccueil()   : int, String (retourne un code d'erreur et le pseudo)
+
+--
+demanderChoix() : String 
+menuAccueil(): int, String (retourne un code d'erreur et le pseudo)
 menuFonctionnalites(String pseudo)
-menuEnvoi(destinataire)
-...</panel_attributes>
+menuEnvoiMessage(String destinataire)
+menuEnvoiFichier(String destinataire)
+menuSupprimerConversation(Stringdestinataire)
+menuGererProfil()</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>180</x>
-      <y>220</y>
-      <w>180</w>
-      <h>190</h>
+      <x>224</x>
+      <y>231</y>
+      <w>126</w>
+      <h>56</h>
     </coordinates>
     <panel_attributes>Serveur.py
---</panel_attributes>
+--
+
+--
+main()</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>450</x>
-      <y>450</y>
-      <w>180</w>
-      <h>190</h>
+      <x>203</x>
+      <y>336</y>
+      <w>231</w>
+      <h>77</h>
     </coordinates>
     <panel_attributes>OutilsServeur.py
---</panel_attributes>
+--
+
+--
+hashmdp(String mdp)
+verifmdp(String mdpEnBD, String mdpSaisi)</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>750</x>
-      <y>540</y>
-      <w>600</w>
-      <h>190</h>
+      <x>665</x>
+      <y>308</y>
+      <w>273</w>
+      <h>98</h>
     </coordinates>
     <panel_attributes>OutilsClient.py
 --
+
+--
 return_timestamp() : String
-verificationPseudo(pseudo) : boolean 
-verificationMDP(mdp) : boolean </panel_attributes>
+verificationPseudo(String pseudo) : boolean 
+verificationMDP(String mdp) : boolean 
+suppConversation(String pseudo, String destinataire)</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>1140</x>
-      <y>180</y>
-      <w>180</w>
-      <h>100</h>
+      <x>665</x>
+      <y>427</y>
+      <w>560</w>
+      <h>175</h>
     </coordinates>
     <panel_attributes>Requetes.py
---</panel_attributes>
+--
+SERVEUR_URL : String
+--
+creationCompte(String pseudo, String mdp) : JSON
+verificationUtilisateur(String pseudo) : JSON
+seConnecter(String pseudo, String mdp) : int
+changer_pseudo(String pseudo_actuel, String new_pseudo) : JSON
+changer_mdp(String pseudo, String new_mdp) : JSON
+envoyer_message(String envoyeur, String destinataire, String message, String timestamp) : JSON
+envoyer_fichier(String envoyeur, String destinataire, String filename, Bytes file_data, String timestamp) : JSON
+import_messages(String destinataire)
+import_fichiers(String destinataire)
+importPeriodique(String destinataire)
+afficherMessages(String pseudo, String destinataire)</panel_attributes>
     <additional_attributes/>
   </element>
 </diagram>

@@ -50,11 +50,11 @@ def menuFonctionnalites(pseudo) :
         if choix == '1': # Envoyer un message
             destinataire = input("Saisir le pseudo du destinataire: ")
             while True:
-                if verificationUtilisateur(destinataire): # pseudo Valide
+                if verificationUtilisateur(destinataire):
                     menuEnvoiMessage(destinataire)
                     choix = demanderChoix()
                     if choix == '1':
-                        display_messages(pseudo, destinataire)
+                        afficherMessages(pseudo, destinataire)
                         message = input("Saisir un message (x pour retour): ")
                         if message == 'x':
                             break
@@ -70,7 +70,7 @@ def menuFonctionnalites(pseudo) :
         elif choix == '2': # Envoyer un fichier
             destinataire = input("Saisir le pseudo du destinataire: ")
             while True:
-                if verificationUtilisateur(destinataire): # pseudo Valide
+                if verificationUtilisateur(destinataire):
                     menuEnvoiFichier(destinataire)
                     choix = demanderChoix()
                     if choix == '1':
@@ -78,10 +78,10 @@ def menuFonctionnalites(pseudo) :
 
                         if os.path.exists(chemin_fichier):
                             with open(chemin_fichier, 'rb') as fichier:
-                                données_fichier = fichier.read()
+                                donnees_fichier = fichier.read()
 
                             nom_fichier = os.path.basename(chemin_fichier)
-                            print(envoyer_fichier(pseudo, destinataire, nom_fichier, données_fichier, return_timestamp()))
+                            print(envoyer_fichier(pseudo, destinataire, nom_fichier, donnees_fichier, return_timestamp()))
                             time.sleep(5)
                         
                         else:
@@ -114,18 +114,18 @@ def menuFonctionnalites(pseudo) :
                     break
 
                 else:
-                    print("Invalid choice. Please try again.")
+                    print(MESSAGE_ERREUR_MENU_TROIS_CHOIX)
 
         elif choix == '4': # Supprimer une conversation
             destinataire = input("Saisir le pseudo du destinataire: ")
             while True:
                 if verificationUtilisateur(destinataire): # pseudo Valide
-                    display_messages(pseudo, destinataire)
+                    afficherMessages(pseudo, destinataire)
                     menuSupprimerConversation(destinataire)
                     choix = demanderChoix()
 
                     if choix == '1':
-                        print(delete_conversation(pseudo, destinataire))
+                        print(suppConversation(pseudo, destinataire))
 
                     elif choix == '2':
                         break

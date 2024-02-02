@@ -47,7 +47,7 @@ def changer_mdp(pseudo, new_mdp):
         print(MESSAGE_MDP_INVALIDE)
 
 
-# Function to send a message in an existing conversation
+# Envoi de message
 def envoyer_message(envoyeur, destinataire, message, timestamp):
     response = requests.post(f"{SERVER_URL}/envoyer_message", json={"envoyeur": envoyeur, "destinataire": destinataire, "message": message, "timestamp": timestamp})
     
@@ -70,7 +70,7 @@ def envoyer_message(envoyeur, destinataire, message, timestamp):
 
     return response.json()
 
-# Function to send a message in an existing conversation
+# Envoi de fichier
 def envoyer_fichier(envoyeur, destinataire, filename, file_data, timestamp):
     
     file_data_base64 = base64.b64encode(file_data).decode('utf-8')
@@ -87,16 +87,16 @@ def envoyer_fichier(envoyeur, destinataire, filename, file_data, timestamp):
         "timestamp": timestamp
     }    
 
-    # Check if the directory exists
+    # Le répertoire existe ?
     if not os.path.exists("FichiersDe_"+envoyeur):
-        # Create the directory
+        # On crée le répertoire
         os.makedirs("FichiersDe_"+envoyeur)
 
     if not os.path.exists(pathname):
-        with open(pathname, 'w') as file:  # Ouverture en mode append
+        with open(pathname, 'w') as file:
             file.write("")
     
-    with open(pathname, 'a') as file:  # Ouverture en mode write
+    with open(pathname, 'a') as file:
         json.dump(formatted_message, file)
         file.write("\n")
 
@@ -114,6 +114,7 @@ def envoyer_fichier(envoyeur, destinataire, filename, file_data, timestamp):
         return {"error": f"La requête a échoué avec le code d'état : {response.status_code}"}
 
 
+# Enregistrement Messages reçu
 def import_messages(destinataire):
 
     if not os.path.exists("MessagesDe_"+destinataire):
@@ -122,7 +123,7 @@ def import_messages(destinataire):
     response = requests.post(f"{SERVER_URL}/synchroniser_messages", json={"destinataire": destinataire})
 
     if response.status_code == 200:
-        messages = json.loads(response.content.decode('utf-8'))  # Décoder la réponse JSON
+        messages = json.loads(response.content.decode('utf-8'))  # Décode la réponse JSON
 
         if messages != []:
             cpt = 0
@@ -131,25 +132,26 @@ def import_messages(destinataire):
                 envoyeur = message.get('envoyeur')
                 filename = f"MessagesDe_"+destinataire+"/"+envoyeur+".json"
 
-                # Lecture du fichier existant ou création d'un nouveau fichier
+
                 if not os.path.exists(filename):
-                    with open(filename, 'w') as file:  # Ouverture en mode write
+                    with open(filename, 'w') as file:
                         file.write("")
                 
-                with open(filename, 'a') as file:  # Ouverture en mode append
+                with open(filename, 'a') as file:
                     json.dump(message, file)
                     file.write("\n")
                 
                 envoyeur_notif = envoyeur
                 cpt = cpt + 1
 
-            print(f"\n                                                        Tu as reçu {cpt} message(s) de {envoyeur_notif}")
+            print(f"\n                                              Tu as reçu {cpt} message(s) de {envoyeur_notif}")
                 
 
     else:
         print(f"Erreur lors de la synchronisation des messages : {response.status_code}")
 
 
+# Enregistrement Fichiers reçu
 def import_fichiers(destinataire):
     if not os.path.exists("FichiersDe_" + destinataire):
         os.makedirs("FichiersDe_" + destinataire)
@@ -157,7 +159,7 @@ def import_fichiers(destinataire):
     response = requests.post(f"{SERVER_URL}/synchroniser_fichiers", json={"destinataire": destinataire})
 
     if response.status_code == 200:
-        files = json.loads(response.content.decode('utf-8'))  # Decode the JSON response
+        files = json.loads(response.content.decode('utf-8'))
 
         if files != []:
             envoyeur_notif = ""
@@ -168,10 +170,10 @@ def import_fichiers(destinataire):
                 filename = file_info.get('filename')
                 file_data_base64 = file_info.get('file_data')
 
-                # Decode the base64 file data
+                # Decode le fichier
                 file_data = base64.b64decode(file_data_base64)
 
-                # Save the file to the destinataire's directory
+                # Sauvegarde le fichier
                 file_path = f"FichiersDe_{destinataire}/{filename}"
                 with open(file_path, 'wb') as file:
                     file.write(file_data)
@@ -179,27 +181,26 @@ def import_fichiers(destinataire):
                 envoyeur_notif = envoyeur
                 filename_notif = filename
 
-            print(f"\n                                                        Fichier '{filename_notif}' reçu de {envoyeur_notif}")
+            print(f"\n                                        Fichier '{filename_notif}' reçu de {envoyeur_notif}")
 
     else:
         print(f"Erreur dans la synchronization des fichiers : {response.status_code}")
 
 
-def import_periodically(destinataire):
+# Cherche si l'utilisateur à reçu des messages et des fichiers
+def importPeriodique(destinataire):
     while True:
         import_messages(destinataire)
         import_fichiers(destinataire)
-        # Sleep for 5 seconds before running again
         time.sleep(5)
 
 
-def display_messages(username, destinataire):
-    messages_dir = f"MessagesDe_{username}/{destinataire}.json"
+# Affiche une conversation
+def afficherMessages(pseudo, destinataire):
+    messages_dir = f"MessagesDe_{pseudo}/{destinataire}.json"
 
-    # Check if the directory exists
     if not os.path.exists(messages_dir):
         print(f"Aucun message échangé avec {destinataire}")
-        return
 
     # Ouvrir le fichier JSON et lire son contenu ligne par ligne
     with open(messages_dir, 'r') as file:

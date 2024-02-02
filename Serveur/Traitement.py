@@ -27,7 +27,7 @@ def register():
     hashed_mdp = hashmdp(mdp)
 
     # Insère le couple pseudo/mot de passe dans la base de donnée
-    conn = get_sqlite_connection()
+    conn = get_sqlite_connexion()
     try:
         conn.execute('INSERT INTO utilisateurs (pseudo, mdp) VALUES (?, ?)',
                      (pseudo, hashed_mdp))
@@ -72,7 +72,7 @@ def login():
     pseudo = request.json['pseudo']
     mdp = request.json['mdp']
 
-    conn = get_sqlite_connection()
+    conn = get_sqlite_connexion()
     cursor = conn.execute('SELECT mdp FROM utilisateurs WHERE pseudo=?', (pseudo,))
     user = cursor.fetchone()
     conn.close()
@@ -102,7 +102,7 @@ def changer_pseudo():
 
     conn.close()
     if user:
-        conn = get_sqlite_connection()
+        conn = get_sqlite_connexion()
         try:
             conn.execute('UPDATE utilisateurs SET pseudo =? WHERE pseudo =?',
                          (new_pseudo, pseudo_actuel))
@@ -127,7 +127,7 @@ def changer_mdp():
 
     hashed_mdp = hashmdp(new_mdp)
 
-    conn = get_sqlite_connection()
+    conn = get_sqlite_connexion()
     try:
         conn.execute('UPDATE utilisateurs SET mdp =? WHERE pseudo =?',
                      (hashed_mdp, pseudo))
@@ -157,16 +157,16 @@ def envoyer_message():
         'timestamp': timestamp
     }
 
-    # Adding message to an existing conversation in MongoDB
+    # Enregistrement dans mongoDB
     messages_collection.insert_one(message)
 
     return jsonify("Message envoyé avec succès"), 200
 
 
-# Flask route for sending a message
+# Envoi de fichier
 @app.route('/envoyer_fichier', methods=['POST'])
 def envoyer_fichier_file():
-    # Extracting envoyeur and message from request
+    # Extraction des informations contenue dans la requête
     envoyeur = request.json['envoyeur']
     destinataire = request.json['destinataire']
     file_data_base64 = request.json['file_data']
@@ -183,7 +183,7 @@ def envoyer_fichier_file():
     'timestamp': timestamp
     }
 
-    # Adding message to an existing conversation in MongoDB
+    # Insertion dans la BD
     result = fichiers_collection.insert_one(file)
 
     if result.acknowledged:
@@ -197,9 +197,7 @@ def envoyer_fichier_file():
 def synchroniser_messages():
 
     destinataire = request.json['destinataire']
-
     messages = messages_collection.find({'destinataire': destinataire})
-
     synchronized_messages = []
 
     # Ajouter chaque message à la liste synchronisée
@@ -220,7 +218,7 @@ def synchroniser_messages():
 
 @app.route('/synchroniser_fichiers', methods=['POST'])
 def synchroniser_fichiers():
-    # Extracting envoyeur and message from request
+
     destinataire = request.json['destinataire']
 
     files = fichiers_collection.find({'destinataire': destinataire})
@@ -245,8 +243,8 @@ def synchroniser_fichiers():
             'timestamp': timestamp
         })
     
-    criteria = {'destinataire': destinataire}
-    deleted_result = fichiers_collection.delete_many(criteria)
+    critere = {'destinataire': destinataire}
+    deleted_result = fichiers_collection.delete_many(critere)
     print(f"Number of files deleted: {deleted_result.deleted_count}")
 
     return jsonify(synchronized_files), 200
