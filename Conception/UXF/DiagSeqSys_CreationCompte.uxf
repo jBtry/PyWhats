@@ -132,10 +132,10 @@ Envoi du pseudo (Ex: GuidoVR)</panel_attributes>
   <element>
     <id>UMLFrame</id>
     <coordinates>
-      <x>310</x>
+      <x>320</x>
       <y>230</y>
-      <w>1080</w>
-      <h>560</h>
+      <w>1050</w>
+      <h>550</h>
     </coordinates>
     <panel_attributes>alt
 --

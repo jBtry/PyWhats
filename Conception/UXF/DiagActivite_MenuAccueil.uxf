@@ -151,19 +151,19 @@ type=decision</panel_attributes>
     <id>Relation</id>
     <coordinates>
       <x>553</x>
-      <y>434</y>
+      <y>420</y>
       <w>168</w>
-      <h>42</h>
+      <h>56</h>
     </coordinates>
     <panel_attributes>lt=&lt;-
 Pseudo Invalide</panel_attributes>
-    <additional_attributes>220.0;10.0;220.0;40.0;10.0;40.0</additional_attributes>
+    <additional_attributes>220.0;10.0;220.0;60.0;10.0;60.0</additional_attributes>
   </element>
   <element>
     <id>UMLState</id>
     <coordinates>
       <x>630</x>
-      <y>413</y>
+      <y>399</y>
       <w>147</w>
       <h>28</h>
     </coordinates>
@@ -178,10 +178,10 @@ Affiche un message d'erreur
       <x>609</x>
       <y>364</y>
       <w>112</w>
-      <h>63</h>
+      <h>49</h>
     </coordinates>
     <panel_attributes>lt=&lt;-</panel_attributes>
-    <additional_attributes>10.0;10.0;140.0;10.0;140.0;70.0</additional_attributes>
+    <additional_attributes>10.0;10.0;140.0;10.0;140.0;50.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
@@ -225,13 +225,13 @@ de saisir un mot de passe</panel_attributes>
     <id>Relation</id>
     <coordinates>
       <x>553</x>
-      <y>623</y>
+      <y>616</y>
       <w>168</w>
-      <h>42</h>
+      <h>49</h>
     </coordinates>
     <panel_attributes>lt=&lt;-
 Mot de passe Invalide</panel_attributes>
-    <additional_attributes>220.0;10.0;220.0;40.0;10.0;40.0</additional_attributes>
+    <additional_attributes>220.0;10.0;220.0;50.0;10.0;50.0</additional_attributes>
   </element>
   <element>
     <id>UMLSpecialState</id>
@@ -272,7 +272,7 @@ Mot de passe Valide</panel_attributes>
     <id>UMLState</id>
     <coordinates>
       <x>637</x>
-      <y>602</y>
+      <y>595</y>
       <w>147</w>
       <h>28</h>
     </coordinates>

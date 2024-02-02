@@ -158,8 +158,12 @@ def envoyer_message():
     }
 
     # Enregistrement dans mongoDB
-    messages_collection.insert_one(message)
-    return jsonify("Message envoyé avec succès"), 200
+    result = messages_collection.insert_one(message)
+
+    if result.acknowledged:
+        return jsonify("Fichier envoyé avec succès"), 200
+    else:
+        return jsonify("Erreur: le fichier n\'a pas été envoyé avec succès"), 500
 
 
 # Envoi de fichier
