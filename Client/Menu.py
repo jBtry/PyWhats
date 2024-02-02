@@ -99,16 +99,27 @@ def menuFonctionnalites(pseudo) :
             while True:
                 menuGererProfil()
                 choix = demanderChoix()
-
-                if choix =='1':
-                    nouveau_pseudo = input("Saisir nouveau pseudo : ")
-                    response = changer_pseudo(pseudo, nouveau_pseudo)
-                    print(response)
+                pseudoOK = False
+                mdpOK = False
+                if choix =='1': # Changer pseudo
+                    while not pseudoOK:
+                        nouveau_pseudo = input("Saisir le pseudo : ")
+                        if verificationPseudo(pseudo):
+                            pseudoOK = True
+                            reponse = changer_pseudo(pseudo, nouveau_pseudo)
+                            print(reponse)
+                        else:
+                            print(MESSAGE_PSEUDO_INVALIDE)
                 
-                elif choix =='2':
-                    nouveau_mdp = input("Saisir nouveau mot de passe : ")
-                    response = changer_mdp(pseudo, nouveau_mdp)
-                    print(response)
+                elif choix =='2': # Changer mdp
+                    while not mdpOK:
+                        nouveau_mdp = input("Saisir le mot de passe : ")
+                        if verificationMDP(nouveau_mdp):
+                            mdpOK = True
+                            reponse = changer_mdp(pseudo, nouveau_mdp)
+                            print(reponse)
+                        else:
+                            print(MESSAGE_MDP_INVALIDE)
 
                 elif choix =='3':
                     break

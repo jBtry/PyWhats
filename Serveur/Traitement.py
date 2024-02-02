@@ -18,7 +18,7 @@ app = Flask(__name__)
 
 # Cet endpoint permet de créer un compte utilisateur
 @app.route('/creationCompte', methods=['POST'])
-def register():
+def creerCompte():
     # Extraction du pseudo and du mot de passe de la requête (matérialisé par un JSON)
     pseudo = request.json['pseudo']
     mdp = request.json['mdp']
@@ -67,7 +67,7 @@ def verificationUtilisateur():
 
 # Connexion
 @app.route('/seConnecter', methods=['POST'])
-def login():
+def seConnecter():
 
     pseudo = request.json['pseudo']
     mdp = request.json['mdp']
@@ -108,7 +108,7 @@ def changer_pseudo():
                          (new_pseudo, pseudo_actuel))
             conn.commit()
         except sqlite3.IntegrityError:
-            return jsonify("Erreur dans la mise à jour du pseudo"), 400 # TODO : changer code erreur
+            return jsonify("Erreur dans la mise à jour du pseudo"), 500
         finally:
             conn.rollback()
             conn.close()
@@ -134,7 +134,7 @@ def changer_mdp():
         conn.commit()
     except sqlite3.IntegrityError:
         conn.rollback()
-        return jsonify("Erreur lors de la mise à jour du mot de passe, aucune modification n\'a été effectué"), 400
+        return jsonify("Erreur lors de la mise à jour du mot de passe, aucune modification n\'a été effectué"), 500
     finally:
         conn.close()
 
@@ -159,13 +159,12 @@ def envoyer_message():
 
     # Enregistrement dans mongoDB
     messages_collection.insert_one(message)
-
     return jsonify("Message envoyé avec succès"), 200
 
 
 # Envoi de fichier
 @app.route('/envoyer_fichier', methods=['POST'])
-def envoyer_fichier_file():
+def envoyer_fichier():
     # Extraction des informations contenue dans la requête
     envoyeur = request.json['envoyeur']
     destinataire = request.json['destinataire']

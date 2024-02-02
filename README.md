@@ -1,2 +1,2 @@
 # PyWhats
-Instant messaging application coded in Python
+Application de messagerie instantanée codée en Python.
