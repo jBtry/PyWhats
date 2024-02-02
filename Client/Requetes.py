@@ -7,7 +7,7 @@ import time
 import requests
 
 from OutilsClient import *
-from Texte import *
+from Textes import *
 
 # Adresse du serveur
 SERVER_URL = "http://127.0.0.1:61000"

@@ -1,6 +1,6 @@
 # Contient les différents menus de l'application
 
-from Texte import *
+from Textes import *
 from Requetes import *
 from OutilsClient import *
 
