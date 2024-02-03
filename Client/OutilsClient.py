@@ -4,18 +4,13 @@
 # - Vérifier que le mot de passe est conforme
 # - Supprimer une conversation
 
-import os
-import re
+import os, re, tzlocal
 from datetime import datetime
-import pytz
 
-def return_timestamp():
-    # Get the current time in UTC
-    utc_now = datetime.now(pytz.utc)
-
-    # Format the timestamp as required
-    formatted_timestamp = utc_now.strftime("%H:%M %d/%m/%Y")
-
+def get_horodatage():
+    timezone = tzlocal.get_localzone()
+    horodatage = datetime.now(timezone)
+    formatted_timestamp = horodatage.strftime("%H:%M %d/%m/%Y")
     return formatted_timestamp
 
 # Vérifie que le pseudo respecte les specs fonctionnelles
@@ -31,7 +26,7 @@ def verificationMDP(mdp) :
     pattern += r'(?=.*\d)'  # Au moins un nombre
     pattern += r'.{12,80}$'  # Entre 12 et 80 caractères inclus
 
-    return re.match(pattern, mdp)
+    return bool(re.fullmatch(pattern, mdp))
 
 # Fonction pour supprimer une conversation
 def suppConversation(pseudo, destinataire):
@@ -40,6 +35,6 @@ def suppConversation(pseudo, destinataire):
 
     if os.path.exists(filepath):
         os.remove(filepath)
-        print(f"Conversation with {destinataire} has been deleted.")
+        print(f"La conversation avec {destinataire} a été supprimé.")
     else:
-        print(f"No conversation found with {destinataire}.")
+        print(f"Aucune conversation trouvée avec {destinataire}.")

@@ -173,7 +173,7 @@ verifmdp(String mdpEnBD, String mdpSaisi)</panel_attributes>
 --
 
 --
-return_timestamp() : String
+get_horodatage() : String
 verificationPseudo(String pseudo) : boolean 
 verificationMDP(String mdp) : boolean 
 suppConversation(String pseudo, String destinataire)</panel_attributes>

@@ -58,7 +58,7 @@ def menuFonctionnalites(pseudo) :
                         message = input("Saisir un message (x pour retour): ")
                         if message == 'x':
                             break
-                        print(envoyer_message(pseudo, destinataire, message, return_timestamp()))
+                        print(envoyer_message(pseudo, destinataire, message, get_horodatage()))
                     elif choix == '2':
                         break
                     else:
@@ -81,7 +81,7 @@ def menuFonctionnalites(pseudo) :
                                 donnees_fichier = fichier.read()
 
                             nom_fichier = os.path.basename(chemin_fichier)
-                            print(envoyer_fichier(pseudo, destinataire, nom_fichier, donnees_fichier, return_timestamp()))
+                            print(envoyer_fichier(pseudo, destinataire, nom_fichier, donnees_fichier, get_horodatage()))
                             time.sleep(5)
                         
                         else:
