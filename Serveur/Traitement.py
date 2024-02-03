@@ -161,9 +161,9 @@ def envoyer_message():
     result = messages_collection.insert_one(message)
 
     if result.acknowledged:
-        return jsonify("Fichier envoyé avec succès"), 200
+        return jsonify("Message envoyé avec succès"), 200
     else:
-        return jsonify("Erreur: le fichier n\'a pas été envoyé avec succès"), 500
+        return jsonify("Erreur: le message n\'a pas été envoyé"), 500
 
 
 # Envoi de fichier
@@ -192,7 +192,7 @@ def envoyer_fichier():
     if result.acknowledged:
         return jsonify("Fichier envoyé avec succès"), 200
     else:
-        return jsonify("Erreur: le fichier n\'a pas été envoyé avec succès"), 500
+        return jsonify("Erreur: le fichier n\'a pas été envoyé"), 500
 
 
 # Distribue les messages

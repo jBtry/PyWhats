@@ -15,7 +15,7 @@ SERVER_URL = "http://127.0.0.1:61000"
 # Crée un utilisateur
 def creationCompte(pseudo, mdp):
     retour = requests.post(f"{SERVER_URL}/creationCompte", json={"pseudo": pseudo, "mdp": mdp})
-    return retour.json()
+    return retour.json(), retour.status_code
 
 # Vérifier que l'utilisateur existe
 def verificationUtilisateur(pseudo):
@@ -102,7 +102,7 @@ def envoyer_fichier(envoyeur, destinataire, filename, file_data, timestamp):
 
  
     if response.status_code == 200:
-        # Vérifier si la réponse contient des données JSON valides
+        # Vérifie si la réponse contient des données JSON valides
         try:
             response_json = response.json()
             return response_json
@@ -115,7 +115,7 @@ def envoyer_fichier(envoyeur, destinataire, filename, file_data, timestamp):
 
 
 # Enregistrement Messages reçu
-def import_messages(destinataire):
+def synchro_messages(destinataire):
 
     if not os.path.exists("MessagesDe_"+destinataire):
         os.makedirs("MessagesDe_"+destinataire)
@@ -152,7 +152,7 @@ def import_messages(destinataire):
 
 
 # Enregistrement Fichiers reçu
-def import_fichiers(destinataire):
+def synchro_fichiers(destinataire):
     if not os.path.exists("FichiersDe_" + destinataire):
         os.makedirs("FichiersDe_" + destinataire)
 
@@ -190,8 +190,8 @@ def import_fichiers(destinataire):
 # Cherche si l'utilisateur à reçu des messages et des fichiers
 def importPeriodique(destinataire):
     while True:
-        import_messages(destinataire)
-        import_fichiers(destinataire)
+        synchro_messages(destinataire)
+        synchro_fichiers(destinataire)
         time.sleep(5)
 
 

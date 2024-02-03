@@ -198,8 +198,8 @@ changer_pseudo(String pseudo_actuel, String new_pseudo) : JSON
 changer_mdp(String pseudo, String new_mdp) : JSON
 envoyer_message(String envoyeur, String destinataire, String message, String timestamp) : JSON
 envoyer_fichier(String envoyeur, String destinataire, String filename, Bytes file_data, String timestamp) : JSON
-import_messages(String destinataire)
-import_fichiers(String destinataire)
+synchro_messages(String destinataire)
+synchro_fichiers(String destinataire)
 importPeriodique(String destinataire)
 afficherMessages(String pseudo, String destinataire)</panel_attributes>
     <additional_attributes/>
