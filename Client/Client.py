@@ -1,4 +1,4 @@
-# Cette classe contient le MAIN du client
+# Ce fichier contient le MAIN du client
 
 import threading
 from Menu import *

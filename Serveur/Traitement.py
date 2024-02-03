@@ -1,5 +1,5 @@
 # Instancie le service web servant à écouter les requêtes des clients,
-# elle contient les endpoints et le traitement associé à chacun d'eux
+# ce fichier contient les endpoints et le traitement associé à chacun d'eux
 
 import base64
 from OutilsServeur import *

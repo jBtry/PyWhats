@@ -1,5 +1,8 @@
-# Met à disposition, pour le serveur, différents outils
+# Met à disposition, pour le client, différents outils
 # - Récupérer le timestamp
+# - Vérifier que le pseudo est conforme
+# - Vérifier que le mot de passe est conforme
+# - Supprimer une conversation
 
 import os
 import re

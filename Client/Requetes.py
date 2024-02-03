@@ -1,4 +1,4 @@
-# Contient toutes les requêtes susceptibles d'être envoyé par le client
+# Contient toutes les requêtes susceptibles d'être envoyées par le client
 
 import base64
 import json
