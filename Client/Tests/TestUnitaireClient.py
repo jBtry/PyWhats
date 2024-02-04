@@ -1,4 +1,4 @@
-# Test des méthodes de OutilsClient.py
+# Test les méthodes de OutilsClient.py
 from Client.OutilsClient import *
 def TEST_verificationMDP():
     print("---------------- TEST verificationMDP() ------------------")
@@ -33,7 +33,7 @@ def TEST_verificationMDP():
 
 def TEST_verificationPseudo():
     print("\n---------------- TEST verificationPSEUDO() ------------------")
-    # Test de la fonction avec différents pseudo
+    # Test de la fonction avec plusieurs pseudos
     test = [
         ("Valide", True),
         ("123", True),
@@ -65,7 +65,7 @@ def TEST_suppConversation():
     destinataire_inexistant = "inconnu"
 
     # Préparation
-    os.makedirs(f"MessagesDe_{pseudo}", exist_ok=True)
+    os.makedirs(f"MessagesDe_{pseudo}")
     with open(f"MessagesDe_{pseudo}/{destinataire_existant}.json", "w") as f:
         f.write("Contenu test")
 
@@ -108,11 +108,45 @@ def TEST_get_horodatage():
     print("-------------------------------------------------------------------")
 
 
+def TEST_afficherConversation():
+    print("\n---------------- TEST afficherConversation() ------------------")
+
+    # Création des élements nécessaire pour le test
+    messages = [
+        {"envoyeur": "Leo", "timestamp": "2023-01-01 12:00", "message": "Salut !"},
+        {"envoyeur": "Guillaume", "timestamp": "2023-01-01 12:01", "message": "Hey !, comment ça va ?"}
+    ]
+    pseudo = "Leo"
+    destinataire = "Guillaume"
+    os.makedirs(f"MessagesDe_{pseudo}")
+    with open(f"MessagesDe_{pseudo}/{destinataire}.json", 'w') as f:
+        for message in messages:
+            f.write(json.dumps(message) + '\n')
+
+
+    print("Vérification de l'affichage correcte d'une conversation\n")
+
+    # Scénario 1: Messages existants
+    print("Scénario 1: Messages existants\n")
+    afficherConversation('Leo', 'Guillaume')
+
+    # Scénario 2: Aucun message échangé (Pas besoin de créer de fichier pour ce test)
+    print("\nScénario 2: Aucun message échangé")
+    afficherConversation('Leo', 'Clement')
+
+    # Nettoyage
+    if os.path.isdir(f"MessagesDe_{pseudo}"):
+        for fichier in os.listdir(f"MessagesDe_{pseudo}"):
+            os.remove(f"MessagesDe_{pseudo}/{fichier}")
+        os.rmdir(f"MessagesDe_{pseudo}")
+
+
 # --------------- MAIN -------------
 # Lancement des Tests...
 TEST_verificationMDP()
 TEST_verificationPseudo()
 TEST_suppConversation()
 TEST_get_horodatage()
+TEST_afficherConversation()
 
 

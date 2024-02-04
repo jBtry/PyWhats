@@ -177,7 +177,6 @@ get_horodatage() : String
 verificationPseudo(String pseudo) : boolean 
 verificationMDP(String mdp) : boolean 
 suppConversation(String pseudo, String destinataire)
-importPeriodique(String destinataire)
 afficherConversation(String pseudo, String destinataire)</panel_attributes>
     <additional_attributes/>
   </element>
@@ -202,6 +201,7 @@ envoyer_message(String envoyeur, String destinataire, String message, String tim
 envoyer_fichier(String envoyeur, String destinataire, String filename, Bytes file_data, String timestamp) : JSON
 synchro_messages(String destinataire)
 synchro_fichiers(String destinataire)
+importPeriodique(String destinataire)
 </panel_attributes>
     <additional_attributes/>
   </element>

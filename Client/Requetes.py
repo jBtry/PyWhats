@@ -1,12 +1,9 @@
 # Contient toutes les requêtes susceptibles d'être envoyées par le client
 # ainsi que des méthodes liées aux besoins métiers
 
-import base64
-import json
-import os
-import requests
+import base64, json, os, requests, time
 
-from OutilsClient import *
+from OutilsClient import verificationMDP
 from Textes import *
 
 # Adresse du serveur
@@ -185,3 +182,10 @@ def synchro_fichiers(destinataire):
 
     else:
         print(f"Erreur dans la synchronization des fichiers : {response.status_code}")
+
+# Vérifier si l'utilisateur a reçu des messages et des fichiers
+def importPeriodique(destinataire):
+    while True:
+        synchro_messages(destinataire)
+        synchro_fichiers(destinataire)
+        time.sleep(5)

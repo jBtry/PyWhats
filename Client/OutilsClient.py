@@ -4,10 +4,8 @@
 # - Vérifier que le mot de passe est conforme
 # - Supprimer une conversation
 
-import os, re, tzlocal
-import time
+import re, tzlocal, os, json
 from datetime import datetime
-from Requetes import *
 
 def get_horodatage():
     timezone = tzlocal.get_localzone()
@@ -41,14 +39,6 @@ def suppConversation(pseudo, destinataire):
     else:
         print(f"Aucune conversation trouvée avec {destinataire}.")
 
-# Vérifier si l'utilisateur a reçu des messages et des fichiers
-def importPeriodique(destinataire):
-    while True:
-        synchro_messages(destinataire)
-        synchro_fichiers(destinataire)
-        time.sleep(5)
-
-
 # Affiche une conversation
 def afficherConversation(pseudo, destinataire):
     messages_dir = f"MessagesDe_{pseudo}/{destinataire}.json"
@@ -56,15 +46,15 @@ def afficherConversation(pseudo, destinataire):
     if not os.path.exists(messages_dir):
         print(f"Aucun message échangé avec {destinataire}")
 
-    # Ouvrir le fichier JSON et lire son contenu ligne par ligne
-    with open(messages_dir, 'r') as file:
-        lines = file.readlines()
+    else :
+        # Ouvrir le fichier JSON et lire son contenu ligne par ligne
+        with open(messages_dir, 'r') as file:
+            lines = file.readlines()
 
-    # Parcourir chaque ligne (chaque message) et l'afficher dans le format souhaité
-    for line in lines:
-        message = json.loads(line)
-        envoyeur = message.get('envoyeur')
-        timestamp = message.get('timestamp')
-        message_text = message.get('message')
-
-        print(f"From {envoyeur} at {timestamp}: {message_text}")
+        # Parcourir chaque ligne (chaque message) et l'afficher dans le format souhaité
+        for line in lines:
+            message = json.loads(line)
+            envoyeur = message.get('envoyeur')
+            timestamp = message.get('timestamp')
+            message_text = message.get('message')
+            print(f"From {envoyeur} at {timestamp}: {message_text}")
