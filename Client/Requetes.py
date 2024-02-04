@@ -1,4 +1,5 @@
 # Contient toutes les requêtes susceptibles d'être envoyées par le client
+# ainsi que des méthodes liées aux besoins métiers
 
 import base64
 import json

@@ -150,15 +150,15 @@ main()</panel_attributes>
     <coordinates>
       <x>203</x>
       <y>336</y>
-      <w>231</w>
+      <w>322</w>
       <h>70</h>
     </coordinates>
     <panel_attributes>OutilsServeur.py
 --
 
 --
-hashmdp(String mdp)
-verifmdp(String mdpEnBD, String mdpSaisi)</panel_attributes>
+hashmdp(String mdp): Bytes
+verifmdp(String mdpEnBD, String mdpSaisi) : Boolean</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
