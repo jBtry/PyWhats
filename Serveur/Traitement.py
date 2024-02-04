@@ -91,7 +91,7 @@ def changer_pseudo():
     new_pseudo = request.json['new_pseudo']
 
     if not pseudo_actuel:
-        return jsonify({'error': 'pseudo is required'}), 400
+        return jsonify({'Erreur': 'Le pseudo actuel est requis'}), 400
 
     conn = sqlite3.connect('utilisateurs.db')
     cursor = conn.cursor()
@@ -232,17 +232,17 @@ def synchroniser_fichiers():
     for file in files:
         envoyeur = file['envoyeur']
         destinataire = file['destinataire']
-        filename = file['filename']
-        file_data = file['file_data']
+        filename = file['nomfichier']
+        donnees = file['donnees']
         timestamp = file['timestamp']
     
-        file_data_base64 = base64.b64encode(file_data).decode('utf-8')
+        file_data_base64 = base64.b64encode(donnees).decode('utf-8')
 
         synchronized_files.append({
             'envoyeur': envoyeur,
             'destinataire': destinataire,
-            'filename': filename,
-            'file_data': file_data_base64,
+            'nomfichier': filename,
+            'donnees': file_data_base64,
             'timestamp': timestamp
         })
     
