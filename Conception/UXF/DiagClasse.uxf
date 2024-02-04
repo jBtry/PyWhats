@@ -112,8 +112,8 @@ layer=-1</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>665</x>
-      <y>602</y>
+      <x>658</x>
+      <y>623</y>
       <w>378</w>
       <h>126</h>
     </coordinates>
@@ -186,11 +186,12 @@ afficherConversation(String pseudo, String destinataire)</panel_attributes>
       <x>665</x>
       <y>434</y>
       <w>560</w>
-      <h>147</h>
+      <h>175</h>
     </coordinates>
     <panel_attributes>Requetes.py
 --
 SERVEUR_URL : String
+verrous : Lock[]
 --
 creationCompte(String pseudo, String mdp) : JSON
 verificationUtilisateur(String pseudo) : JSON
@@ -202,6 +203,7 @@ envoyer_fichier(String envoyeur, String destinataire, String filename, Bytes fil
 synchro_messages(String destinataire)
 synchro_fichiers(String destinataire)
 importPeriodique(String destinataire)
+obtenir_verrou(nom_fichier) : Lock
 </panel_attributes>
     <additional_attributes/>
   </element>

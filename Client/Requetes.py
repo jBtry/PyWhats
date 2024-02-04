@@ -199,7 +199,7 @@ def importPeriodique(destinataire):
 
 # Génère un verrou pour les accès concurrent au fichier JSON
 # contenant les conversations
-def obtenir_verrou(nom_fichier):
-    if nom_fichier not in verrous:
-        verrous[nom_fichier] = Lock()
-    return verrous[nom_fichier]
+def obtenir_verrou(nomfichier):
+    if nomfichier not in verrous:
+        verrous[nomfichier] = Lock()
+    return verrous[nomfichier]
