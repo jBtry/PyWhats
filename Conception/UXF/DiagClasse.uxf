@@ -113,7 +113,7 @@ layer=-1</panel_attributes>
     <id>UMLClass</id>
     <coordinates>
       <x>665</x>
-      <y>616</y>
+      <y>602</y>
       <w>378</w>
       <h>126</h>
     </coordinates>
@@ -164,10 +164,10 @@ verifmdp(String mdpEnBD, String mdpSaisi) : Boolean</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>665</x>
+      <x>658</x>
       <y>308</y>
-      <w>273</w>
-      <h>98</h>
+      <w>315</w>
+      <h>112</h>
     </coordinates>
     <panel_attributes>OutilsClient.py
 --
@@ -176,16 +176,18 @@ verifmdp(String mdpEnBD, String mdpSaisi) : Boolean</panel_attributes>
 get_horodatage() : String
 verificationPseudo(String pseudo) : boolean 
 verificationMDP(String mdp) : boolean 
-suppConversation(String pseudo, String destinataire)</panel_attributes>
+suppConversation(String pseudo, String destinataire)
+importPeriodique(String destinataire)
+afficherConversation(String pseudo, String destinataire)</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <id>UMLClass</id>
     <coordinates>
       <x>665</x>
-      <y>427</y>
+      <y>434</y>
       <w>560</w>
-      <h>175</h>
+      <h>147</h>
     </coordinates>
     <panel_attributes>Requetes.py
 --
@@ -200,8 +202,7 @@ envoyer_message(String envoyeur, String destinataire, String message, String tim
 envoyer_fichier(String envoyeur, String destinataire, String filename, Bytes file_data, String timestamp) : JSON
 synchro_messages(String destinataire)
 synchro_fichiers(String destinataire)
-importPeriodique(String destinataire)
-afficherMessages(String pseudo, String destinataire)</panel_attributes>
+</panel_attributes>
     <additional_attributes/>
   </element>
 </diagram>

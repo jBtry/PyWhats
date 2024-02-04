@@ -4,7 +4,6 @@
 import base64
 import json
 import os
-import time
 import requests
 
 from OutilsClient import *
@@ -115,7 +114,7 @@ def envoyer_fichier(envoyeur, destinataire, filename, file_data, timestamp):
         return {"error": f"La requête a échoué avec le code d'état : {response.status_code}"}
 
 
-# Enregistrement Messages reçu
+# Synchro messages reçu
 def synchro_messages(destinataire):
 
     if not os.path.exists("MessagesDe_"+destinataire):
@@ -152,7 +151,7 @@ def synchro_messages(destinataire):
         print(f"Erreur lors de la synchronisation des messages : {response.status_code}")
 
 
-# Enregistrement Fichiers reçu
+# Synchro fichiers reçu
 def synchro_fichiers(destinataire):
     if not os.path.exists("FichiersDe_" + destinataire):
         os.makedirs("FichiersDe_" + destinataire)
@@ -186,33 +185,3 @@ def synchro_fichiers(destinataire):
 
     else:
         print(f"Erreur dans la synchronization des fichiers : {response.status_code}")
-
-
-# Cherche si l'utilisateur à reçu des messages et des fichiers
-def importPeriodique(destinataire):
-    while True:
-        synchro_messages(destinataire)
-        synchro_fichiers(destinataire)
-        time.sleep(5)
-
-
-# Affiche une conversation
-def afficherMessages(pseudo, destinataire):
-    messages_dir = f"MessagesDe_{pseudo}/{destinataire}.json"
-
-    if not os.path.exists(messages_dir):
-        print(f"Aucun message échangé avec {destinataire}")
-
-    # Ouvrir le fichier JSON et lire son contenu ligne par ligne
-    with open(messages_dir, 'r') as file:
-        lines = file.readlines()
-
-    # Parcourir chaque ligne (chaque message) et l'afficher dans le format souhaité
-    for line in lines:
-        message = json.loads(line)
-        envoyeur = message.get('envoyeur')
-        timestamp = message.get('timestamp')
-        message_text = message.get('message')
-
-        print(f"From {envoyeur} at {timestamp}: {message_text}")
-

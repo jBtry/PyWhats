@@ -28,4 +28,4 @@ def creation_table_utilisateurs():
 mongo_client = MongoClient('mongodb://localhost:27017/')  # en local sur le port par défaut
 mongo_db = mongo_client['messagerie']  # Nom de la base de donnée messagerie
 messages_collection = mongo_db['conversations']  # Contient les conversations
-fichiers_collection = mongo_db['fichiers']  # Contient les messages
+fichiers_collection = mongo_db['fichiers']  # Contient les fichiers

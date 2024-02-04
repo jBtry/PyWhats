@@ -1,6 +1,5 @@
 # MAIN du serveur
 
-from GestionBD import *
 from Traitement import *
 
 # --------- MAIN -------

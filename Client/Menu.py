@@ -54,7 +54,7 @@ def menuFonctionnalites(pseudo) :
                     menuEnvoiMessage(destinataire)
                     choix = demanderChoix()
                     if choix == '1':
-                        afficherMessages(pseudo, destinataire)
+                        afficherConversation(pseudo, destinataire)
                         message = input("Saisir un message (x pour retour): ")
                         if message == 'x':
                             break
@@ -131,7 +131,7 @@ def menuFonctionnalites(pseudo) :
             destinataire = input("Saisir le pseudo du destinataire: ")
             while True:
                 if verificationUtilisateur(destinataire): # pseudo Valide
-                    afficherMessages(pseudo, destinataire)
+                    afficherConversation(pseudo, destinataire)
                     menuSupprimerConversation(destinataire)
                     choix = demanderChoix()
 
