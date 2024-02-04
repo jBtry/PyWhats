@@ -85,7 +85,7 @@ def menuFonctionnalites(pseudo) :
                             time.sleep(5)
                         
                         else:
-                            print("Fichier non trouvé. Saisir un chemin du fichier valide.")
+                            print("Fichier non trouvé. Saisir un chemin de fichier valide.")
 
                     elif choix == '2':
                         break
