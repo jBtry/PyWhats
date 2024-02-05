@@ -80,7 +80,7 @@ bg=yellow</panel_attributes>
       <h>80</h>
     </coordinates>
     <panel_attributes>lt=&lt;-
-Créer un compte
+Se connecter
 Endpoint =&gt; http://ipserveur:61000/seConnecter
 Méthode =&gt; POST
 </panel_attributes>
