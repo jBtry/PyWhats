@@ -69,12 +69,12 @@ def envoyer_message(envoyeur, destinataire, message, timestamp):
     return reponse.json()
 
 # Envoi de fichier
-def envoyer_fichier(envoyeur, destinataire, filename, file_data, timestamp):
+def envoyer_fichier(envoyeur, destinataire, nomfichier, donnees, timestamp):
     
-    file_data_base64 = base64.b64encode(file_data).decode('utf-8')
-    reponse = requests.post(f"{SERVER_URL}/envoyer_fichier", json={"envoyeur": envoyeur, "destinataire": destinataire, "filename": filename, "file_data": file_data_base64, "timestamp": timestamp})
+    donnees_base64 = base64.b64encode(donnees).decode('utf-8')
+    reponse = requests.post(f"{SERVER_URL}/envoyer_fichier", json={"envoyeur": envoyeur, "destinataire": destinataire, "nomfichier": nomfichier, "donnees": donnees_base64, "timestamp": timestamp})
     nomfichier = f"MessagesDe_"+envoyeur+"/"+destinataire+".json"
-    message = f"Le fichier : {filename} a été envoyé"
+    message = f"Le fichier : {nomfichier} a été envoyé"
     message_format = '{"message": "' + message + '", "destinataire": "' + destinataire + '", "envoyeur": "' + envoyeur + '", "timestamp": "' + timestamp + '"}'
 
  
@@ -153,26 +153,26 @@ def synchro_fichiers(destinataire):
 
         if files != []:
             envoyeur_notif = ""
-            filename_notif = ""
+            nomfichier_notif = ""
 
             for file_info in files:
                 envoyeur = file_info.get('envoyeur')
                 nomfichier = file_info.get('nomfichier')
-                file_data_base64 = file_info.get('donnees')
+                donnees_base64 = file_info.get('donnees')
                 timestamp = file_info.get('timestamp')
 
                 # Decode le fichier
-                file_data = base64.b64decode(file_data_base64)
+                donnees = base64.b64decode(donnees_base64)
 
                 # Sauvegarde le fichier
                 file_path = f"FichiersDe_{destinataire}/{nomfichier}"
                 with open(file_path, 'wb') as file:
-                    file.write(file_data)
+                    file.write(donnees)
                 
                 envoyeur_notif = envoyeur
-                filename_notif = nomfichier
+                nomfichier_notif = nomfichier
 
-            print(f"\n                                        Fichier '{filename_notif}' reçu de {envoyeur_notif}")
+            print(f"\n                                        Fichier '{nomfichier_notif}' reçu de {envoyeur_notif}")
 
             nomConversation = f"MessagesDe_"+destinataire+"/"+envoyeur+".json"
             message = f"Le fichier : {nomfichier} a été reçu"

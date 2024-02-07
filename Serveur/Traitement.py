@@ -172,17 +172,17 @@ def envoyer_fichier():
     # Extraction des informations contenue dans la requête
     envoyeur = request.json['envoyeur']
     destinataire = request.json['destinataire']
-    file_data_base64 = request.json['file_data']
-    filename = request.json['filename']
+    donnees_base64 = request.json['donnees']
+    nomfichier = request.json['nomfichier']
     timestamp = request.json['timestamp']
 
-    file_data = base64.b64decode(file_data_base64)
+    donnees = base64.b64decode(donnees_base64)
 
     file = {
     'envoyeur': envoyeur,
     'destinataire': destinataire,
-    'filename': filename,
-    'file_data': file_data,
+    'nomfichier': nomfichier,
+    'donnees': donnees,
     'timestamp': timestamp
     }
 
@@ -232,20 +232,20 @@ def synchroniser_fichiers():
     for file in files:
         envoyeur = file['envoyeur']
         destinataire = file['destinataire']
-        filename = file['nomfichier']
+        nomfichier = file['nomfichier']
         donnees = file['donnees']
         timestamp = file['timestamp']
     
-        file_data_base64 = base64.b64encode(donnees).decode('utf-8')
+        donnees_base64 = base64.b64encode(donnees).decode('utf-8')
 
         synchronized_files.append({
             'envoyeur': envoyeur,
             'destinataire': destinataire,
-            'nomfichier': filename,
-            'donnees': file_data_base64,
+            'nomfichier': nomfichier,
+            'donnees': donnees_base64,
             'timestamp': timestamp
         })
-    
+
     critere = {'destinataire': destinataire}
     deleted_result = fichiers_collection.delete_many(critere)
     print(f"Number of files deleted: {deleted_result.deleted_count}")

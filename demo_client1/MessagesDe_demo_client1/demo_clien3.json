@@ -1,0 +1,3 @@
+{"message": "salut client 3", "destinataire": "demo_clien3", "envoyeur": "demo_client1", "timestamp": "15:40 07/02/2024"}
+{"message": "clien ou client?", "destinataire": "demo_clien3", "envoyeur": "demo_client1", "timestamp": "15:40 07/02/2024"}
+{"message": "Le fichier : MessagesDe_demo_client1/demo_clien3.json a été envoyé", "destinataire": "demo_clien3", "envoyeur": "demo_client1", "timestamp": "15:43 07/02/2024"}
