@@ -72,13 +72,6 @@ def envoyer_message(envoyeur, destinataire, message, timestamp):
 def envoyer_fichier(envoyeur, destinataire, filename, file_data, timestamp):
     
     file_data_base64 = base64.b64encode(file_data).decode('utf-8')
-<<<<<<< HEAD
-
-    response = requests.post(f"{SERVER_URL}/envoyer_fichier", json={"envoyeur": envoyeur, "destinataire": destinataire, "filename": filename, "file_data": file_data_base64, "timestamp": timestamp})
-     
-    if response.status_code == 200:
-        # Vérifier si la réponse contient des données JSON valides
-=======
     reponse = requests.post(f"{SERVER_URL}/envoyer_fichier", json={"envoyeur": envoyeur, "destinataire": destinataire, "filename": filename, "file_data": file_data_base64, "timestamp": timestamp})
     nomfichier = f"MessagesDe_"+envoyeur+"/"+destinataire+".json"
     message = f"Le fichier : {filename} a été envoyé"
@@ -87,7 +80,6 @@ def envoyer_fichier(envoyeur, destinataire, filename, file_data, timestamp):
  
     if reponse.status_code == 200:
         # Vérifie si la réponse contient des données JSON valides
->>>>>>> 52251385576be2f6237c6aab3803dc2fb0954201
         try:
             reponse_json = reponse.json()
             if not os.path.exists("FichiersDe_" + envoyeur):
