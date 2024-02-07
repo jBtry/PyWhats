@@ -5,10 +5,10 @@
 import bcrypt
 
 # Permet le hachage du mot de passe
-def hashmdp(password):
-    return bcrypt.hashpw(password.encode('utf-8'), bcrypt.gensalt())
+def hashmdp(mdp):
+    return bcrypt.hashpw(mdp.encode('utf-8'), bcrypt.gensalt())
 
 
 # Vérifie le mot de passe
-def verifmdp(stored_password, provided_password):
-    return bcrypt.checkpw(provided_password.encode('utf-8'), stored_password)
+def verifmdp(mdpEnBD, mdpSaisi):
+    return bcrypt.checkpw(mdpSaisi.encode('utf-8'), mdpEnBD)

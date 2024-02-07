@@ -1,18 +1,16 @@
-# Met à disposition, pour le serveur, différents outils
+# Met à disposition, pour le client, différents outils
 # - Récupérer le timestamp
+# - Vérifier que le pseudo est conforme
+# - Vérifier que le mot de passe est conforme
+# - Supprimer une conversation
 
-import os
-import re
+import re, tzlocal, os, json
 from datetime import datetime
-import pytz
 
-def return_timestamp():
-    # Get the current time in UTC
-    utc_now = datetime.now(pytz.utc)
-
-    # Format the timestamp as required
-    formatted_timestamp = utc_now.strftime("%H:%M %d/%m/%Y")
-
+def get_horodatage():
+    timezone = tzlocal.get_localzone()
+    horodatage = datetime.now(timezone)
+    formatted_timestamp = horodatage.strftime("%H:%M %d/%m/%Y")
     return formatted_timestamp
 
 # Vérifie que le pseudo respecte les specs fonctionnelles
@@ -28,15 +26,35 @@ def verificationMDP(mdp) :
     pattern += r'(?=.*\d)'  # Au moins un nombre
     pattern += r'.{12,80}$'  # Entre 12 et 80 caractères inclus
 
-    return re.match(pattern, mdp)
+    return bool(re.fullmatch(pattern, mdp))
 
 # Fonction pour supprimer une conversation
-def delete_conversation(username, receiver):
+def suppConversation(pseudo, destinataire):
     # Chemin du fichier JSON de la conversation
-    filepath = f"MessagesDe_{username}/{receiver}.json"
+    filepath = f"MessagesDe_{pseudo}/{destinataire}.json"
 
     if os.path.exists(filepath):
         os.remove(filepath)
-        print(f"Conversation with {receiver} has been deleted.")
+        print(f"La conversation avec {destinataire} a été supprimé.")
     else:
-        print(f"No conversation found with {receiver}.")
+        print(f"Aucune conversation trouvée avec {destinataire}.")
+
+# Affiche une conversation
+def afficherConversation(pseudo, destinataire):
+    messages_dir = f"MessagesDe_{pseudo}/{destinataire}.json"
+
+    if not os.path.exists(messages_dir):
+        print(f"Aucun message échangé avec {destinataire}")
+
+    else :
+        # Ouvrir le fichier JSON et lire son contenu ligne par ligne
+        with open(messages_dir, 'r') as file:
+            lines = file.readlines()
+
+        # Parcourir chaque ligne (chaque message) et l'afficher dans le format souhaité
+        for line in lines:
+            message = json.loads(line)
+            envoyeur = message.get('envoyeur')
+            timestamp = message.get('timestamp')
+            message_text = message.get('message')
+            print(f"From {envoyeur} at {timestamp}: {message_text}")

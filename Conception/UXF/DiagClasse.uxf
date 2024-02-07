@@ -1,0 +1,210 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<diagram program="umlet" version="15.1">
+  <zoom_level>7</zoom_level>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1085</x>
+      <y>217</y>
+      <w>259</w>
+      <h>196</h>
+    </coordinates>
+    <panel_attributes>Textes.py
+--
+MESSAGE_ERREUR_MENU_TROIS_CHOIX : String
+MESSAGE_ERREUR_MENU_DEUX_CHOIX : String
+MESSAGE_ERREUR_MENU_CINQ_CHOIX : String
+MESSAGE_QUITTER : String
+WELCOME : String
+CHOIX : String
+MENU_ACCUEIL : String
+FCT : String
+MENU_ENVOI_MESSAGE : String
+MENU_ENVOI_FICHIER : String
+MENU_SUPPRIMER : String
+MENU_GERER_PROFIL : String
+MESSAGE_PSEUDO_INVALIDE : String
+MESSAGE_MDP_INVALIDE : String
+--</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>658</x>
+      <y>217</y>
+      <w>119</w>
+      <h>84</h>
+    </coordinates>
+    <panel_attributes>Client.py
+--
+
+--
+main()</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>217</x>
+      <y>441</y>
+      <w>238</w>
+      <h>147</h>
+    </coordinates>
+    <panel_attributes>Traitement
+--
+app : Flask
+--
+creerCompte() : JSON, int
+verificationUtilisateur() : JSON, int
+seConnecter() : JSON, int
+changer_pseudo() : JSON, int
+changer_mdp() : JSON, int
+envoyer_message() : JSON, int
+envoyer_fichier() : JSON, int
+synchroniser_messages : JSON, int
+synchroniser_fichiers : JSON, int</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>392</x>
+      <y>231</y>
+      <w>175</w>
+      <h>84</h>
+    </coordinates>
+    <panel_attributes>GestionBD.py
+--
+get_sqlite_connexion
+--
+mongo_client : MongoClient
+mongo_db : Database
+messages_collection : Collection
+fichiers_collection : Collection
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLGeneric</id>
+    <coordinates>
+      <x>644</x>
+      <y>182</y>
+      <w>721</w>
+      <h>574</h>
+    </coordinates>
+    <panel_attributes>Côté CLIENT
+layer=-1</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLGeneric</id>
+    <coordinates>
+      <x>175</x>
+      <y>189</y>
+      <w>413</w>
+      <h>469</h>
+    </coordinates>
+    <panel_attributes>Côté SERVEUR
+layer=-1</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>658</x>
+      <y>623</y>
+      <w>378</w>
+      <h>126</h>
+    </coordinates>
+    <panel_attributes>Menu.py
+--
+
+--
+demanderChoix() : String 
+menuAccueil(): int, String (retourne un code d'erreur et le pseudo)
+menuFonctionnalites(String pseudo)
+menuEnvoiMessage(String destinataire)
+menuEnvoiFichier(String destinataire)
+menuSupprimerConversation(Stringdestinataire)
+menuGererProfil()</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>224</x>
+      <y>231</y>
+      <w>126</w>
+      <h>56</h>
+    </coordinates>
+    <panel_attributes>Serveur.py
+--
+
+--
+main()</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>203</x>
+      <y>336</y>
+      <w>322</w>
+      <h>70</h>
+    </coordinates>
+    <panel_attributes>OutilsServeur.py
+--
+
+--
+hashmdp(String mdp): Bytes
+verifmdp(String mdpEnBD, String mdpSaisi) : Boolean</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>658</x>
+      <y>308</y>
+      <w>315</w>
+      <h>112</h>
+    </coordinates>
+    <panel_attributes>OutilsClient.py
+--
+
+--
+get_horodatage() : String
+verificationPseudo(String pseudo) : boolean 
+verificationMDP(String mdp) : boolean 
+suppConversation(String pseudo, String destinataire)
+afficherConversation(String pseudo, String destinataire)</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>665</x>
+      <y>434</y>
+      <w>560</w>
+      <h>175</h>
+    </coordinates>
+    <panel_attributes>Requetes.py
+--
+SERVEUR_URL : String
+verrous : Lock[]
+--
+creationCompte(String pseudo, String mdp) : JSON
+verificationUtilisateur(String pseudo) : JSON
+seConnecter(String pseudo, String mdp) : int
+changer_pseudo(String pseudo_actuel, String new_pseudo) : JSON
+changer_mdp(String pseudo, String new_mdp) : JSON
+envoyer_message(String envoyeur, String destinataire, String message, String timestamp) : JSON
+envoyer_fichier(String envoyeur, String destinataire, String filename, Bytes file_data, String timestamp) : JSON
+synchro_messages(String destinataire)
+synchro_fichiers(String destinataire)
+importPeriodique(String destinataire)
+obtenir_verrou(nom_fichier) : Lock
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+</diagram>

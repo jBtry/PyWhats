@@ -1,6 +1,6 @@
 # Contient les différents menus de l'application
 
-from Texte import *
+from Textes import *
 from Requetes import *
 from OutilsClient import *
 
@@ -50,15 +50,15 @@ def menuFonctionnalites(pseudo) :
         if choix == '1': # Envoyer un message
             destinataire = input("Saisir le pseudo du destinataire: ")
             while True:
-                if verificationUtilisateur(destinataire): # pseudo Valide
+                if verificationUtilisateur(destinataire):
                     menuEnvoiMessage(destinataire)
                     choix = demanderChoix()
                     if choix == '1':
-                        display_messages(pseudo, destinataire)
+                        afficherConversation(pseudo, destinataire)
                         message = input("Saisir un message (x pour retour): ")
                         if message == 'x':
                             break
-                        print(envoyer_message(pseudo, destinataire, message, return_timestamp()))
+                        print(envoyer_message(pseudo, destinataire, message, get_horodatage()))
                     elif choix == '2':
                         break
                     else:
@@ -70,7 +70,7 @@ def menuFonctionnalites(pseudo) :
         elif choix == '2': # Envoyer un fichier
             destinataire = input("Saisir le pseudo du destinataire: ")
             while True:
-                if verificationUtilisateur(destinataire): # pseudo Valide
+                if verificationUtilisateur(destinataire):
                     menuEnvoiFichier(destinataire)
                     choix = demanderChoix()
                     if choix == '1':
@@ -78,14 +78,14 @@ def menuFonctionnalites(pseudo) :
 
                         if os.path.exists(chemin_fichier):
                             with open(chemin_fichier, 'rb') as fichier:
-                                données_fichier = fichier.read()
+                                donnees_fichier = fichier.read()
 
                             nom_fichier = os.path.basename(chemin_fichier)
-                            print(envoyer_fichier(pseudo, destinataire, nom_fichier, données_fichier, return_timestamp()))
+                            print(envoyer_fichier(pseudo, destinataire, nom_fichier, donnees_fichier, get_horodatage()))
                             time.sleep(5)
                         
                         else:
-                            print("Fichier non trouvé. Saisir un chemin du fichier valide.")
+                            print("Fichier non trouvé. Saisir un chemin de fichier valide.")
 
                     elif choix == '2':
                         break
@@ -99,33 +99,44 @@ def menuFonctionnalites(pseudo) :
             while True:
                 menuGererProfil()
                 choix = demanderChoix()
-
-                if choix =='1':
-                    nouveau_pseudo = input("Saisir nouveau pseudo : ")
-                    response = changer_pseudo(pseudo, nouveau_pseudo)
-                    print(response)
+                pseudoOK = False
+                mdpOK = False
+                if choix =='1': # Changer pseudo
+                    while not pseudoOK:
+                        nouveau_pseudo = input("Saisir le pseudo : ")
+                        if verificationPseudo(pseudo):
+                            pseudoOK = True
+                            reponse = changer_pseudo(pseudo, nouveau_pseudo)
+                            print(reponse)
+                        else:
+                            print(MESSAGE_PSEUDO_INVALIDE)
                 
-                elif choix =='2':
-                    nouveau_mdp = input("Saisir nouveau mot de passe : ")
-                    response = changer_mdp(pseudo, nouveau_mdp)
-                    print(response)
+                elif choix =='2': # Changer mdp
+                    while not mdpOK:
+                        nouveau_mdp = input("Saisir le mot de passe : ")
+                        if verificationMDP(nouveau_mdp):
+                            mdpOK = True
+                            reponse = changer_mdp(pseudo, nouveau_mdp)
+                            print(reponse)
+                        else:
+                            print(MESSAGE_MDP_INVALIDE)
 
                 elif choix =='3':
                     break
 
                 else:
-                    print("Invalid choice. Please try again.")
+                    print(MESSAGE_ERREUR_MENU_TROIS_CHOIX)
 
         elif choix == '4': # Supprimer une conversation
             destinataire = input("Saisir le pseudo du destinataire: ")
             while True:
                 if verificationUtilisateur(destinataire): # pseudo Valide
-                    display_messages(pseudo, destinataire)
+                    afficherConversation(pseudo, destinataire)
                     menuSupprimerConversation(destinataire)
                     choix = demanderChoix()
 
                     if choix == '1':
-                        print(delete_conversation(pseudo, destinataire))
+                        print(suppConversation(pseudo, destinataire))
 
                     elif choix == '2':
                         break

@@ -1,5 +1,5 @@
 # Instancie le service web servant à écouter les requêtes des clients,
-# elle contient les endpoints et le traitement associé à chacun d'eux
+# ce fichier contient les endpoints et le traitement associé à chacun d'eux
 
 import base64
 from OutilsServeur import *
@@ -18,7 +18,7 @@ app = Flask(__name__)
 
 # Cet endpoint permet de créer un compte utilisateur
 @app.route('/creationCompte', methods=['POST'])
-def register():
+def creerCompte():
     # Extraction du pseudo and du mot de passe de la requête (matérialisé par un JSON)
     pseudo = request.json['pseudo']
     mdp = request.json['mdp']
@@ -27,7 +27,7 @@ def register():
     hashed_mdp = hashmdp(mdp)
 
     # Insère le couple pseudo/mot de passe dans la base de donnée
-    conn = get_sqlite_connection()
+    conn = get_sqlite_connexion()
     try:
         conn.execute('INSERT INTO utilisateurs (pseudo, mdp) VALUES (?, ?)',
                      (pseudo, hashed_mdp))
@@ -67,12 +67,12 @@ def verificationUtilisateur():
 
 # Connexion
 @app.route('/seConnecter', methods=['POST'])
-def login():
+def seConnecter():
 
     pseudo = request.json['pseudo']
     mdp = request.json['mdp']
 
-    conn = get_sqlite_connection()
+    conn = get_sqlite_connexion()
     cursor = conn.execute('SELECT mdp FROM utilisateurs WHERE pseudo=?', (pseudo,))
     user = cursor.fetchone()
     conn.close()
@@ -91,7 +91,7 @@ def changer_pseudo():
     new_pseudo = request.json['new_pseudo']
 
     if not pseudo_actuel:
-        return jsonify({'error': 'pseudo is required'}), 400
+        return jsonify({'Erreur': 'Le pseudo actuel est requis'}), 400
 
     conn = sqlite3.connect('utilisateurs.db')
     cursor = conn.cursor()
@@ -102,13 +102,13 @@ def changer_pseudo():
 
     conn.close()
     if user:
-        conn = get_sqlite_connection()
+        conn = get_sqlite_connexion()
         try:
             conn.execute('UPDATE utilisateurs SET pseudo =? WHERE pseudo =?',
                          (new_pseudo, pseudo_actuel))
             conn.commit()
         except sqlite3.IntegrityError:
-            return jsonify("Erreur dans la mise à jour du pseudo"), 400 # TODO : changer code erreur
+            return jsonify("Erreur dans la mise à jour du pseudo"), 500
         finally:
             conn.rollback()
             conn.close()
@@ -127,14 +127,14 @@ def changer_mdp():
 
     hashed_mdp = hashmdp(new_mdp)
 
-    conn = get_sqlite_connection()
+    conn = get_sqlite_connexion()
     try:
         conn.execute('UPDATE utilisateurs SET mdp =? WHERE pseudo =?',
                      (hashed_mdp, pseudo))
         conn.commit()
     except sqlite3.IntegrityError:
         conn.rollback()
-        return jsonify("Erreur lors de la mise à jour du mot de passe, aucune modification n\'a été effectué"), 400
+        return jsonify("Erreur lors de la mise à jour du mot de passe, aucune modification n\'a été effectué"), 500
     finally:
         conn.close()
 
@@ -157,16 +157,19 @@ def envoyer_message():
         'timestamp': timestamp
     }
 
-    # Adding message to an existing conversation in MongoDB
-    messages_collection.insert_one(message)
+    # Enregistrement dans mongoDB
+    result = messages_collection.insert_one(message)
 
-    return jsonify("Message envoyé avec succès"), 200
+    if result.acknowledged:
+        return jsonify("Message envoyé avec succès"), 200
+    else:
+        return jsonify("Erreur: le message n\'a pas été envoyé"), 500
 
 
-# Flask route for sending a message
+# Envoi de fichier
 @app.route('/envoyer_fichier', methods=['POST'])
-def envoyer_fichier_file():
-    # Extracting envoyeur and message from request
+def envoyer_fichier():
+    # Extraction des informations contenue dans la requête
     envoyeur = request.json['envoyeur']
     destinataire = request.json['destinataire']
     file_data_base64 = request.json['file_data']
@@ -183,13 +186,13 @@ def envoyer_fichier_file():
     'timestamp': timestamp
     }
 
-    # Adding message to an existing conversation in MongoDB
+    # Insertion dans la BD
     result = fichiers_collection.insert_one(file)
 
     if result.acknowledged:
         return jsonify("Fichier envoyé avec succès"), 200
     else:
-        return jsonify("Erreur: le fichier n\'a pas été envoyé avec succès"), 500
+        return jsonify("Erreur: le fichier n\'a pas été envoyé"), 500
 
 
 # Distribue les messages
@@ -197,9 +200,7 @@ def envoyer_fichier_file():
 def synchroniser_messages():
 
     destinataire = request.json['destinataire']
-
     messages = messages_collection.find({'destinataire': destinataire})
-
     synchronized_messages = []
 
     # Ajouter chaque message à la liste synchronisée
@@ -220,7 +221,7 @@ def synchroniser_messages():
 
 @app.route('/synchroniser_fichiers', methods=['POST'])
 def synchroniser_fichiers():
-    # Extracting envoyeur and message from request
+
     destinataire = request.json['destinataire']
 
     files = fichiers_collection.find({'destinataire': destinataire})
@@ -231,22 +232,22 @@ def synchroniser_fichiers():
     for file in files:
         envoyeur = file['envoyeur']
         destinataire = file['destinataire']
-        filename = file['filename']
-        file_data = file['file_data']
+        filename = file['nomfichier']
+        donnees = file['donnees']
         timestamp = file['timestamp']
     
-        file_data_base64 = base64.b64encode(file_data).decode('utf-8')
+        file_data_base64 = base64.b64encode(donnees).decode('utf-8')
 
         synchronized_files.append({
             'envoyeur': envoyeur,
             'destinataire': destinataire,
-            'filename': filename,
-            'file_data': file_data_base64,
+            'nomfichier': filename,
+            'donnees': file_data_base64,
             'timestamp': timestamp
         })
     
-    criteria = {'destinataire': destinataire}
-    deleted_result = fichiers_collection.delete_many(criteria)
+    critere = {'destinataire': destinataire}
+    deleted_result = fichiers_collection.delete_many(critere)
     print(f"Number of files deleted: {deleted_result.deleted_count}")
 
     return jsonify(synchronized_files), 200
