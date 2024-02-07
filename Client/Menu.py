@@ -55,9 +55,7 @@ def menuFonctionnalites(pseudo) :
                     choix = demanderChoix()
                     if choix == '1':
                         afficherConversation(pseudo, destinataire)
-                        message = input("Saisir un message (x pour retour): ")
-                        if message == 'x':
-                            break
+                        message = input("Saisir un message : ")
                         print(envoyer_message(pseudo, destinataire, message, get_horodatage()))
                     elif choix == '2':
                         break
