@@ -76,31 +76,7 @@ def envoyer_fichier(envoyeur, destinataire, filename, file_data, timestamp):
     file_data_base64 = base64.b64encode(file_data).decode('utf-8')
 
     response = requests.post(f"{SERVER_URL}/envoyer_fichier", json={"envoyeur": envoyeur, "destinataire": destinataire, "filename": filename, "file_data": file_data_base64, "timestamp": timestamp})
-    
-    pathname = f"FichiersDe_"+envoyeur+"/"+destinataire+".json"
-
-    formatted_message = {
-        "filename": filename,
-        "file_data": file_data_base64,
-        "destinataire": destinataire,
-        "envoyeur": envoyeur,
-        "timestamp": timestamp
-    }    
-
-    # Check if the directory exists
-    if not os.path.exists("FichiersDe_"+envoyeur):
-        # Create the directory
-        os.makedirs("FichiersDe_"+envoyeur)
-
-    if not os.path.exists(pathname):
-        with open(pathname, 'w') as file:  # Ouverture en mode append
-            file.write("")
-    
-    with open(pathname, 'a') as file:  # Ouverture en mode write
-        json.dump(formatted_message, file)
-        file.write("\n")
-
- 
+     
     if response.status_code == 200:
         # Vérifier si la réponse contient des données JSON valides
         try:
